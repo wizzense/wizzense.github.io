@@ -15,6 +15,20 @@ identity:
   demo: demo.aitherium.com
   clearance_note: "Prior DoD work; USAF Cyber Systems Operations 2014-2020."
 
+# Public surfaces (the site, docs/resume.pdf, the public video cut) use THIS block.
+# The application copies use `identity`. Owner rule 2026-09-03: no full name, no
+# address/city on anything public.
+public_identity:
+  name: David (wizzense)
+  handle: wizzense
+  headline: Outcome Engineer. Founder & Architect, Aitherium / AitherOS. USAF veteran.
+  location: remote
+  email: david.parkhurst@aitherium.com
+  github: github.com/wizzense
+  org: github.com/Aitherium
+  site: wizzense.github.io
+  blog: blog.aitherium.com
+
 summary: >
   I run a software factory, not a backlog. Over 14 months I built AitherOS — an
   AI-native operating platform where 33 specialised agents plan, code, review,

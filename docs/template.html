@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>David Parkhurst — Outcome Engineer</title>
-<meta name="description" content="David Parkhurst. Outcome Engineer. I built the factory that builds the software: AitherOS, the aw* stack, awnix. {{COMMITS}} commits, {{GATES}} self-testing gates, {{BRICKS}} bricks.">
-<meta property="og:title" content="David Parkhurst — I built the factory that builds the software.">
+<title>wizzense — Outcome Engineer</title>
+<meta name="description" content="David (wizzense). Outcome Engineer. I built the factory that builds the software: AitherOS, the aw* stack, awnix. {{COMMITS}} commits, {{GATES}} self-testing gates, {{BRICKS}} bricks.">
+<meta property="og:title" content="wizzense — I built the factory that builds the software.">
 <meta property="og:description" content="AitherOS · the aw* stack · awnix. {{COMMITS}} commits since June 2025. Every number measured.">
 <meta name="theme-color" content="#000103">
 <link rel="icon" href="favicon.ico">
@@ -176,7 +176,7 @@ body.booted .scrollhint{opacity:1}
 <section id="hero" class="wrap" aria-label="Introduction">
   <div>
     <p class="prompt"><span class="p">david@awnix:~$</span> whoami</p>
-    <h1><span class="l"><span>David</span></span><span class="l"><span class="g">Parkhurst</span></span></h1>
+    <h1><span class="l"><span>David</span></span><span class="l"><span class="g">wizzense</span></span></h1>
     <p class="tag">Outcome Engineer. <b>I built the factory that builds the software.</b></p>
     <div class="cta">
       <a class="btn btn-p" href="#shell">Open the shell</a>
@@ -188,6 +188,20 @@ body.booted .scrollhint{opacity:1}
   </div>
   <div class="scrollhint">SCROLL — OR TYPE INTO THE SHELL</div>
 </section>
+<section id="watch" class="wrap" aria-labelledby="watch-h">
+  <div style="width:100%">
+    <p class="kicker">Act I &middot; the film</p>
+    <h2 id="watch-h" class="kt">The factory <em>narrated itself.</em></h2>
+    <p class="lede">Four minutes. Assembled, narrated and rendered by the platform from the same measured facts as this page &mdash; the numbers are the ones <span class="mono acc">top</span> prints.</p>
+    <div class="code" style="padding:0;overflow:hidden">
+      <video controls preload="metadata" playsinline poster="video/poster.jpg" style="display:block;width:100%;aspect-ratio:16/9;background:#000103">
+        <source src="video/the-factory.mp4" type="video/mp4">
+        Your browser does not play MP4. <a href="video/the-factory.mp4">Download it.</a>
+      </video>
+    </div>
+  </div>
+</section>
+
 
 <section id="shell" class="wrap" aria-labelledby="shell-h">
   <div style="width:100%">
@@ -219,7 +233,7 @@ body.booted .scrollhint{opacity:1}
   <div style="width:100%">
     <p class="kicker">Act III · chapter 2</p>
     <h2 id="factory-h" class="kt">Six things an autonomous factory must do — and what I <em>built</em> for each.</h2>
-    <p class="lede">Onebrief's six bullets. Each answered with a thing that exists, runs unattended, and has an exit code.</p>
+    <p class="lede">The six bullets every outcome-engineering charter lists. Each answered with a thing that exists, runs unattended, and has an exit code.</p>
     <div class="panels" id="panels"></div>
   </div>
 </section>
@@ -258,7 +272,7 @@ body.booted .scrollhint{opacity:1}
     <footer>
       <div class="row">
         <img src="assets/wordmark.svg" alt="Aitherium" width="88" height="22">
-        <span>David Parkhurst · <a href="mailto:david.parkhurst@aitherium.com">david.parkhurst@aitherium.com</a> · Mission Viejo, CA · remote</span>
+        <span>David · wizzense · <a href="mailto:david.parkhurst@aitherium.com">david.parkhurst@aitherium.com</a> · remote</span>
         <span class="sp"></span>
         <span class="mono">built by docs/build.py from facts/resume.yaml · measured 2026-09-03</span>
       </div>
@@ -356,7 +370,7 @@ function line(html, cls){ const p=document.createElement('p'); if(cls) p.classNa
 function echo(cmd){ line(`<span class="p">david@awnix:~$</span> <span class="c">${esc(cmd)}</span>`); }
 function open(u){ window.open(u,'_blank','noopener'); line(`<span class="d">→ opened ${esc(u)}</span>`); }
 const CMDS = {
-  help(){ line('<span class="h">commands</span>'); [['whoami','who is typing to you'],['top','the numbers, and how each was measured'],['stack','the 64 aw* bricks (also: ls aw*)'],['cat awnix','the box you hand an agent'],['history','USAF → Boeing → Tanium → Aitherium'],['gates','how 642 checks replaced review'],['factory','the six things, and what exists for each'],['blog / demo / github','open the proof'],['resume','open resume.pdf'],['clear','clear the screen'],['sudo','try it']].forEach(([c,d])=>line(`  <span class="c">${c.padEnd(22,' ')}</span><span class="d">${d}</span>`)); line('<span class="d">tab completes · ↑↓ history · ctrl+l clears</span>'); },
+  help(){ line('<span class="h">commands</span>'); [['whoami','who is typing to you'],['top','the numbers, and how each was measured'],['stack','the 64 aw* bricks (also: ls aw*)'],['cat awnix','the box you hand an agent'],['history','USAF → Boeing → Tanium → Aitherium'],['gates','how 642 checks replaced review'],['factory','the six things, and what exists for each'],['blog / demo / github','open the proof'],['resume','open resume.pdf'],['watch','the 4-minute video the factory rendered'],['clear','clear the screen'],['sudo','try it']].forEach(([c,d])=>line(`  <span class="c">${c.padEnd(22,' ')}</span><span class="d">${d}</span>`)); line('<span class="d">tab completes · ↑↓ history · ctrl+l clears</span>'); },
   whoami(){ line(`<span class="g">${esc(D.identity.name)}</span> — ${esc(D.identity.headline)}`); line(esc(D.summary)); line(`<span class="d">${esc(D.identity.location)} · ${esc(D.identity.email)}</span>`); },
   ls(arg){ if(arg && /^aw/.test(arg)) return CMDS.stack(); line('<span class="c">whoami/  top/  stack/  awnix  history/  gates/  factory/  resume.pdf  blog@  demo@  github@</span>'); },
   top(){ line('<span class="h">measured 2026-09-03 · the AitherOS tree · feat/tunnel-phone-coding</span>');
@@ -376,7 +390,7 @@ const CMDS = {
     'Every claim carries its command and exit code, or it is not a claim.'].forEach(t=>line(t)); },
   factory(){ D.jd.forEach(j=>{ line(`<span class="h">${esc(j.jd)}</span>`); line(`  ${esc(j.proof)}`); }); },
   blog(){ open('https://blog.aitherium.com'); }, demo(){ open('https://demo.aitherium.com'); }, github(){ open('https://github.com/Aitherium'); },
-  resume(){ open('resume.pdf'); },
+  resume(){ open('resume.pdf'); }, watch(){ const v=document.getElementById('watch'); if(v){ v.scrollIntoView({behavior:'smooth'}); const el=v.querySelector('video'); if(el){ el.play().catch(()=>{}); } line('playing.'); } },
   clear(){ out.innerHTML=''; },
   sudo(){ line('<span class="e">david is already root.</span>'); },
   pwd(){ line('/home/david'); }, uname(){ line('awnix 0.9 x86_64 · immutable · capabilities included'); }, date(){ line(new Date().toString()); },

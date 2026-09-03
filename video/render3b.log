@@ -1,0 +1,156 @@
+[2m09:28:26.398[0m | [96m\u2139 [0m | [1mAitherLockbox  [0m | [96mLockbox open (no passphrase set yet)[0m
+INFO:FluxEmitter:[FluxContext] Owner identity loaded: Alex
+INFO:FluxEmitter:[FluxEmitter] FluxContextState initialized
+INFO:mcp_firstparty_packs:pack aitherbrowser is undeclared (no band/cost in marketplace_catalog) — not loading even though AITHER_PACK_DISCOVERY is set
+INFO:mcp_firstparty_packs:pack arc_brainpack is undeclared (no band/cost in marketplace_catalog) — not loading even though AITHER_PACK_DISCOVERY is set
+INFO:mcp_firstparty_packs:pack arcsteer is undeclared (no band/cost in marketplace_catalog) — not loading even though AITHER_PACK_DISCOVERY is set
+INFO:mcp_firstparty_packs:pack cloudflare is undeclared (no band/cost in marketplace_catalog) — not loading even though AITHER_PACK_DISCOVERY is set
+INFO:mcp_firstparty_packs:pack deep_research is undeclared (no band/cost in marketplace_catalog) — not loading even though AITHER_PACK_DISCOVERY is set
+INFO:mcp_firstparty_packs:pack gpu_cluster_infrastructure is undeclared (no band/cost in marketplace_catalog) — not loading even though AITHER_PACK_DISCOVERY is set
+INFO:mcp_firstparty_packs:pack roboflow is undeclared (no band/cost in marketplace_catalog) — not loading even though AITHER_PACK_DISCOVERY is set
+INFO:mcp_firstparty_packs:pack structuredml is undeclared (no band/cost in marketplace_catalog) — not loading even though AITHER_PACK_DISCOVERY is set
+WARNING:aitherpilot:AitherPilot pack is DEPRECATED — consolidated into aitherbrowser. Please use aitherbrowser instead (same tools + CRM + web actions). This shim will be removed in 2 releases.
+INFO:mcp_firstparty_packs:pack lib.agents.packs.aitherpilot: registered 0 tools
+WARNING:adk.licensing:License envelope missing payload/signature — ignoring.
+INFO:formbridge:FormBridge not entitled — registering 0 tools
+INFO:mcp_firstparty_packs:pack lib.agents.packs.formbridge: registered 0 tools
+WARNING:untether:UNTETHER pack is DEPRECATED — consolidated into aitherbrowser. Please use aitherbrowser instead (same tools + browser + web actions). This shim will be removed in 2 releases.
+INFO:mcp_firstparty_packs:pack lib.agents.packs.untether: registered 0 tools
+INFO:themis_legal:Themis Legal registered 8 legal tools
+INFO:mcp_firstparty_packs:pack lib.agents.packs.themis_legal: registered 8 tools
+INFO:taxdesk:TaxDesk not entitled — registering 0 tools
+INFO:mcp_firstparty_packs:pack lib.agents.packs.taxdesk: registered 0 tools
+INFO:headroom-pack:headroom pack registered 2 headroom_* tools
+INFO:mcp_firstparty_packs:pack lib.agents.packs.headroom: registered 0 tools (skipped 2 collisions)
+INFO:prospector-pack:prospector pack registered 4 map_* tools
+INFO:mcp_firstparty_packs:pack lib.agents.packs.prospector: registered 0 tools (skipped 4 collisions)
+INFO:teaserforge-pack:teaserforge pack registered 2 teaser_* tools
+INFO:mcp_firstparty_packs:pack lib.agents.packs.teaserforge: registered 2 tools
+INFO:mcp_firstparty_packs:Loaded 10 tools from 2 first-party packs
+[2m09:28:27.587[0m | [93m[WARN] [0m | [1mAitherNet      [0m | [93mAitherNet: 235/235 services resolved to a loopback URL and cannot be reached from inside a container (AitherAitherNanoGPT, AitherAitherStructuredML, AitherAitherLlamaCppBonsai, AitherAitherLlamaCppBonsai4bTc, AitherArcPlayground...). /call to these will fail with 'Connection refused' while /services still lists them as available.[0m
+[2m09:28:27.589[0m | [96m\u2139 [0m | [1mAitherNet      [0m | [96mAitherNet catalog loaded: 235 services from services.yaml[0m
+INFO:DegradationRegistry:[DEGRADED] ServiceInfo (zeroconf) unavailable: No module named 'zeroconf'
+INFO:awnode.MeshTools:Mesh network MCP tools registered (discovery + onboarding)
+[2m09:28:27.874[0m | [93m[WARN] [0m | [1mAitherSecretsClient[0m | [93mget_secret(AITHER_INTERNAL_SECRET): no AITHER_INTERNAL_SECRET/AITHER_MASTER_KEY in environment — request will be unauthenticated and vault will likely deny or redact it, returning None indistinguishably from 'secret not found'[0m
+WARNING:DegradationRegistry:[DEGRADED] requests (requests) unavailable: HTTPConnectionPool(host='localhost', port=8111): Read timed out. (read timeout=6.0)
+INFO:AitherConfig.AutoTune:Auto-detecting hardware...
+[2m09:28:36.683[0m | [96m\u2139 [0m | [1mAitherHardware [0m | [96mDetecting system hardware...[0m
+[2m09:28:38.174[0m | [96m\u2139 [0m | [1mAitherHardware [0m | [96mHardware detected: ULTRA tier[0m
+[2m09:28:38.174[0m | [96m\u2139 [0m | [1mAitherHardware [0m | [96m  GPU: NVIDIA GeForce RTX 5090 (Blackwell)[0m
+[2m09:28:38.174[0m | [96m\u2139 [0m | [1mAitherHardware [0m | [96m  VRAM: 31GB | Flash Attention: 3[0m
+[2m09:28:38.174[0m | [96m\u2139 [0m | [1mAitherHardware [0m | [96m  CPU: AMD Ryzen 9 9950X3D 16-Core Processor (16c/32t)[0m
+[2m09:28:38.174[0m | [96m\u2139 [0m | [1mAitherHardware [0m | [96m  RAM: 125GB[0m
+[2m09:28:38.183[0m | [96m\u2139 [0m | [1mAitherHardware [0m | [96mApplied 54 auto-tuned env vars, preserved 9 existing[0m
+INFO:AitherConfig.AutoTune:Hardware auto-tuned: ULTRA tier | NVIDIA GeForce RTX 5090 (31GB) | 32 threads | 125GB RAM
+INFO:AitherConfig.AutoTune:Optimal models: orchestrator=aither-orchestrator, reflex/neuron=aither-orchestrator, reasoning=deepseek-r1:14b
+[2m09:28:38.321[0m | [93m[WARN] [0m | [1mAitherSecretsClient[0m | [93mget_secret(AITHER_SMTP_HOST): no AITHER_INTERNAL_SECRET/AITHER_MASTER_KEY in environment — request will be unauthenticated and vault will likely deny or redact it, returning None indistinguishably from 'secret not found'[0m
+WARNING:DegradationRegistry:[DEGRADED] requests (requests) unavailable: HTTPConnectionPool(host='localhost', port=8111): Read timed out. (read timeout=6.0)
+INFO:AitherOS.MetricsExporter:[AitherSecrets] Prometheus metrics endpoint installed at /metrics
+INFO:TLSConfig:Internal client SSL context loaded (CA chain trusted)
+INFO:aither.tunables:[Tunables] Loaded 28 definitions across 6 subsystems
+INFO:TenantMiddleware:[AitherSecrets] Tenant middleware installed (pure ASGI)
+INFO:TenantMiddleware:[AitherSecrets] Tenant middleware installed (pure ASGI)
+WARNING:AitherStderr:[GHOST PRINT] [2m09:28:46.983[0m | [96m\u2139 [0m | [1mAitherSecurity [0m | [96mSecurity middleware added to AitherSecrets (rbac=True)[0m
+INFO:AitherOS.AitherGraph:AitherGraph: loaded 294 services from services.yaml
+[2m09:28:46.983[0m | [96m\u2139 [0m | [1mAitherSecurity [0m | [96mSecurity middleware added to AitherSecrets (rbac=True)[0mWARNING:AitherStderr:[GHOST PRINT] [2m09:28:46.994[0m | [96m\u2139 [0m | [1mAitherSecurityPatch[0m | [96m[OK] Security patched: AitherSecrets (threshold=7)[0m
+[2m09:28:46.994[0m | [96m\u2139 [0m | [1mAitherSecurityPatch[0m | [96m[OK] Security patched: AitherSecrets (threshold=7)[0mINFO:TenantMiddleware:[AitherSecrets] Tenant middleware installed (pure ASGI)
+WARNING:AitherStderr:[GHOST PRINT] [2m09:28:47.000[0m | [96m\u2139 [0m | [1mAitherSecrets  [0m | [96m[LINK] AitherSecrets initialized | port=8111 | category=dynamic | flux=True | bus=deferred | sense=False | strata=True | error_handler=on | rate_limiter=on | security=on | tenant=on | health_std=on | telemetry=on | storage=on | phonehome=on[0m
+[2m09:28:47.000[0m | [96m\u2139 [0m | [1mAitherSecrets  [0m | [96m[LINK] AitherSecrets initialized | port=8111 | category=dynamic | flux=True | bus=deferred | sense=False | strata=True | error_handler=on | rate_limiter=on | security=on | tenant=on | health_std=on | telemetry=on | storage=on | phonehome=on[0mWARNING:AitherStderr:[GHOST PRINT] [2m09:28:47.100[0m | [96m\u2139 [0m | [1mAitherSecrets  [0m | [96mAitherSecrets: issued-key store ready at C:\AitherOS-Data\Library\Data\secrets\api_keys.db[0m
+[2m09:28:47.100[0m | [96m\u2139 [0m | [1mAitherSecrets  [0m | [96mAitherSecrets: issued-key store ready at C:\AitherOS-Data\Library\Data\secrets\api_keys.db[0mWARNING:AitherStderr:[GHOST PRINT] [2m09:28:47.107[0m | [96m\u2139 [0m | [1mAitherSecrets  [0m | [96mAitherSecrets imported by unknown — using stub (vault lives in aitheros-secrets container)[0m
+[2m09:28:47.107[0m | [96m\u2139 [0m | [1mAitherSecrets  [0m | [96mAitherSecrets imported by unknown — using stub (vault lives in aitheros-secrets container)[0mINFO:AitherOS.MetricsExporter:[AitherSecrets] Prometheus metrics endpoint installed at /metrics
+WARNING:AitherStderr:[GHOST PRINT] [2m09:28:47.113[0m | [96m\u2139 [0m | [1mAitherSecrets  [0m | [96mFluxErrorHandler enabled - errors will trigger pain sensations[0m
+[2m09:28:47.113[0m | [96m\u2139 [0m | [1mAitherSecrets  [0m | [96mFluxErrorHandler enabled - errors will trigger pain sensations[0mWARNING:AitherStderr:[GHOST PRINT] [2m09:28:47.113[0m | [96m\u2139 [0m | [1mAitherSecurity [0m | [96mSecurity middleware added to AitherSecrets (rbac=True)[0m
+[2m09:28:47.113[0m | [96m\u2139 [0m | [1mAitherSecurity [0m | [96mSecurity middleware added to AitherSecrets (rbac=True)[0mINFO:TenantMiddleware:[AitherSecrets] Tenant middleware installed (pure ASGI)
+WARNING:AitherStderr:[GHOST PRINT] [2m09:28:47.115[0m | [96m\u2139 [0m | [1mAitherSecrets  [0m | [96mA2A Protocol enabled[0m
+[2m09:28:47.115[0m | [96m\u2139 [0m | [1mAitherSecrets  [0m | [96mA2A Protocol enabled[0mINFO:FluxEmitter:FluxEmitter(Chronicle): Using HTTP mode
+INFO:FluxEmitter:FluxEmitter(Chronicle): FluxBus IPC available (Redis Streams + Pub/Sub)
+WARNING:AitherStderr:[GHOST PRINT] [2m09:28:47.355[0m | [96m\u2139 [0m | [1mLLMClient      [0m | [96mInference mode (initial): hybrid[0m
+WARNING:FluxEmitter:FluxEmitter(Chronicle): Flux not reachable, events will be local only
+[2m09:28:47.355[0m | [96m\u2139 [0m | [1mLLMClient      [0m | [96mInference mode (initial): hybrid[0mWARNING:DegradationRegistry:[DEGRADED] get_elastic_strategy (aither_platform.ai.model_manager) unavailable: No module named 'aither_platform'
+WARNING:DegradationRegistry:[DEGRADED] _RAGAnythingEngine (raganything) unavailable: No module named 'raganything'
+WARNING:DegradationRegistry:[DEGRADED] LightRAG (lightrag) unavailable: No module named 'lightrag'
+INFO:DegradationRegistry:[DEGRADED] get_service_url (core.AitherPorts) unavailable: No module named 'core'
+INFO:DegradationRegistry:[DEGRADED] get_service_url (core.AitherPorts) unavailable: No module named 'core'
+INFO:mcp_firstparty_packs:pack aitherbrowser is undeclared (no band/cost in marketplace_catalog) — not loading even though AITHER_PACK_DISCOVERY is set
+INFO:mcp_firstparty_packs:pack arc_brainpack is undeclared (no band/cost in marketplace_catalog) — not loading even though AITHER_PACK_DISCOVERY is set
+INFO:mcp_firstparty_packs:pack arcsteer is undeclared (no band/cost in marketplace_catalog) — not loading even though AITHER_PACK_DISCOVERY is set
+INFO:mcp_firstparty_packs:pack cloudflare is undeclared (no band/cost in marketplace_catalog) — not loading even though AITHER_PACK_DISCOVERY is set
+INFO:mcp_firstparty_packs:pack deep_research is undeclared (no band/cost in marketplace_catalog) — not loading even though AITHER_PACK_DISCOVERY is set
+INFO:mcp_firstparty_packs:pack gpu_cluster_infrastructure is undeclared (no band/cost in marketplace_catalog) — not loading even though AITHER_PACK_DISCOVERY is set
+INFO:mcp_firstparty_packs:pack roboflow is undeclared (no band/cost in marketplace_catalog) — not loading even though AITHER_PACK_DISCOVERY is set
+INFO:mcp_firstparty_packs:pack structuredml is undeclared (no band/cost in marketplace_catalog) — not loading even though AITHER_PACK_DISCOVERY is set
+WARNING:aitherpilot:AitherPilot pack is DEPRECATED — consolidated into aitherbrowser. Please use aitherbrowser instead (same tools + CRM + web actions). This shim will be removed in 2 releases.
+INFO:mcp_firstparty_packs:pack lib.agents.packs.aitherpilot: registered 0 tools
+INFO:formbridge:FormBridge not entitled — registering 0 tools
+INFO:mcp_firstparty_packs:pack lib.agents.packs.formbridge: registered 0 tools
+WARNING:untether:UNTETHER pack is DEPRECATED — consolidated into aitherbrowser. Please use aitherbrowser instead (same tools + browser + web actions). This shim will be removed in 2 releases.
+INFO:mcp_firstparty_packs:pack lib.agents.packs.untether: registered 0 tools
+INFO:themis_legal:Themis Legal registered 8 legal tools
+INFO:mcp_firstparty_packs:pack lib.agents.packs.themis_legal: registered 8 tools
+INFO:taxdesk:TaxDesk not entitled — registering 0 tools
+INFO:mcp_firstparty_packs:pack lib.agents.packs.taxdesk: registered 0 tools
+INFO:headroom-pack:headroom pack registered 2 headroom_* tools
+INFO:mcp_firstparty_packs:pack lib.agents.packs.headroom: registered 0 tools (skipped 2 collisions)
+INFO:prospector-pack:prospector pack registered 4 map_* tools
+INFO:mcp_firstparty_packs:pack lib.agents.packs.prospector: registered 0 tools (skipped 4 collisions)
+INFO:teaserforge-pack:teaserforge pack registered 2 teaser_* tools
+INFO:mcp_firstparty_packs:pack lib.agents.packs.teaserforge: registered 2 tools
+INFO:mcp_firstparty_packs:Loaded 10 tools from 2 first-party packs
+INFO:awnode.MeshTools:Mesh network MCP tools registered (discovery + onboarding)
+INFO:DegradationRegistry:[DEGRADED] get_service_url (core.AitherPorts) unavailable: No module named 'core'
+INFO:DegradationRegistry:[DEGRADED] get_service_url (core.AitherPorts) unavailable: No module named 'core'
+WARNING:AitherStderr:[GHOST PRINT] [MCP] Auto-pacing: computing per-bullet TTS durations...
+[MCP] Auto-pacing: computing per-bullet TTS durations...WARNING:AitherStderr:[GHOST PRINT] [MCP] Pre-generating TTS audio for timing sync...
+[MCP] Pre-generating TTS audio for timing sync...WARNING:AitherStderr:[GHOST PRINT] Generating 11 TTS clips with 1 workers...
+  Generating 11 TTS clips with 1 workers...WARNING:AitherStderr:[GHOST PRINT] TTS generation done in 36.6s
+  TTS generation done in 36.6sWARNING:AitherStderr:[GHOST PRINT] [MCP] Submitting render to Remotion at http://127.0.0.1:3700...
+[MCP] Submitting render to Remotion at http://127.0.0.1:3700...WARNING:AitherStderr:[GHOST PRINT] [MCP] Job submitted: 5fae0097-3e4e-4b6e-bb92-6024822db124
+[MCP] Job submitted: 5fae0097-3e4e-4b6e-bb92-6024822db124WARNING:AitherStderr:[GHOST PRINT] [MCP] Watching C:\AitherOS-Data\Library\Output\video\remotion for new render output (job 5fae0097-3e4e-4b6e-bb92-6024822db124)...
+[MCP] Watching C:\AitherOS-Data\Library\Output\video\remotion for new render output (job 5fae0097-3e4e-4b6e-bb92-6024822db124)...WARNING:AitherStderr:[GHOST PRINT] [MCP] No hard timeout — will wait as long as render is progressing
+[MCP] No hard timeout — will wait as long as render is progressingWARNING:AitherStderr:[GHOST PRINT] [MCP] Render progress: 0% (rendering)
+[MCP] Render progress: 0% (rendering)WARNING:AitherStderr:[GHOST PRINT] [MCP] Render progress: 2% (rendering)
+[MCP] Render progress: 2% (rendering)WARNING:AitherStderr:[GHOST PRINT] [MCP] Render progress: 4% (rendering)
+[MCP] Render progress: 4% (rendering)WARNING:AitherStderr:[GHOST PRINT] [MCP] Render progress: 7% (rendering)
+[MCP] Render progress: 7% (rendering)WARNING:AitherStderr:[GHOST PRINT] [MCP] Render progress: 9% (rendering)
+[MCP] Render progress: 9% (rendering)WARNING:AitherStderr:[GHOST PRINT] [MCP] Render progress: 11% (rendering)
+[MCP] Render progress: 11% (rendering)WARNING:AitherStderr:[GHOST PRINT] [MCP] Render progress: 14% (rendering)
+[MCP] Render progress: 14% (rendering)WARNING:AitherStderr:[GHOST PRINT] [MCP] Render progress: 17% (rendering)
+[MCP] Render progress: 17% (rendering)WARNING:AitherStderr:[GHOST PRINT] [MCP] Render progress: 19% (rendering)
+[MCP] Render progress: 19% (rendering)WARNING:AitherStderr:[GHOST PRINT] [MCP] Render progress: 21% (rendering)
+[MCP] Render progress: 21% (rendering)WARNING:AitherStderr:[GHOST PRINT] [MCP] Render progress: 24% (rendering)
+[MCP] Render progress: 24% (rendering)WARNING:AitherStderr:[GHOST PRINT] [MCP] Render progress: 26% (rendering)
+[MCP] Render progress: 26% (rendering)WARNING:AitherStderr:[GHOST PRINT] [MCP] Render progress: 29% (rendering)
+[MCP] Render progress: 29% (rendering)WARNING:AitherStderr:[GHOST PRINT] [MCP] Render progress: 32% (rendering)
+[MCP] Render progress: 32% (rendering)WARNING:AitherStderr:[GHOST PRINT] [MCP] Render progress: 35% (rendering)
+[MCP] Render progress: 35% (rendering)WARNING:AitherStderr:[GHOST PRINT] [MCP] Render progress: 37% (rendering)
+[MCP] Render progress: 37% (rendering)WARNING:AitherStderr:[GHOST PRINT] [MCP] Render progress: 40% (rendering)
+[MCP] Render progress: 40% (rendering)WARNING:AitherStderr:[GHOST PRINT] [MCP] Render progress: 43% (rendering)
+[MCP] Render progress: 43% (rendering)WARNING:AitherStderr:[GHOST PRINT] [MCP] Render progress: 45% (rendering)
+[MCP] Render progress: 45% (rendering)WARNING:AitherStderr:[GHOST PRINT] [MCP] Render progress: 48% (rendering)
+[MCP] Render progress: 48% (rendering)WARNING:AitherStderr:[GHOST PRINT] [MCP] Render progress: 51% (rendering)
+[MCP] Render progress: 51% (rendering)WARNING:AitherStderr:[GHOST PRINT] [MCP] Render progress: 53% (rendering)
+[MCP] Render progress: 53% (rendering)WARNING:AitherStderr:[GHOST PRINT] [MCP] Render progress: 56% (rendering)
+[MCP] Render progress: 56% (rendering)WARNING:AitherStderr:[GHOST PRINT] [MCP] Render progress: 58% (rendering)
+[MCP] Render progress: 58% (rendering)WARNING:AitherStderr:[GHOST PRINT] [MCP] Render progress: 60% (rendering)
+[MCP] Render progress: 60% (rendering)WARNING:AitherStderr:[GHOST PRINT] [MCP] Render progress: 62% (rendering)
+[MCP] Render progress: 62% (rendering)WARNING:AitherStderr:[GHOST PRINT] [MCP] Render progress: 64% (rendering)
+[MCP] Render progress: 64% (rendering)WARNING:AitherStderr:[GHOST PRINT] [MCP] Render progress: 67% (rendering)
+[MCP] Render progress: 67% (rendering)WARNING:AitherStderr:[GHOST PRINT] [MCP] Render progress: 69% (rendering)
+[MCP] Render progress: 69% (rendering)WARNING:AitherStderr:[GHOST PRINT] [MCP] Render progress: 72% (rendering)
+[MCP] Render progress: 72% (rendering)WARNING:AitherStderr:[GHOST PRINT] [MCP] Render progress: 74% (rendering)
+[MCP] Render progress: 74% (rendering)WARNING:AitherStderr:[GHOST PRINT] [MCP] Render progress: 77% (rendering)
+[MCP] Render progress: 77% (rendering)WARNING:AitherStderr:[GHOST PRINT] [MCP] Render progress: 80% (rendering)
+[MCP] Render progress: 80% (rendering)WARNING:AitherStderr:[GHOST PRINT] [MCP] Render progress: 82% (rendering)
+[MCP] Render progress: 82% (rendering)WARNING:AitherStderr:[GHOST PRINT] [MCP] Render progress: 85% (rendering)
+[MCP] Render progress: 85% (rendering)WARNING:AitherStderr:[GHOST PRINT] [MCP] Render progress: 87% (rendering)
+[MCP] Render progress: 87% (rendering)WARNING:AitherStderr:[GHOST PRINT] [MCP] Render progress: 90% (rendering)
+[MCP] Render progress: 90% (rendering)WARNING:AitherStderr:[GHOST PRINT] [MCP] Render progress: 92% (rendering)
+[MCP] Render progress: 92% (rendering)WARNING:AitherStderr:[GHOST PRINT] [MCP] File still writing: 19856505->20161748
+[MCP] File still writing: 19856505->20161748WARNING:AitherStderr:[GHOST PRINT] [MCP] File still writing: 2097200->10223664
+[MCP] File still writing: 2097200->10223664WARNING:AitherStderr:[GHOST PRINT] [MCP] Render output detected: C:\AitherOS-Data\Library\Output\video\remotion\presentation-deck-1788452970486.mp4 (14042KB)
+[MCP] Render output detected: C:\AitherOS-Data\Library\Output\video\remotion\presentation-deck-1788452970486.mp4 (14042KB)WARNING:AitherStderr:[GHOST PRINT] [MCP] Render done, output: C:\AitherOS-Data\Library\Output\video\remotion\presentation-deck-1788452970486.mp4
+[MCP] Render done, output: C:\AitherOS-Data\Library\Output\video\remotion\presentation-deck-1788452970486.mp4WARNING:AitherStderr:[GHOST PRINT] [MCP] Narrate=True, music=None, output=C:\AitherOS-Data\Library\Output\video\remotion\presentation-deck-1788452970486.mp4
+[MCP] Narrate=True, music=None, output=C:\AitherOS-Data\Library\Output\video\remotion\presentation-deck-1788452970486.mp4WARNING:AitherStderr:[GHOST PRINT] [MCP] Calling _apply_audio...
+[MCP] Calling _apply_audio...WARNING:AitherStderr:[GHOST PRINT] [MCP] Audio done: narration=True, music=False
+[MCP] Audio done: narration=True, music=FalseWARNING:mcp_presentation:[strata] POST /strata/artifact failed: Server disconnected without sending a response.
+ELAPSED 636s{"success": true, "output_path": "C:\\AitherOS-Data\\Library\\Output\\video\\remotion\\presentation-deck-1788452970486.mp4", "path": "C:\\AitherOS-Data\\Library\\Output\\video\\remotion\\presentation-deck-1788452970486.mp4", "strata_path": "presentations/david-parkhurst-onebrief-outcome-engineer-v3/video.mp4", "duration_seconds": 276.56666666666666, "slide_count": 11, "format": "mp4", "theme": "dark", "auto_paced": true, "per_slide_seconds": [14.833333333333334, 26.233333333333334, 34.46666666666667, 25.2, 35.666666666666664, 24.866666666666667, 30.966666666666665, 25.466666666666665, 27.233333333333334, 24.1, 7.533333333333333], "narrated": true, "has_music": false}exit=0

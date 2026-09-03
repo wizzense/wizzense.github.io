@@ -46,11 +46,11 @@ def main() -> int:
         raise SystemExit("facts/element/* is not the .ELEMENT web layer — refresh the vendored copies")
     m = facts["metrics"]
     payload = {
-        "identity": facts["identity"],
-        "summary": " ".join(facts["summary"].split()),
+        "identity": facts["public_identity"],  # never facts["identity"] on the public site
+        "summary": " ".join(facts["summary"].split()).replace("Onebrief's Outcome Engineering charter", "Outcome engineering"),
         "metrics": [{"key": k, "value": m[k], "label": lbl, "how": how} for k, lbl, how in METRICS_TABLE],
         "pypi": m["pypi"],
-        "jd": [{"jd": r["jd"], "proof": " ".join(r["proof"].split())} for r in facts["jd_map"]],
+        "jd": [{"jd": r["jd"], "proof": " ".join(r["proof"].split()).replace("the one attached to this application", "the film on this page")} for r in facts["jd_map"]],
         "experience": [
             {"org": e["org"], "title": e["title"], "dates": e["dates"], "bullets": e["bullets"]}
             for e in facts["experience"]

@@ -145,4 +145,14 @@ WARNING:AitherStderr:[GHOST PRINT] [MCP] Auto-pacing: computing per-bullet TTS d
 [MCP] Render progress: 81% (rendering)WARNING:AitherStderr:[GHOST PRINT] [MCP] Render progress: 83% (rendering)
 [MCP] Render progress: 83% (rendering)WARNING:AitherStderr:[GHOST PRINT] [MCP] Render progress: 85% (rendering)
 [MCP] Render progress: 85% (rendering)WARNING:AitherStderr:[GHOST PRINT] [MCP] Render progress: 87% (rendering)
-[MCP] Render progress: 87% (rendering)
+[MCP] Render progress: 87% (rendering)WARNING:AitherStderr:[GHOST PRINT] [MCP] Render progress: 89% (rendering)
+[MCP] Render progress: 89% (rendering)WARNING:AitherStderr:[GHOST PRINT] [MCP] Render progress: 91% (rendering)
+[MCP] Render progress: 91% (rendering)WARNING:AitherStderr:[GHOST PRINT] [MCP] Render progress: 93% (rendering)
+[MCP] Render progress: 93% (rendering)WARNING:AitherStderr:[GHOST PRINT] [MCP] File still writing: 36216450->36521565
+[MCP] File still writing: 36216450->36521565WARNING:AitherStderr:[GHOST PRINT] [MCP] Render output detected: C:\AitherOS-Data\Library\Output\video\remotion\presentation-deck-1788451321300.mp4 (35665KB)
+[MCP] Render output detected: C:\AitherOS-Data\Library\Output\video\remotion\presentation-deck-1788451321300.mp4 (35665KB)WARNING:AitherStderr:[GHOST PRINT] [MCP] Render done, output: C:\AitherOS-Data\Library\Output\video\remotion\presentation-deck-1788451321300.mp4
+[MCP] Render done, output: C:\AitherOS-Data\Library\Output\video\remotion\presentation-deck-1788451321300.mp4WARNING:AitherStderr:[GHOST PRINT] [MCP] Narrate=True, music=None, output=C:\AitherOS-Data\Library\Output\video\remotion\presentation-deck-1788451321300.mp4
+[MCP] Narrate=True, music=None, output=C:\AitherOS-Data\Library\Output\video\remotion\presentation-deck-1788451321300.mp4WARNING:AitherStderr:[GHOST PRINT] [MCP] Calling _apply_audio...
+[MCP] Calling _apply_audio...WARNING:AitherStderr:[GHOST PRINT] [MCP] Audio done: narration=True, music=False
+[MCP] Audio done: narration=True, music=FalseWARNING:mcp_presentation:[strata] POST /strata/artifact failed: Server disconnected without sending a response.
+ELAPSED 678s{"success": true, "output_path": "C:\\AitherOS-Data\\Library\\Output\\video\\remotion\\presentation-deck-1788451321300.mp4", "path": "C:\\AitherOS-Data\\Library\\Output\\video\\remotion\\presentation-deck-1788451321300.mp4", "strata_path": "presentations/david-parkhurst-onebrief-outcome-engineer-v2/video.mp4", "duration_seconds": 276.56666666666666, "slide_count": 11, "format": "mp4", "theme": "dark", "auto_paced": true, "per_slide_seconds": [14.833333333333334, 26.233333333333334, 34.46666666666667, 25.2, 35.666666666666664, 24.866666666666667, 30.966666666666665, 25.466666666666665, 27.233333333333334, 24.1, 7.533333333333333], "narrated": true, "has_music": false}exit=0
