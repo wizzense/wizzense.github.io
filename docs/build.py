@@ -332,6 +332,6 @@ footer .fine{{font:12px var(--mono);color:var(--dim);margin-top:24px}}
 </html>
 """
 
-(ROOT / "site" / "index.html").write_text(PAGE, encoding="utf-8")
-(ROOT / "site" / ".nojekyll").write_text("", encoding="utf-8")
+(ROOT / "docs" / "index.html").write_text(PAGE, encoding="utf-8")
+(ROOT / "docs" / ".nojekyll").write_text("", encoding="utf-8")
 print("wrote index.html", len(PAGE), "bytes;", len(BRICKS), "bricks")
