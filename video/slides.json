@@ -1,0 +1,118 @@
+[
+  {
+    "layout": "title",
+    "title": "I built the factory that builds the software.",
+    "subtitle": "David Parkhurst — for Onebrief's Outcome Engineering team",
+    "duration_seconds": 9,
+    "narration_text": "My name is David Parkhurst. This video was assembled, narrated and rendered by the agent platform I built, this morning, from the same facts as the resume you are holding. Two and a half minutes. Here is who I am."
+  },
+  {
+    "layout": "quote",
+    "title": "The claim",
+    "quote": "I've racked the servers, managed the SAN, administered the OS at 850K-user scale, secured the network, automated the operations, built the APIs, designed the data pipelines, trained the models, scheduled the GPUs, and built the dashboard on top of all of it.",
+    "attribution": "No gaps in the stack. Scars from every layer.",
+    "duration_seconds": 16,
+    "narration_text": "Six years in Air Force Cyber Systems Operations running the second-largest Active Directory in the world. Eight hundred and fifty thousand users, six hundred and ninety domain controllers, two hundred and thirty sites. Then Boeing's HPC tape archive and SAN. Then Tanium, where I am the escalation engineer for the cases nobody else can close. There are no gaps in my stack. There are scars from every layer."
+  },
+  {
+    "layout": "stats",
+    "title": "AitherOS, measured on the third of September, 2026",
+    "stats": [
+      {"label": "commits since June 2025", "value": "21,065"},
+      {"label": "commits in the last 90 days", "value": "13,928"},
+      {"label": "self-testing quality gates", "value": "642"},
+      {"label": "MCP tools served", "value": "1,200"},
+      {"label": "services declared", "value": "369"},
+      {"label": "posts written and published by agents", "value": "270"}
+    ],
+    "duration_seconds": 22,
+    "narration_text": "Fourteen months ago I founded Aitherium and started building AitherOS: an AI-native platform where thirty-three specialised agents plan, code, review, audit, deploy, and write about their own work. The numbers on screen were measured this morning, and the command behind each one is published. Twenty-one thousand commits. Nearly fourteen thousand of them in the last ninety days. Six hundred and forty-two quality gates. Twelve hundred tools. Two hundred and seventy published posts. Most of it authored by agents under governance I designed."
+  },
+  {
+    "layout": "bullets",
+    "title": "Architect multi-agent systems",
+    "bullets": [
+      "33-agent roster behind one MCP gateway: Demiurge codes, Hydra reviews, Athena audits, Prometheus deploys",
+      "One priority scheduler for every LLM call — local RTX 5090, a DGX Spark pool, rented cloud GPUs",
+      "Swarm coding, agent-to-agent mesh messaging, and a keep-or-revert ratchet loop",
+      "awdk: build an agent fleet in three lines, any backend"
+    ],
+    "duration_seconds": 20,
+    "narration_text": "Your first bullet is multi-agent orchestration. Mine is a thirty-three agent roster behind a single gateway, with capability-based dispatch, swarm coding, agent-to-agent messaging, and a ratchet loop that proposes a change, applies it, scores it, and keeps or reverts. Every model call, local or rented, goes through one priority scheduler. The kit that builds fleets, awdk, is on PyPI."
+  },
+  {
+    "layout": "bullets",
+    "title": "Automated governance that replaces review",
+    "bullets": [
+      "642 gates. Each must prove it can still fail. Each runs in one of four unattended lanes.",
+      "Exit 0 pass, 1 violation, 2 could-not-judge — and could-not-judge is never a pass",
+      "Rule: a detectable defect must become a check, never a note. Measured: 79 rows/day in, 4 out, before the rule.",
+      "Rule: exactly three reasons an agent may stop. 60–90% of 'blocked' items were reversible."
+    ],
+    "duration_seconds": 24,
+    "narration_text": "Governance. I replaced manual review with six hundred and forty-two gates. Every gate must carry a self-test that proves it can still fail, and must run somewhere unattended. Every gate distinguishes a violation from could-not-judge, and could-not-judge never counts as a pass. Two written rules do most of the work. A defect a machine could detect must become a check, not a ledger row: I measured the ledger taking seventy-nine rows a day and paying down four. And an agent may stop for exactly three reasons, because I measured that most blocked items were reversible or already decided."
+  },
+  {
+    "layout": "bullets",
+    "title": "Context and memory as infrastructure",
+    "bullets": [
+      "awgraph — a semantic code graph, AST plus call graphs, recall measured on our own corpus",
+      "awm — portable, scoped agent memory; Nexus — knowledge graph with hybrid search",
+      "A 25-question retrieval gold set with canaries gates every chunking or embedding change",
+      "Trained a code-search embedder 13x smaller than its teacher that beats it — for $3"
+    ],
+    "duration_seconds": 20,
+    "narration_text": "Context and memory. I built the code graph, the repo-understanding layer, the portable scoped memory, and the knowledge graph the agents work from, plus a retrieval gold set with canaries that gates every change to chunking or embedding. When the fleet's embedder was found silently dead, I added a round-trip gate to the four-hour probe, then trained a replacement thirteen times smaller than its teacher that beats it, for three dollars of GPU."
+  },
+  {
+    "layout": "bullets",
+    "title": "Evaluation beyond vibes — learned by being fooled",
+    "bullets": [
+      "A trainer reported '3 epochs over 20,000 records' while touching 192 rows",
+      "An optimiser logged 'completed' for weeks and had never run a round",
+      "A 33-test suite reimplemented the loop inside the test and never ran the real one",
+      "Each is now a gate with a mutation guard. Metrics are bucketed by seen/unseen. Blind A/B before 'fixed'."
+    ],
+    "duration_seconds": 22,
+    "narration_text": "Evaluation. I have been fooled by my own systems, and I wrote each lesson down as a gate. A trainer that reported three epochs over twenty thousand records while touching one hundred and ninety-two rows. An optimiser that logged completed for weeks and had never executed a round. A test suite that reimplemented the loop it was testing. Now every result must beat a named baseline, metrics are bucketed so an aggregate at ceiling cannot hide a bucket at floor, and nothing is called fixed without a blind before-and-after verdict."
+  },
+  {
+    "layout": "bullets",
+    "title": "Self-healing loops that page a human",
+    "bullets": [
+      "Autoheal plus a death watchdog restart wedged services; a 4-hourly probe runs 79 live gates in-fleet",
+      "VIOLATION and DEAD page separately — a checker that cannot run is not a pass",
+      "A paging-path gate asserts the page itself lands, by round-trip",
+      "Nine-hour WSL flap, boot storm, silent-empty SSE lanes: root-caused, and now gates"
+    ],
+    "duration_seconds": 20,
+    "narration_text": "Self-healing. Observability that does not end in an action is a dashboard on the machine that is on fire. So the four-hourly fleet probe pages on violations and, separately, on gates that could not judge. Permission drift on data files is auto-repaired unless it looks like a credential. And after an outage where detection worked perfectly and the page itself died, there is a gate that proves the page lands, by round trip."
+  },
+  {
+    "layout": "bullets",
+    "title": "Prototype and deploy — we prove success by shipping",
+    "bullets": [
+      "A new tenant app — backend, agent brain pack, portal, tunnel, Pages — in about ten minutes",
+      "Three real tenants live: a repair shop, a game studio, campaign tooling",
+      "The aw* stack: 64 registered bricks, 40 public, 14 stacks, 61 public repos, 4 on PyPI",
+      "awnix — a Linux you can hand to an agent. Bonsai 1.7B running in a phone's browser."
+    ],
+    "duration_seconds": 22,
+    "narration_text": "Shipping. A new tenant application, with its backend, brain pack, portal and tunnel, deploys in about ten minutes, and three real customers run on that. The Aither World stack is sixty-four registered bricks, forty of them public, across sixty-one public repositories. awnix is an immutable Linux you can hand to an agent. And a one point seven billion parameter model runs in the browser of my phone, talking to the platform."
+  },
+  {
+    "layout": "quote",
+    "title": "Why Onebrief",
+    "quote": "The transition from managed backlogs to infinite execution with programmatic guardrails is the exact thing I have been building alone. I would rather build it with a team that leaves the video link open at lunch.",
+    "attribution": "David Parkhurst",
+    "duration_seconds": 16,
+    "narration_text": "Why Onebrief. I know what a planning cell under pressure looks like, and why the software in front of it has to be right rather than plausible. Your stack is the stack I already deploy on. And the thing you are building, the move from managed backlogs to infinite execution under programmatic guardrails, is the thing I have been building alone. I would rather build it with a team that leaves the video link open at lunch."
+  },
+  {
+    "layout": "closing",
+    "title": "wizzense.github.io",
+    "subtitle": "github.com/Aitherium · blog.aitherium.com · david.parkhurst@aitherium.com",
+    "duration_seconds": 8,
+    "narration_text": "The site, the repositories, the blog, and the measurements are all linked. Let me show you the loop running."
+  }
+]

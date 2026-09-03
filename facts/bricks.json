@@ -1,0 +1,322 @@
+[
+ {
+  "id": "awnix",
+  "tagline": "A Linux you can hand to an agent — immutable base, capabilities included.",
+  "status": "public"
+ },
+ {
+  "id": "AitherConnect",
+  "tagline": "Browser extension — federated AI search, page context, and the Living OS overlay.",
+  "status": "public"
+ },
+ {
+  "id": "AitherZero",
+  "tagline": "PowerShell 7+ automation framework — numbered, self-describing scripts.",
+  "status": "public"
+ },
+ {
+  "id": "aitherkvcache",
+  "tagline": "Near-optimal KV cache quantization for LLM inference — sub-byte compression.",
+  "status": "public"
+ },
+ {
+  "id": "awbac",
+  "tagline": "Role-based access control that fails closed and explains itself.",
+  "status": "public"
+ },
+ {
+  "id": "awbrowse",
+  "tagline": "A portable browser client — navigate, console, network, DOM, screenshot.",
+  "status": "public"
+ },
+ {
+  "id": "awdelphi",
+  "tagline": "Anonymous multi-round expert panels — a converged answer with a trace.",
+  "status": "public"
+ },
+ {
+  "id": "awdit",
+  "tagline": "An append-only audit trail whose gaps are DETECTABLE.",
+  "status": "public"
+ },
+ {
+  "id": "awdk",
+  "tagline": "Build AI agent fleets — 3 lines, any backend, local or cloud.",
+  "status": "public"
+ },
+ {
+  "id": "awfind",
+  "tagline": "A portable search client — query, results, ranking.",
+  "status": "public"
+ },
+ {
+  "id": "awfocus",
+  "tagline": "See, search and steer every Claude session from one command.",
+  "status": "public"
+ },
+ {
+  "id": "awgit",
+  "tagline": "Semantic version control on top of git — edit-ops and leases.",
+  "status": "public"
+ },
+ {
+  "id": "awgraph",
+  "tagline": "A semantic code graph for agents — AST + tree-sitter, call graphs.",
+  "status": "public"
+ },
+ {
+  "id": "awgym",
+  "tagline": "An ARC training gym — a game a world model can watch, and six roles that play through it.",
+  "status": "public"
+ },
+ {
+  "id": "awiam",
+  "tagline": "Who is this caller? A directory and session store that fails honestly.",
+  "status": "public"
+ },
+ {
+  "id": "awkno",
+  "tagline": "The man page for the Aither World — every brick, stack and law, offline.",
+  "status": "public"
+ },
+ {
+  "id": "awknowledge",
+  "tagline": "How to run a coding agent so the result survives — the laws, with evidence.",
+  "status": "public"
+ },
+ {
+  "id": "awm",
+  "tagline": "A portable, scoped agent memory.",
+  "status": "public"
+ },
+ {
+  "id": "awmail",
+  "tagline": "Give an agent an email address — send, and actually receive.",
+  "status": "public"
+ },
+ {
+  "id": "awnboard",
+  "tagline": "A front gate you can put in front of anything, and hand someone the key to.",
+  "status": "public"
+ },
+ {
+  "id": "awnest",
+  "tagline": "Prove there is a human before you let them into the nest.",
+  "status": "public"
+ },
+ {
+  "id": "awnet",
+  "tagline": "The agentic web — agents host a mesh, and agents join one.",
+  "status": "public"
+ },
+ {
+  "id": "awnode",
+  "tagline": "A lightweight local gateway — bridges your apps to the AI backends you chose.",
+  "status": "public"
+ },
+ {
+  "id": "awpack",
+  "tagline": "First-party agent packs — the ones we build, versioned and installable on their own.",
+  "status": "public"
+ },
+ {
+  "id": "awpredict",
+  "tagline": "Predict what your environment does next, and how surprised you were.",
+  "status": "public"
+ },
+ {
+  "id": "awprism",
+  "tagline": "Turn a failure into ranked hypotheses — and say what would confirm each one.",
+  "status": "public"
+ },
+ {
+  "id": "awreason",
+  "tagline": "A portable reasoning client — sessions, phases, thoughts, and the chain that produced the answer.",
+  "status": "public"
+ },
+ {
+  "id": "awrecover",
+  "tagline": "Labelled snapshots with an all-or-nothing restore.",
+  "status": "public"
+ },
+ {
+  "id": "awrecurse",
+  "tagline": "Answer a question over a context far larger than the window — recursively, with the trace kept.",
+  "status": "public"
+ },
+ {
+  "id": "awrelay",
+  "tagline": "Portable agent messaging — findings, alerts, coordination.",
+  "status": "public"
+ },
+ {
+  "id": "awrepl",
+  "tagline": "A REPL an agent can actually use — state that survives between turns.",
+  "status": "public"
+ },
+ {
+  "id": "awresearch",
+  "tagline": "Ask a research question, get a cited report you can check.",
+  "status": "public"
+ },
+ {
+  "id": "awrtifact",
+  "tagline": "Deliberately chunk artifacts into GitHub release assets — the productized aitherkvcache mirror lane.",
+  "status": "public"
+ },
+ {
+  "id": "awrun",
+  "tagline": "A priority-aware queue and dispatcher for agentic runs and ad-hoc CI builds. It also judges whether the runner pool is big enough for the queue it is draining, and can ask a host to grow it -- reserving capacity is zero-sum, so a saturated pool needs more of it, not a different share of it.",
+  "status": "public"
+ },
+ {
+  "id": "awseal",
+  "tagline": "Sign an artifact so a stranger can verify it.",
+  "status": "public"
+ },
+ {
+  "id": "awsh",
+  "tagline": "Your terminal answers you -- type a question where a command would go.",
+  "status": "public"
+ },
+ {
+  "id": "awshare",
+  "tagline": "Publish an artifact and fetch it back verified.",
+  "status": "public"
+ },
+ {
+  "id": "awskills",
+  "tagline": "Portable agent skills — self-contained procedures an agent loads on demand.",
+  "status": "public"
+ },
+ {
+  "id": "awtoll",
+  "tagline": "What every tool call costs you in context, measured from your own transcripts.",
+  "status": "public"
+ },
+ {
+  "id": "awtunnel",
+  "tagline": "Reach a service that has no public address.",
+  "status": "public"
+ },
+ {
+  "id": "awask",
+  "tagline": "Your agent asks you a question — and acts on your answer.",
+  "status": "unpublished"
+ },
+ {
+  "id": "awbeads",
+  "tagline": "A spatial canvas for a page — arrange things, connect them, and keep the arrangement.",
+  "status": "unpublished"
+ },
+ {
+  "id": "awbonsai",
+  "tagline": "Run a real model in the visitor's own browser — no server round trip, no upload.",
+  "status": "planned"
+ },
+ {
+  "id": "awbrain",
+  "tagline": "Your history as a wiki of linked markdown — claims pinned to the evidence.",
+  "status": "unpublished"
+ },
+ {
+  "id": "awcache",
+  "tagline": "Let a second node skip its prefill because a first node already paid for it.",
+  "status": "planned"
+ },
+ {
+  "id": "awclassify",
+  "tagline": "Classify any document -- what it is, who may read it, who it is for, what it is about.",
+  "status": "unpublished"
+ },
+ {
+  "id": "awdata",
+  "tagline": "Open labelled corpora you can train and measure against, with the code that built them.",
+  "status": "planned"
+ },
+ {
+  "id": "awembed",
+  "tagline": "Train an embedding model that knows your corpus, and prove it beats the big one.",
+  "status": "unpublished"
+ },
+ {
+  "id": "awevolve",
+  "tagline": "Point an agent at a file and a command that scores it, and let it improve.",
+  "status": "unpublished"
+ },
+ {
+  "id": "awkit",
+  "tagline": "Render an agent panel from a tool result — one component, any React app.",
+  "status": "unpublished"
+ },
+ {
+  "id": "awmod",
+  "tagline": "Wire the agent harness you already use into a fleet you already run.",
+  "status": "planned"
+ },
+ {
+  "id": "awpool",
+  "tagline": "The free half of the elastic work pool: dispatches public-safe work onto the free GitHub-hosted runners of the public aw* mirrors, so their idle CI minutes become compute. awrun remains the paid/self-hosted lane; this is its free twin.",
+  "status": "planned"
+ },
+ {
+  "id": "awrena",
+  "tagline": "Put two agents head to head and get a verdict you can check.",
+  "status": "unpublished"
+ },
+ {
+  "id": "awrise",
+  "tagline": "Wake an agent on a schedule, let it do one thing, and put it back to sleep.",
+  "status": "unpublished"
+ },
+ {
+  "id": "awrouter",
+  "tagline": "OpenRouter for your own fleet: pick a model backend by cost/latency/ capability, fail over, fit the context window, stream. Standalone, OpenAI-compatible, no Aither-specifics required to be valuable.",
+  "status": "unpublished"
+ },
+ {
+  "id": "awscreen",
+  "tagline": "See this machine — what is on screen, and where to click it.",
+  "status": "unpublished"
+ },
+ {
+  "id": "awsprite",
+  "tagline": "Hatch a companion that grows only from what you teach it, then take it home.",
+  "status": "planned"
+ },
+ {
+  "id": "awstorage",
+  "tagline": "Every drive on every node, indexed, classified and diffed -- so you can see what you own before you delete it.",
+  "status": "unpublished"
+ },
+ {
+  "id": "awswarm",
+  "tagline": "Run one model too big for any single GPU across a pool of small ones.",
+  "status": "planned"
+ },
+ {
+  "id": "awsync",
+  "tagline": "Keep one client in step with a platform — and never confuse \"cannot tell\" with \"fine\".",
+  "status": "merged"
+ },
+ {
+  "id": "awvision",
+  "tagline": "See an image — describe it, ask it a question, compare two.",
+  "status": "unpublished"
+ },
+ {
+  "id": "awvoice",
+  "tagline": "Hear and speak — transcribe audio, synthesize a voice.",
+  "status": "unpublished"
+ },
+ {
+  "id": "awwall",
+  "tagline": "Say what a workload may reach, and watch everything else fail closed.",
+  "status": "unpublished"
+ },
+ {
+  "id": "gobbonet-agentic",
+  "tagline": "GobboNet campaigns with a real agent brain — scoped memory, graph recall.",
+  "status": "no-pages"
+ }
+]

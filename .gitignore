@@ -1,0 +1,7 @@
+site/_shots/
+apply/
+video/render.log
+video/*.mp4
+video/*.wav
+video/*.mp3
+__pycache__/
