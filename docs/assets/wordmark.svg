@@ -1,0 +1,35 @@
+<svg viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="wBorderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00e5ff"/>
+      <stop offset="50%" stop-color="#536dfe"/>
+      <stop offset="100%" stop-color="#7c4dff"/>
+    </linearGradient>
+    <linearGradient id="wAiGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00e5ff"/>
+      <stop offset="100%" stop-color="#40c4ff"/>
+    </linearGradient>
+    <filter id="wGlow">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="4" result="blur"/>
+      <feFlood flood-color="#00e5ff" flood-opacity="0.3"/>
+      <feComposite in2="blur" operator="in"/>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="wGlowSm">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="2" result="blur"/>
+      <feFlood flood-color="#00e5ff" flood-opacity="0.25"/>
+      <feComposite in2="blur" operator="in"/>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="800" height="200" fill="#060d1a"/>
+  <rect x="40" y="45" width="90" height="110" rx="5" fill="none" stroke="url(#wBorderGrad)" stroke-width="1.5" filter="url(#wGlowSm)"/>
+  <rect x="41" y="46" width="88" height="108" rx="4" fill="#0a1628" fill-opacity="0.6"/>
+  <text x="52" y="65" font-family="'SF Mono',monospace" font-size="10" fill="#00e5ff" opacity="0.6">47</text>
+  <text x="85" y="105" text-anchor="middle" font-family="'Inter','Helvetica Neue',sans-serif" font-size="48" font-weight="200" fill="url(#wAiGrad)" filter="url(#wGlow)" letter-spacing="-2">Ai</text>
+  <text x="85" y="130" text-anchor="middle" font-family="'SF Mono',monospace" font-size="7" fill="#4a6a8a" letter-spacing="2">208.043</text>
+  <line x1="155" y1="60" x2="155" y2="140" stroke="#1a2a40" stroke-width="1"/>
+  <text x="180" y="112" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="52" font-weight="300" fill="#e8f0f8" letter-spacing="8" filter="url(#wGlowSm)">AITHERIUM</text>
+  <line x1="180" y1="125" x2="420" y2="125" stroke="url(#wBorderGrad)" stroke-width="0.8" opacity="0.4"/>
+  <text x="180" y="148" font-family="'Inter','Helvetica Neue',sans-serif" font-size="11" fill="#4a6a8a" letter-spacing="5">THE ELEMENT OF CREATION</text>
+</svg>

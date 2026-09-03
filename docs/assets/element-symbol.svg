@@ -1,0 +1,60 @@
+<svg viewBox="0 0 400 480" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="borderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00e5ff"/>
+      <stop offset="40%" stop-color="#536dfe"/>
+      <stop offset="70%" stop-color="#7c4dff"/>
+      <stop offset="100%" stop-color="#00e5ff"/>
+    </linearGradient>
+    <linearGradient id="aiGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00e5ff"/>
+      <stop offset="100%" stop-color="#40c4ff"/>
+    </linearGradient>
+    <filter id="outerGlow">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="6" result="blur"/>
+      <feFlood flood-color="#00e5ff" flood-opacity="0.35"/>
+      <feComposite in2="blur" operator="in"/>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="textGlow">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3" result="blur"/>
+      <feFlood flood-color="#00e5ff" flood-opacity="0.5"/>
+      <feComposite in2="blur" operator="in"/>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <radialGradient id="cosmicBg" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#0a1628"/>
+      <stop offset="100%" stop-color="#060d1a"/>
+    </radialGradient>
+    <radialGradient id="star" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="400" height="480" fill="url(#cosmicBg)"/>
+  <circle cx="45" cy="60" r="1.2" fill="url(#star)"/>
+  <circle cx="340" cy="90" r="0.8" fill="url(#star)"/>
+  <circle cx="80" cy="380" r="1" fill="url(#star)"/>
+  <circle cx="310" cy="400" r="0.7" fill="url(#star)"/>
+  <circle cx="180" cy="30" r="0.9" fill="url(#star)"/>
+  <circle cx="360" cy="250" r="1.1" fill="url(#star)"/>
+  <circle cx="30" cy="200" r="0.6" fill="url(#star)"/>
+  <circle cx="370" cy="440" r="0.8" fill="url(#star)"/>
+  <rect x="60" y="50" width="280" height="340" rx="8" ry="8" fill="none" stroke="url(#borderGrad)" stroke-width="2" filter="url(#outerGlow)"/>
+  <rect x="61" y="51" width="278" height="338" rx="7" ry="7" fill="#0a1628" fill-opacity="0.6"/>
+  <text x="85" y="90" font-family="'SF Mono','JetBrains Mono','Fira Code',monospace" font-size="18" fill="#00e5ff" opacity="0.7">47</text>
+  <text x="200" y="240" text-anchor="middle" dominant-baseline="central" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="140" font-weight="200" fill="url(#aiGrad)" filter="url(#textGlow)" letter-spacing="-4">Ai</text>
+  <text x="200" y="310" text-anchor="middle" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="14" fill="#8eaccd" letter-spacing="6" font-weight="400">AITHERIUM</text>
+  <text x="200" y="340" text-anchor="middle" font-family="'SF Mono','JetBrains Mono','Fira Code',monospace" font-size="13" fill="#4a6a8a" opacity="0.7">208.043</text>
+  <line x1="60" y1="55" x2="60" y2="75" stroke="#00e5ff" stroke-width="1" opacity="0.3"/>
+  <line x1="60" y1="55" x2="80" y2="55" stroke="#00e5ff" stroke-width="1" opacity="0.3"/>
+  <line x1="340" y1="55" x2="340" y2="75" stroke="#7c4dff" stroke-width="1" opacity="0.3"/>
+  <line x1="320" y1="55" x2="340" y2="55" stroke="#7c4dff" stroke-width="1" opacity="0.3"/>
+  <line x1="60" y1="385" x2="60" y2="365" stroke="#7c4dff" stroke-width="1" opacity="0.3"/>
+  <line x1="60" y1="385" x2="80" y2="385" stroke="#7c4dff" stroke-width="1" opacity="0.3"/>
+  <line x1="340" y1="385" x2="340" y2="365" stroke="#00e5ff" stroke-width="1" opacity="0.3"/>
+  <line x1="320" y1="385" x2="340" y2="385" stroke="#00e5ff" stroke-width="1" opacity="0.3"/>
+  <text x="200" y="435" text-anchor="middle" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="10" fill="#4a6a8a" letter-spacing="4">THE ELEMENT OF CREATION</text>
+  <ellipse cx="200" cy="215" rx="120" ry="25" fill="none" stroke="#7c4dff" stroke-width="0.5" opacity="0.15" transform="rotate(-15,200,215)"/>
+  <ellipse cx="200" cy="215" rx="130" ry="20" fill="none" stroke="#00e5ff" stroke-width="0.4" opacity="0.1" transform="rotate(25,200,215)"/>
+</svg>

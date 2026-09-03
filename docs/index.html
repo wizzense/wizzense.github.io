@@ -4,299 +4,1164 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>David Parkhurst — Outcome Engineer</title>
-<meta name="description" content="David Parkhurst. Outcome Engineer. Founder and architect of AitherOS, awnix and the aw* stack. USAF veteran. I built the factory that builds the software.">
-<meta property="og:title" content="David Parkhurst — Outcome Engineer">
-<meta property="og:description" content="I built the factory that builds the software. 21,065 commits, 642 self-testing gates, 1,200 MCP tools, 64 aw* bricks.">
-<meta name="color-scheme" content="dark">
+<meta name="description" content="David Parkhurst. Outcome Engineer. I built the factory that builds the software: AitherOS, the aw* stack, awnix. 21,065 commits, 642 self-testing gates, 64 bricks.">
+<meta property="og:title" content="David Parkhurst — I built the factory that builds the software.">
+<meta property="og:description" content="AitherOS · the aw* stack · awnix. 21,065 commits since June 2025. Every number measured.">
+<meta name="theme-color" content="#000103">
+<link rel="icon" href="favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
+/* ── .ELEMENT/web/aitherium.css — inlined verbatim by docs/build.py ── */
+/* ═══════════════════════════════════════════════════════════════════════════
+   AITHERIUM WEB DESIGN LANGUAGE — canonical static-page stylesheet
+   @element-tokens v2
+
+   Source of truth for every public-facing STATIC page (GitHub Pages landing
+   sites, generated docs). Tokens are extracted from the live aitherium.com
+   design system (the dark-glass OKLch theme) so static pages match the estate
+   instead of inventing a look. NOTE: this file is INLINED VERBATIM into public
+   pages, so it must name no internal path — publish_gate scans for them.
+
+   Consumed by tools/gen_public_pages.py, which INLINES this file verbatim into
+   each generated page and fails loudly if it is missing. Edit HERE, then
+   regenerate; never restyle a generated docs/index.html by hand.
+
+   Class contract (the generator's template depends on these):
+     .wrap nav .brand .eyebrow .lede .cta .btn .btn-p .btn-s
+     .code .grid .card .stats .stat .note footer .el h1 .g
+   v2 adds:
+     --accent (+ -a04/-a10/-a30/-a50/-glow) .... per-experience accent, set per repo
+     .uni .uni-stage .uni-canvas .uni-nodes .orb .orb.here ... the universe strip
+     .exp .exp .glyph ......................... the experience badge
+     .panel .panel-hd .field .field-row .chips .chip
+     .rows .row-item .empty .kv .bar-cmp .steps  live artifacts
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+*,*::before,*::after{box-sizing:border-box}
+
 :root{
-  --bg:#0a0a0f; --bg2:#101018; --bg3:#161623; --line:#23233a;
-  --fg:#e8e8f0; --mute:#8f8fa8; --dim:#5c5c74;
-  --acc:#7c5cff; --acc2:#b9a6ff; --acc-dim:rgba(124,92,255,.14);
-  --serif:"Instrument Serif",Georgia,"Times New Roman",serif;
-  --sans:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
-  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
-  --max:1120px;
+  /* ─── core surfaces (dark glass, OKLch — verbatim from Veil) ─── */
+  --background:oklch(0.07 0.015 250);
+  --surface:oklch(0.12 0.02 250);
+  --surface-2:oklch(0.15 0.025 250);
+  --foreground:oklch(0.95 0 0);
+  --tx-2:oklch(0.72 0.02 250);
+  --tx-muted:oklch(0.55 0.02 250);
+  --border:oklch(0.25 0.03 250);
+
+  /* ─── accents ─── */
+  --primary:oklch(0.50 0.16 250);
+  --cyan:oklch(0.80 0.13 195);
+  --accent-warm:oklch(0.75 0.16 45);
+  --lavender:oklch(0.78 0.12 290);
+  --mint:oklch(0.82 0.12 165);
+  --coral:oklch(0.78 0.14 25);
+  --ok:var(--mint);
+  --warn:oklch(0.80 0.15 85);
+
+  /* ─── per-experience accent ───────────────────────────────────────────
+     Each public repo is a named EXPERIENCE with its own accent, the same way
+     every sovereign agent on aitherium.com has one (agent-theme.ts: demiurge
+     is "The Forge", #f97316). The generator overrides this whole block per
+     repo; everything below themes off it, so a repo's identity is one edit
+     rather than a forked stylesheet. Defaults are the cyan house colour, so
+     an un-themed page still looks correct. */
+  --accent:oklch(0.80 0.13 195);
+  --accent-a04:oklch(0.80 0.13 195 / 4%);
+  --accent-a10:oklch(0.80 0.13 195 / 10%);
+  --accent-a30:oklch(0.80 0.13 195 / 30%);
+  --accent-a50:oklch(0.80 0.13 195 / 50%);
+  --accent-glow:oklch(0.80 0.13 195 / 18%);
+
+  /* ─── signature gradients (cyan → blue → purple) ─── */
+  --creation:linear-gradient(135deg,oklch(0.75 0.14 195),oklch(0.60 0.16 250),oklch(0.65 0.16 290));
+  --cta-gradient:linear-gradient(to right,oklch(0.55 0.15 200),oklch(0.45 0.18 240));
+
+  /* ─── type ─── */
+  --font-display:'Cinzel',Georgia,serif;
+  --font:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+
+  /* ─── shape & layout ─── */
+  --radius:14px;
+  --radius-xl:0.75rem;
+  --maxw:1080px;
 }
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
-a{color:var(--acc2);text-decoration:none}
-a:hover{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
-h1,h2,h3{font-weight:400;margin:0}
-.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
-section{padding:88px 0;border-top:1px solid var(--line)}
-.kicker{font:600 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin-bottom:18px}
-.kicker::before{content:"// ";color:var(--dim)}
-h2{font:400 clamp(30px,4.4vw,48px)/1.1 var(--serif);letter-spacing:-.01em;margin-bottom:40px}
-h2 em{font-style:italic;color:var(--acc2)}
-/* hero */
-.hero{padding:120px 0 96px;position:relative;overflow:hidden;border-top:0}
-.hero::before{content:"";position:absolute;inset:-40% -20% auto -20%;height:120%;background:radial-gradient(ellipse at 30% 0%,var(--acc-dim),transparent 55%);pointer-events:none}
-.hero .prompt{font:14px var(--mono);color:var(--dim);margin-bottom:22px}
-.hero .prompt b{color:var(--acc);font-weight:600}
-.hero h1{font:400 clamp(48px,9vw,112px)/.98 var(--serif);letter-spacing:-.025em}
-.hero h1 span{display:block;color:var(--mute)}
-.hero .line{font:400 clamp(20px,2.6vw,30px)/1.3 var(--serif);color:var(--fg);margin:34px 0 14px;max-width:760px}
-.hero .line em{color:var(--acc2)}
-.hero .sub{color:var(--mute);max-width:640px;margin:0 0 36px}
-.links{display:flex;flex-wrap:wrap;gap:12px;list-style:none;padding:0;margin:0}
-.links a{font:500 14px var(--mono);border:1px solid var(--line);padding:10px 16px;border-radius:6px;color:var(--fg);background:var(--bg2);transition:border-color .2s,transform .2s}
-.links a:hover{border-color:var(--acc);text-decoration:none;transform:translateY(-1px)}
-.links a::before{content:"→ ";color:var(--acc)}
-/* numbers */
-.nums{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
-.num{background:var(--bg2);padding:26px 22px 18px;display:flex;flex-direction:column;gap:4px;min-height:170px}
-.num__v{font:600 clamp(30px,3.6vw,44px)/1 var(--mono);color:var(--fg);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
-.num__l{font:500 14px var(--sans);color:var(--fg);margin-top:8px}
-.num__s{font:13px var(--sans);color:var(--mute)}
-.num__how{margin-top:auto;padding-top:10px;font:12px var(--mono);color:var(--dim)}
-.num__how summary{cursor:pointer;list-style:none;color:var(--dim)}
-.num__how summary::before{content:"? ";color:var(--acc)}
-.num__how summary::-webkit-details-marker{display:none}
-.num__how p{margin:8px 0 0;color:var(--mute);line-height:1.5;font-family:var(--sans);font-size:12.5px}
-.measured-note{font:13px var(--mono);color:var(--dim);margin-top:16px}
-/* timeline */
-.tls{list-style:none;padding:0;margin:0;display:grid;gap:0;border-left:1px solid var(--line);margin-left:6px}
-.tl{position:relative;padding:0 0 44px 36px}
-.tl::before{content:"";position:absolute;left:-6px;top:8px;width:11px;height:11px;border-radius:50%;background:var(--bg);border:2px solid var(--acc)}
-.tl:last-child::before{background:var(--acc)}
-.tl__when{font:600 12px var(--mono);letter-spacing:.1em;color:var(--acc);text-transform:uppercase}
-.tl__org{font:400 30px/1.15 var(--serif);margin:6px 0 2px}
-.tl__role{margin:0 0 10px;color:var(--mute);font-size:14px}
-.tl__body{margin:0;max-width:760px;color:#c9c9d8}
-.stack-quote{font:400 clamp(22px,3vw,34px)/1.3 var(--serif);max-width:820px;margin:0 0 56px;color:var(--fg)}
-.stack-quote em{color:var(--acc2)}
-/* built */
-.built-lead{max-width:760px;color:#c9c9d8;margin:0 0 40px}
-.built-lead strong{color:var(--fg);font-weight:600}
-.bricks{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}
-.brick{background:var(--bg2);border:1px solid var(--line);border-radius:8px;padding:14px 14px 12px;display:flex;flex-direction:column;gap:6px;transition:border-color .2s}
-.brick:hover{border-color:var(--acc)}
-.brick__id{font:600 14px var(--mono);color:var(--acc2)}
-.brick__tag{margin:0;font-size:13px;line-height:1.45;color:#c9c9d8}
-.brick--dim{opacity:.55}
-.brick--dim .brick__id{color:var(--mute)}
-.brick--hero{grid-column:1/-1;background:linear-gradient(135deg,var(--acc-dim),var(--bg2) 60%);border-color:var(--acc);padding:24px}
-.brick--hero .brick__id{font-size:28px;color:var(--fg)}
-.brick--hero .brick__id::after{content:"  — the one I'd hand you first";font-size:14px;color:var(--acc2);font-weight:400}
-.brick--hero .brick__tag{font-size:17px;max-width:720px}
-.chip{align-self:flex-start;font:600 10px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--mute);border:1px solid var(--line);border-radius:4px;padding:2px 6px}
-.bricks-note{font:13px var(--mono);color:var(--dim);margin-top:18px}
-/* doctrine */
-.docs{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.doc{background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:24px;display:flex;flex-direction:column;gap:8px}
-.doc__t{font:400 28px/1.1 var(--serif)}
-.doc__n{font:600 13px var(--mono);color:var(--acc);margin-right:6px;vertical-align:middle}
-.doc__jd{margin:0;font:600 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
-.doc__p{margin:6px 0 0;font-size:14px;line-height:1.6;color:#c9c9d8}
-/* proof */
-.proofs{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-.proof{display:flex;flex-direction:column;gap:3px;background:var(--bg2);border:1px solid var(--line);border-radius:8px;padding:16px 18px;color:var(--fg);transition:border-color .2s}
-.proof:hover{border-color:var(--acc);text-decoration:none}
-.proof__u{font:12px var(--mono);color:var(--dim);word-break:break-all}
-/* footer */
-footer{border-top:1px solid var(--line);padding:56px 0 72px;color:var(--mute);font-size:14px}
-footer .sig{font:400 26px var(--serif);color:var(--fg);margin-bottom:8px}
-footer a{font-family:var(--mono)}
-footer .fine{font:12px var(--mono);color:var(--dim);margin-top:24px}
-@media (max-width:900px){.nums{grid-template-columns:repeat(2,1fr)}.docs{grid-template-columns:1fr 1fr}}
-@media (max-width:600px){section{padding:64px 0}.hero{padding:80px 0 64px}.nums,.docs,.proofs{grid-template-columns:1fr}.num{min-height:0}.tl{padding-left:26px}}
-@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
+
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;color-scheme:dark}
+body{
+  margin:0;background:var(--background);color:var(--foreground);
+  font-family:var(--font);font-weight:400;line-height:1.65;letter-spacing:-0.011em;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+
+/* ─── ambient field: cyan grid + blurred glow orbs (aitherium.com hero) ─── */
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:
+    linear-gradient(var(--accent-a04) 1px,transparent 1px),
+    linear-gradient(90deg,var(--accent-a04) 1px,transparent 1px);
+  background-size:80px 80px;
+  -webkit-mask-image:radial-gradient(ellipse 60% 40% at 50% 12%,black 20%,transparent 70%);
+  mask-image:radial-gradient(ellipse 60% 40% at 50% 12%,black 20%,transparent 70%);
+}
+body::after{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(900px 600px at 50% -10%,oklch(0.55 0.15 200 / 6%),transparent 60%),
+    radial-gradient(400px 400px at 18% 45%,oklch(0.50 0.18 280 / 4%),transparent 65%),
+    radial-gradient(300px 300px at 88% 70%,oklch(0.45 0.18 240 / 4%),transparent 65%);
+}
+
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;padding:0 24px}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+
+/* ─── nav: sticky glass panel ─── */
+nav{
+  position:sticky;top:0;z-index:20;
+  background:oklch(0.06 0.015 250 / 65%);
+  backdrop-filter:blur(24px) saturate(180%);
+  -webkit-backdrop-filter:blur(24px) saturate(180%);
+  border-bottom:1px solid oklch(1 0 0 / 8%);
+}
+nav .wrap{display:flex;align-items:center;gap:18px;height:60px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:500;color:var(--foreground)}
+.brand:hover{text-decoration:none}
+.brand .ai{
+  font-family:var(--font-display);font-weight:700;font-size:1.35rem;line-height:1;
+  background:var(--creation);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+nav .sp{flex:1}
+nav a.nl{color:var(--tx-2);font-size:.9rem;font-weight:500}
+nav a.nl:hover{color:var(--accent);text-decoration:none}
+@media(max-width:640px){nav a.nl.hide-sm{display:none}}
+
+/* ─── hero ─── */
+header{padding:88px 0 64px;position:relative}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);
+  font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);
+  border:1px solid var(--accent-a30);border-radius:999px;padding:5px 12px;
+  margin-bottom:22px;
+  background:oklch(0.12 0.02 250 / 60%);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+}
+.eyebrow .dot{
+  width:6px;height:6px;border-radius:50%;background:var(--accent);
+  box-shadow:0 0 8px var(--accent);
+  animation:pulse-dot 2.4s ease-in-out infinite;
+}
+@keyframes pulse-dot{0%,100%{opacity:1}50%{opacity:.45}}
+h1{
+  font-family:var(--font-display);
+  font-size:clamp(2.4rem,6vw,4rem);font-weight:700;line-height:1.08;
+  letter-spacing:-0.01em;margin:0 0 18px;
+}
+h1 .g{
+  background:var(--creation);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.lede{font-size:clamp(1.03rem,2.1vw,1.22rem);color:var(--tx-2);max-width:62ch;margin:0 0 30px;line-height:1.8}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:34px}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;padding:12px 22px;
+  border-radius:var(--radius-xl);font-weight:600;font-size:.94rem;
+  border:1px solid transparent;cursor:pointer;
+  transition:all .25s cubic-bezier(0.16,1,0.3,1);
+}
+.btn:hover{text-decoration:none;transform:translateY(-2px)}
+.btn-p{
+  background:var(--cta-gradient);color:#fff;
+  box-shadow:0 8px 24px oklch(0.55 0.15 200 / 25%);
+}
+.btn-p:hover{box-shadow:0 8px 32px oklch(0.55 0.15 200 / 40%)}
+.btn-s{
+  background:oklch(1 0 0 / 5%);color:var(--foreground);
+  border-color:oklch(1 0 0 / 8%);
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+}
+.btn-s:hover{background:oklch(1 0 0 / 10%);border-color:var(--accent-a50);color:var(--accent)}
+
+/* ─── code blocks: glass with gradient hairline ─── */
+.code{
+  position:relative;
+  background:oklch(0.06 0.015 250 / 65%);
+  backdrop-filter:blur(20px) saturate(180%);
+  -webkit-backdrop-filter:blur(20px) saturate(180%);
+  border:1px solid oklch(1 0 0 / 8%);
+  border-radius:var(--radius);overflow:hidden;
+  box-shadow:0 8px 32px oklch(0 0 0 / 40%),inset 0 1px 0 oklch(1 0 0 / 5%);
+}
+.code::before{content:"";position:absolute;inset:0 0 auto;height:1px;background:var(--creation)}
+.code .bar{display:flex;align-items:center;gap:8px;padding:9px 14px;border-bottom:1px solid oklch(1 0 0 / 8%)}
+.code .bar > span:not(.t){width:9px;height:9px;flex:none;border-radius:50%;background:var(--border)}
+.code .bar .t{
+  line-height:1;margin-left:6px;font-family:var(--mono);font-size:.73rem;
+  color:var(--tx-muted);letter-spacing:.04em;
+}
+.code pre{
+  margin:0;padding:16px 18px;overflow-x:auto;font-family:var(--mono);
+  font-size:.845rem;line-height:1.75;color:var(--foreground);
+}
+.code .c{color:var(--tx-muted)}
+.code .k{color:var(--accent)}
+.code .s{color:var(--mint)}
+.copy{
+  position:absolute;top:8px;right:10px;background:transparent;
+  border:1px solid oklch(1 0 0 / 12%);color:var(--tx-muted);border-radius:7px;
+  padding:4px 9px;font-size:.7rem;cursor:pointer;font-family:var(--mono);transition:.16s;
+}
+.copy:hover{color:var(--accent);border-color:var(--accent-a50)}
+
+/* ─── sections ─── */
+section{padding:64px 0;border-top:1px solid oklch(1 0 0 / 6%)}
+h2{
+  font-family:var(--font-display);
+  font-size:clamp(1.55rem,3vw,2.1rem);font-weight:700;letter-spacing:-0.01em;
+  margin:0 0 10px;
+}
+.sub{color:var(--tx-2);margin:0 0 30px;max-width:64ch;line-height:1.8}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(258px,1fr))}
+
+/* ─── cards: glass surface, glow on hover ─── */
+.card{
+  background:oklch(0.12 0.02 250 / 60%);
+  backdrop-filter:blur(20px) saturate(180%);
+  -webkit-backdrop-filter:blur(20px) saturate(180%);
+  border:1px solid oklch(0.40 0.05 250 / 20%);
+  border-radius:var(--radius);padding:22px;position:relative;overflow:hidden;
+  box-shadow:0 8px 32px oklch(0 0 0 / 30%),inset 0 1px 0 oklch(1 0 0 / 5%);
+  transition:all .25s cubic-bezier(0.16,1,0.3,1);
+}
+.card:hover{
+  transform:translateY(-2px);
+  border-color:var(--accent-a30);
+  box-shadow:0 8px 32px oklch(0 0 0 / 40%),0 0 20px var(--accent-glow),
+    inset 0 1px 0 oklch(1 0 0 / 8%);
+}
+.card h3{margin:0 0 8px;font-size:1.03rem;font-weight:600;letter-spacing:-0.012em}
+.card p{margin:0;color:var(--tx-2);font-size:.92rem;line-height:1.7}
+.card .ico{
+  font-family:var(--mono);font-size:.7rem;color:var(--accent);letter-spacing:.14em;
+  text-transform:uppercase;display:block;margin-bottom:10px;
+}
+
+/* ─── stat tiles ─── */
+.stats{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));margin-top:30px}
+.stat{
+  background:oklch(0.12 0.02 250 / 60%);
+  backdrop-filter:blur(12px) saturate(150%);
+  -webkit-backdrop-filter:blur(12px) saturate(150%);
+  border:1px solid oklch(1 0 0 / 8%);
+  border-radius:var(--radius);padding:18px;text-align:center;
+}
+.stat .v{
+  font-family:var(--mono);font-size:1.55rem;font-weight:700;display:block;line-height:1.2;
+  background:var(--creation);-webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.stat .l{font-size:.76rem;color:var(--tx-muted);text-transform:uppercase;letter-spacing:.1em;margin-top:5px;display:block}
+
+/* ─── callout note ─── */
+.note{
+  background:oklch(0.12 0.02 250 / 60%);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  border:1px solid oklch(1 0 0 / 8%);border-left:3px solid var(--warn);
+  border-radius:10px;padding:16px 18px;color:var(--tx-2);font-size:.92rem;line-height:1.7;
+}
+.note strong{color:var(--foreground)}
+
+/* ─── footer ─── */
+footer{border-top:1px solid oklch(1 0 0 / 6%);padding:34px 0 46px;color:var(--tx-muted);font-size:.86rem}
+footer .row{display:flex;flex-wrap:wrap;gap:16px;align-items:center}
+footer .sp{flex:1}
+footer a{color:var(--tx-2)}
+.el{
+  display:inline-flex;flex-direction:column;align-items:center;justify-content:center;
+  width:56px;height:56px;border-radius:10px;
+  border:1px solid oklch(1 0 0 / 8%);
+  background:oklch(0.12 0.02 250 / 60%);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  position:relative;overflow:hidden;
+}
+.el::before{content:"";position:absolute;inset:0 0 auto;height:1px;background:var(--creation)}
+.el .n{font-family:var(--mono);font-size:.56rem;color:var(--tx-muted);line-height:1}
+.el .s{
+  font-family:var(--font-display);font-weight:700;font-size:1.2rem;line-height:1.2;
+  background:var(--creation);-webkit-background-clip:text;background-clip:text;color:transparent;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   THE UNIVERSE STRIP
+   The four public repos are organs of one system, and until now nothing on
+   the pages said so — the nav linked Features / Quick start / GitHub and
+   stopped. This renders the constellation on EVERY page: the current repo lit
+   and centred, its siblings dimmed but reachable. The links are real anchors
+   in the HTML, so it works with JS off; universe.js only adds the drifting
+   flight paths behind them.
+   ═══════════════════════════════════════════════════════════════════════════ */
+.uni{position:relative;padding:38px 0 30px;border-top:1px solid oklch(1 0 0 / 6%)}
+.uni h2{font-size:clamp(1.15rem,2.2vw,1.4rem);margin-bottom:4px}
+.uni .sub{margin-bottom:22px;font-size:.92rem}
+/* The top band is deliberate empty room: the flight paths arc UP out of the orb
+   row into it. Without it the curves are drawn underneath the cards and are
+   invisible except in the 12px gutters, which looked like the canvas was dead. */
+.uni-stage{position:relative;min-height:190px;padding-top:52px}
+.uni-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.uni-nodes{
+  position:relative;z-index:1;display:grid;gap:12px;
+  grid-template-columns:repeat(auto-fit,minmax(146px,1fr));
+}
+.orb{
+  position:relative;
+  display:flex;flex-direction:column;gap:6px;padding:15px 14px;
+  border-radius:var(--radius);text-align:left;
+  background:oklch(0.12 0.02 250 / 55%);
+  backdrop-filter:blur(14px) saturate(160%);
+  -webkit-backdrop-filter:blur(14px) saturate(160%);
+  border:1px solid oklch(1 0 0 / 7%);
+  transition:all .28s cubic-bezier(0.16,1,0.3,1);
+}
+.orb:hover{
+  text-decoration:none;transform:translateY(-3px);
+  border-color:var(--accent-a30);
+  box-shadow:0 10px 30px oklch(0 0 0 / 40%),0 0 22px var(--accent-glow);
+}
+.orb .k{
+  font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--tx-muted);display:flex;align-items:center;gap:7px;
+}
+.orb .k::before{
+  content:"";width:7px;height:7px;border-radius:50%;flex:none;
+  background:var(--orb,var(--tx-muted));box-shadow:0 0 9px var(--orb,transparent);
+}
+.orb .n{font-weight:600;font-size:.96rem;color:var(--foreground);letter-spacing:-0.01em}
+.orb .d{font-size:.79rem;color:var(--tx-muted);line-height:1.5}
+/* you are here */
+.orb.here{
+  border-color:var(--accent-a50);
+  background:oklch(0.14 0.03 250 / 70%);
+  box-shadow:0 0 0 1px var(--accent-a30),0 10px 34px var(--accent-glow);
+}
+.orb.here .n{color:var(--accent)}
+/* A pill on the top edge, not an ::after inside .k — inline it wrapped onto
+   three lines and made the lit card taller than every sibling. */
+.orb.here::after{
+  content:"you are here";position:absolute;top:-8px;left:14px;
+  font-family:var(--mono);font-size:.56rem;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--background);background:var(--accent);
+  padding:3px 8px;border-radius:999px;white-space:nowrap;
+}
+
+/* ─── experience badge: this repo's name in the estate ─── */
+/* display:flex, not inline-flex — inline it sat on the same line as .eyebrow
+   and the two badges read as one run-on chip. */
+.exp{
+  display:flex;align-items:center;gap:10px;margin-bottom:16px;
+  font-family:var(--font-display);font-size:.9rem;letter-spacing:.04em;
+  color:var(--tx-2);
+}
+.exp .glyph{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:30px;height:30px;border-radius:9px;font-size:.95rem;
+  background:var(--accent-a10);border:1px solid var(--accent-a30);
+}
+.exp b{color:var(--accent);font-weight:700}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   LIVE ARTIFACTS
+   Each repo's page carries one real, interactive thing built from the payload
+   being published — a browsable catalogue, a composer, a calculator — instead
+   of six paragraphs of feature copy telling you to go and run `ls`.
+   ═══════════════════════════════════════════════════════════════════════════ */
+.panel{
+  background:oklch(0.10 0.02 250 / 60%);
+  backdrop-filter:blur(20px) saturate(170%);
+  -webkit-backdrop-filter:blur(20px) saturate(170%);
+  border:1px solid oklch(1 0 0 / 8%);
+  border-radius:var(--radius);overflow:hidden;
+  box-shadow:0 8px 32px oklch(0 0 0 / 30%);
+}
+.panel-hd{
+  display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+  padding:13px 16px;border-bottom:1px solid oklch(1 0 0 / 8%);
+  background:oklch(0.08 0.02 250 / 50%);
+}
+.panel-hd .t{font-family:var(--mono);font-size:.74rem;color:var(--tx-muted);letter-spacing:.06em}
+.panel-hd .sp{flex:1}
+.count{font-family:var(--mono);font-size:.74rem;color:var(--accent)}
+
+.field{
+  width:100%;padding:10px 13px;border-radius:9px;font-family:var(--font);font-size:.9rem;
+  background:oklch(0.06 0.015 250 / 70%);color:var(--foreground);
+  border:1px solid oklch(1 0 0 / 10%);
+}
+.field::placeholder{color:var(--tx-muted)}
+.field:focus{outline:none;border-color:var(--accent-a50);box-shadow:0 0 0 3px var(--accent-a10)}
+.field-row{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));padding:16px}
+.field-row label{display:block;font-size:.74rem;color:var(--tx-muted);margin-bottom:6px;
+  text-transform:uppercase;letter-spacing:.09em;font-family:var(--mono)}
+
+.chips{display:flex;flex-wrap:wrap;gap:7px;padding:12px 16px;border-bottom:1px solid oklch(1 0 0 / 6%)}
+.chip{
+  font-family:var(--mono);font-size:.71rem;padding:5px 11px;border-radius:999px;cursor:pointer;
+  background:oklch(1 0 0 / 4%);border:1px solid oklch(1 0 0 / 9%);color:var(--tx-2);
+  transition:.18s;
+}
+.chip:hover{border-color:var(--accent-a30);color:var(--accent)}
+.chip[aria-pressed="true"]{background:var(--accent-a10);border-color:var(--accent-a50);color:var(--accent)}
+
+.rows{max-height:432px;overflow-y:auto}
+.row-item{
+  display:block;width:100%;text-align:left;padding:13px 16px;cursor:pointer;
+  border:0;border-bottom:1px solid oklch(1 0 0 / 5%);
+  background:transparent;color:inherit;font-family:var(--font);transition:.16s;
+}
+.row-item:hover{background:var(--accent-a10);text-decoration:none}
+.row-item .n{display:block;font-weight:600;font-size:.9rem;color:var(--foreground)}
+.row-item .d{display:block;font-size:.8rem;color:var(--tx-muted);line-height:1.55;margin-top:3px}
+.row-item .tag{
+  font-family:var(--mono);font-size:.65rem;color:var(--accent);
+  letter-spacing:.1em;text-transform:uppercase;
+}
+.empty{padding:34px 16px;text-align:center;color:var(--tx-muted);font-size:.88rem}
+
+/* key→value readout (calculator results, composed manifests) */
+.kv{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(132px,1fr));padding:16px}
+.kv .cell{padding:13px;border-radius:10px;background:oklch(1 0 0 / 3%);border:1px solid oklch(1 0 0 / 7%)}
+.kv .cell .l{display:block;font-size:.68rem;color:var(--tx-muted);text-transform:uppercase;
+  letter-spacing:.1em;font-family:var(--mono)}
+.kv .cell .v{display:block;font-family:var(--mono);font-size:1.22rem;font-weight:700;margin-top:5px;
+  background:var(--creation);-webkit-background-clip:text;background-clip:text;color:transparent}
+.kv .cell.flat .v{background:none;color:var(--foreground);-webkit-text-fill-color:currentColor}
+
+/* compression / ratio bar */
+.bar-cmp{padding:0 16px 16px}
+.bar-cmp .track{height:9px;border-radius:99px;background:oklch(1 0 0 / 6%);overflow:hidden;margin-bottom:7px}
+.bar-cmp .fill{height:100%;background:var(--creation);border-radius:99px;transition:width .35s ease}
+.bar-cmp .lbl{display:flex;justify-content:space-between;font-family:var(--mono);
+  font-size:.71rem;color:var(--tx-muted)}
+
+/* ordered step sequence (playbooks) */
+.steps{list-style:none;margin:0;padding:16px;display:flex;flex-direction:column;gap:0}
+.steps li{position:relative;padding:0 0 16px 26px;font-size:.87rem;color:var(--tx-2)}
+.steps li:last-child{padding-bottom:0}
+.steps li::before{
+  content:"";position:absolute;left:0;top:5px;width:9px;height:9px;border-radius:50%;
+  background:var(--accent);box-shadow:0 0 8px var(--accent-glow);
+}
+.steps li:not(:last-child)::after{
+  content:"";position:absolute;left:4px;top:16px;bottom:2px;width:1px;background:oklch(1 0 0 / 12%);
+}
+.steps li b{color:var(--foreground);font-weight:600}
+
+/* ─── motion ─── */
+@keyframes fade-in-up{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+header .wrap>*{animation:fade-in-up .6s ease-out both}
+header .wrap>*:nth-child(2){animation-delay:.05s}
+header .wrap>*:nth-child(3){animation-delay:.1s}
+header .wrap>*:nth-child(4){animation-delay:.15s}
+header .wrap>*:nth-child(5){animation-delay:.2s}
+header .wrap>*:nth-child(6){animation-delay:.25s}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* ─── scrollbar ─── */
+::-webkit-scrollbar{width:8px;height:8px}
+::-webkit-scrollbar-track{background:oklch(0.08 0.015 250)}
+::-webkit-scrollbar-thumb{background:oklch(0.25 0.03 250);border-radius:4px}
+::-webkit-scrollbar-thumb:hover{background:oklch(0.35 0.05 260)}
+
+</style>
+<style>
+/* ═══════════════════════════════════════════════════════════════════════════
+   PAGE LAYER — everything below themes off the .ELEMENT tokens above.
+   Accent stays the cyan house colour. Display words: Cinzel. Headlines: Inter 800
+   (DESIGN.md headline-display). Shell + every number: JetBrains Mono.
+   ═══════════════════════════════════════════════════════════════════════════ */
+:root{--maxw:1180px}
+body.booting{overflow:hidden}
+main{position:relative;z-index:1}
+.mono{font-family:var(--mono)}
+.acc{color:var(--accent)}
+.dim{color:var(--tx-2)}
+canvas#mesh{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.9}
+section{border-top:0;padding:0}
+section.ch{min-height:100vh;display:flex;align-items:center;padding:12vh 24px;border-top:1px solid oklch(1 0 0 / 6%)}
+.kicker{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:700;font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin:0 0 20px}
+.kicker::before{content:"";width:28px;height:1px;background:var(--creation)}
+h2.kt{font-family:var(--font);font-weight:800;font-size:clamp(2.1rem,5.4vw,4.5rem);line-height:1.05;letter-spacing:-0.02em;margin:0;max-width:22ch}
+h2.kt em{font-style:normal;font-family:var(--font-display);font-weight:900;letter-spacing:0;background:var(--creation);-webkit-background-clip:text;background-clip:text;color:transparent}
+h2.kt .w{display:inline-block;opacity:0;transform:translateY(.35em);transition:opacity .55s cubic-bezier(.16,1,.3,1),transform .55s cubic-bezier(.16,1,.3,1)}
+h2.kt.in .w{opacity:1;transform:none}
+.lede{margin-top:22px}
+
+/* ---------- boot: the periodic table, Element 0 igniting ---------- */
+#boot{position:fixed;inset:0;z-index:50;background:var(--background);cursor:pointer;overflow:hidden;display:flex;flex-direction:column;padding:clamp(18px,4vw,52px)}
+#boot .table{position:absolute;inset:0;display:grid;grid-template-columns:repeat(18,1fr);grid-auto-rows:1fr;gap:6px;padding:8vh 6vw;opacity:.35;pointer-events:none;
+  -webkit-mask-image:radial-gradient(ellipse 70% 70% at 50% 50%,black 20%,transparent 80%);mask-image:radial-gradient(ellipse 70% 70% at 50% 50%,black 20%,transparent 80%)}
+#boot .table i{display:block;border:1px solid oklch(1 0 0 / 6%);border-radius:4px;background:oklch(0.10 0.02 250 / 40%)}
+#boot .table i.lit{border-color:var(--accent-a30);background:var(--accent-a04);box-shadow:0 0 12px var(--accent-glow)}
+#boot .head{position:relative;display:flex;align-items:center;gap:18px;margin-bottom:22px}
+#boot .el{width:84px;height:84px;border-radius:14px;box-shadow:0 0 0 1px var(--accent-a30),0 0 34px var(--accent-glow);animation:el-pulse 2s ease-in-out infinite}
+#boot .el .n{font-size:.7rem}#boot .el .s{font-size:2rem}#boot .el .z{font-family:var(--mono);font-size:.55rem;color:var(--tx-muted);letter-spacing:.14em;margin-top:2px}
+@keyframes el-pulse{0%,100%{box-shadow:0 0 0 1px var(--accent-a30),0 0 34px var(--accent-glow)}50%{box-shadow:0 0 0 1px var(--accent-a50),0 0 60px var(--accent-a30)}}
+#boot .head .t{font-family:var(--font-display);font-weight:700;letter-spacing:.2em;font-size:.78rem;color:var(--tx-2);text-transform:uppercase;line-height:1.7}
+#boot .head .t b{display:block;font-size:1.05rem;letter-spacing:.12em;background:var(--creation);-webkit-background-clip:text;background-clip:text;color:transparent}
+#boot pre{position:relative;margin:0;font:500 clamp(11px,1.3vw,14.5px)/1.55 var(--mono);color:var(--tx-2);white-space:pre-wrap;max-width:100%}
+#boot .ok{color:var(--mint)}
+#boot .hi{color:var(--foreground)}
+#boot .cur::after{content:'▌';color:var(--accent);animation:blink 1s steps(1) infinite}
+#boot .skip{position:absolute;right:clamp(18px,4vw,52px);bottom:clamp(18px,4vw,52px);font:500 .68rem var(--mono);color:var(--tx-muted);letter-spacing:.16em}
+#boot.done{opacity:0;pointer-events:none;transition:opacity .55s}
+@keyframes blink{50%{opacity:0}}
+
+/* ---------- hero ---------- */
+#hero{min-height:100vh;display:flex;align-items:center;position:relative;padding:14vh 24px 10vh}
+#hero .prompt{font:500 .85rem/1.6 var(--mono);color:var(--tx-2);margin:0 0 18px;opacity:0;transition:opacity .4s .2s}
+#hero .prompt .p{color:var(--accent)}
+#hero h1{font-family:var(--font-display);font-weight:900;font-size:clamp(3.2rem,11.5vw,11rem);line-height:.92;letter-spacing:-0.01em;margin:0;text-transform:uppercase}
+#hero h1 .l{display:block;overflow:hidden;padding-bottom:.06em}
+#hero h1 .l span{display:block;transform:translateY(112%);transition:transform .8s cubic-bezier(.16,1,.3,1)}
+#hero h1 .l:nth-child(2) span{transition-delay:.09s}
+#hero .tag{font-family:var(--font);font-weight:500;font-size:clamp(1.15rem,2.2vw,1.8rem);color:var(--tx-2);margin:26px 0 0;max-width:34ch;line-height:1.4;opacity:0;transform:translateY(12px);transition:all .6s .4s}
+#hero .tag b{font-weight:700;color:var(--foreground)}
+#hero .cta{margin:34px 0 0;opacity:0;transition:opacity .6s .65s}
+body.booted #hero h1 .l span{transform:none}
+body.booted #hero .prompt,body.booted #hero .cta{opacity:1}
+body.booted #hero .tag{opacity:1;transform:none}
+.scrollhint{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);font:.68rem var(--mono);color:var(--tx-muted);letter-spacing:.2em;white-space:nowrap;opacity:0;transition:opacity 1s 1.3s}
+body.booted .scrollhint{opacity:1}
+
+/* ---------- shell (Act II) — a .code glass panel you can type into ---------- */
+#shell{padding:4vh 24px 14vh}
+#termbox{margin-top:30px}
+@media (max-width:640px){#termbox .bar .tl{display:none}}
+#termbox .bar .live{margin-left:auto;font-family:var(--mono);font-style:normal;font-size:.7rem;color:var(--mint);white-space:nowrap}
+#out{padding:16px 18px 6px;font:.86rem/1.65 var(--mono);color:var(--foreground);min-height:260px;max-height:62vh;overflow:auto;overscroll-behavior:contain}
+#out p{margin:0 0 2px;white-space:pre-wrap;word-break:break-word}
+#out .p{color:var(--accent)}
+#out .c{color:var(--foreground);font-weight:600}
+#out .d{color:var(--tx-muted)}
+#out .e{color:var(--coral)}
+#out .h{color:var(--foreground);font-weight:700}
+#out .ok{color:var(--mint)}
+#out .g{background:var(--creation);-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:700}
+#out .brick{display:grid;grid-template-columns:150px 1fr 96px;gap:0 12px;padding:1px 0}
+#out .brick.off{color:var(--tx-muted)}
+#out .brick .s{color:var(--tx-muted);text-align:right;font-size:.72rem}
+#out .brick.on .s{color:var(--mint)}
+#out .brick.hero{color:var(--accent)}
+#out .mrow{display:grid;grid-template-columns:140px 1fr;gap:0 14px;align-items:baseline;padding:4px 0}
+#out .mrow b{font-size:1.35rem;font-weight:700;letter-spacing:-.02em;background:var(--creation);-webkit-background-clip:text;background-clip:text;color:transparent}
+#out .mrow small{display:block;color:var(--tx-muted);font-size:.7rem}
+#out a{text-decoration:underline;text-underline-offset:3px}
+#termbox .chips{padding:10px 16px}
+.inrow{display:flex;align-items:center;gap:10px;padding:12px 18px 16px;font:.86rem var(--mono)}
+.inrow label{color:var(--accent);white-space:nowrap}
+#cmd{flex:1;background:transparent;border:0;color:var(--foreground);font:inherit;outline:none;caret-color:var(--accent);min-width:0}
+#cmd::placeholder{color:var(--tx-muted)}
+@media (max-width:640px){#out .brick{grid-template-columns:104px 1fr;font-size:.76rem}#out .brick .s{display:none}#out{font-size:.8rem;max-height:52vh}}
+
+/* ---------- stations (Act III · 1) ---------- */
+.stations{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:52px}
+.stations .card{opacity:0;transform:translateY(22px)}
+.stations .card.in{opacity:1;transform:none}
+.card .num{font-family:var(--font-display);font-weight:900;font-size:2.6rem;line-height:1;color:var(--tx-muted)}
+.card .big{font-family:var(--mono);font-weight:700;font-size:clamp(1.5rem,2.4vw,2.1rem);line-height:1.1;letter-spacing:-.02em;margin:14px 0 8px;background:var(--creation);-webkit-background-clip:text;background-clip:text;color:transparent}
+.card .org{font-weight:700;font-size:1.05rem;margin:4px 0 2px;color:var(--foreground)}
+.card .when{font-family:var(--mono);font-size:.68rem;color:var(--tx-muted);letter-spacing:.06em;margin-bottom:10px}
+@media (max-width:980px){.stations{grid-template-columns:1fr 1fr}}
+@media (max-width:540px){.stations{grid-template-columns:1fr}}
+
+/* ---------- factory (Act III · 2) ---------- */
+.panels{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px}
+.panels .card{opacity:0;transform:translateY(22px)}
+.panels .card.in{opacity:1;transform:none}
+.panels h3{font-size:1.25rem;font-weight:700}
+.panels .ev{margin-top:14px;padding-top:12px;border-top:1px dashed oklch(1 0 0 / 10%);font:.72rem/1.6 var(--mono);color:var(--tx-muted)}
+.panels .ev b{color:var(--accent);font-weight:700}
+@media (max-width:980px){.panels{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.panels{grid-template-columns:1fr}}
+
+/* ---------- constellation (Act III · 3) ---------- */
+.cwrap{position:relative;margin-top:22px;overflow:hidden}
+.cwrap svg{display:block;width:100%;height:auto}
+.cwrap circle.node{fill:oklch(0.12 0.02 250);stroke:var(--border);stroke-width:1;cursor:pointer;transition:fill .2s,stroke .2s}
+.cwrap circle.node.public{fill:oklch(0.14 0.03 220);stroke:var(--accent-a50)}
+.cwrap circle.node.hero{fill:var(--accent-a30);stroke:var(--accent);stroke-width:2;filter:drop-shadow(0 0 14px var(--accent-a50))}
+.cwrap circle.node.hot{fill:var(--mint);stroke:#fff}
+.cwrap circle.node.mute{opacity:.15}
+.cwrap text{font:600 .7rem var(--mono);fill:var(--tx-2);pointer-events:none}
+.cwrap text.hero{font-family:var(--font-display);font-weight:700;font-size:1.05rem;fill:var(--accent);letter-spacing:.08em}
+.cwrap line{stroke:var(--accent);stroke-opacity:.14;stroke-width:1}
+.cwrap line.hot{stroke:var(--mint);stroke-opacity:.95}
+.cwrap line.mute{stroke-opacity:.03}
+.tip{position:absolute;pointer-events:none;border-radius:10px;padding:10px 12px;font:.82rem/1.5 var(--font);color:var(--foreground);max-width:300px;opacity:0;transition:opacity .15s;z-index:3;
+  background:oklch(0.10 0.02 250 / 85%);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--accent-a30)}
+.tip b{font-family:var(--mono);color:var(--accent)}
+.tip small{display:block;color:var(--tx-muted);font-family:var(--mono);font-size:.68rem;margin-top:4px}
+#stackbtns{padding:0;border:0;margin-top:22px}
+.legend{font:.72rem var(--mono);color:var(--tx-muted);margin-top:12px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin:0 6px 0 14px;vertical-align:-1px}
+
+/* ---------- close (Act III · close) ---------- */
+#close .uni{border-top:0;padding-top:34px}
+#close .uni-nodes{grid-template-columns:repeat(auto-fit,minmax(170px,1fr))}
+#close footer{border-top:1px solid oklch(1 0 0 / 6%);margin-top:30px}
+#close footer img{height:22px;width:auto;opacity:.75}
+
+@media (prefers-reduced-motion:reduce){
+  h2.kt .w,.stations .card,.panels .card,#hero h1 .l span,#hero .tag,#hero .cta,#hero .prompt,.scrollhint{transition:none!important;opacity:1!important;transform:none!important}
+}
 </style>
 </head>
-<body>
+<body class="booting">
+<canvas id="mesh" aria-hidden="true"></canvas>
+
+<div id="boot" role="status" aria-label="awnix boot sequence — click or press any key to skip">
+  <div class="table" id="ptable" aria-hidden="true"></div>
+  <div class="head">
+    <span class="el" aria-hidden="true"><span class="n">0</span><span class="s">Ae</span><span class="z">AITHERIUM</span></span>
+    <div class="t">The periodic table of intelligence<b>Element 0 · igniting</b></div>
+  </div>
+  <pre id="bootlog" aria-hidden="true"></pre>
+  <span class="skip">CLICK · KEY · SCROLL TO SKIP</span>
+</div>
+
 <main>
-<header class="hero">
-  <div class="wrap">
-    <p class="prompt"><b>aither@wizzense</b> ~ $ whoami</p>
-    <h1>David<span>Parkhurst.</span></h1>
-    <p class="line">Outcome Engineer. <em>I built the factory that builds the software.</em></p>
-    <p class="sub">Founder and architect of AitherOS, awnix and the aw* stack. USAF veteran who ran an 850,000-user directory before most people had heard of an agent. Every number on this page has the command that produced it.</p>
-    <ul class="links">
-      <li><a href="https://github.com/wizzense" target="_blank" rel="noopener">github.com/wizzense</a></li>
-      <li><a href="https://www.linkedin.com/in/david-a-parkhurst" target="_blank" rel="noopener">linkedin.com/in/david-a-parkhurst</a></li>
-      <li><a href="https://blog.aitherium.com" target="_blank" rel="noopener">blog.aitherium.com</a></li>
-    </ul>
+<section id="hero" class="wrap" aria-label="Introduction">
+  <div>
+    <p class="prompt"><span class="p">david@awnix:~$</span> whoami</p>
+    <h1><span class="l"><span>David</span></span><span class="l"><span class="g">Parkhurst</span></span></h1>
+    <p class="tag">Outcome Engineer. <b>I built the factory that builds the software.</b></p>
+    <div class="cta">
+      <a class="btn btn-p" href="#shell">Open the shell</a>
+      <a class="btn btn-s" href="https://github.com/Aitherium" rel="me">github.com/Aitherium</a>
+      <a class="btn btn-s" href="https://www.linkedin.com/in/david-a-parkhurst" rel="me">LinkedIn</a>
+      <a class="btn btn-s" href="https://blog.aitherium.com">Blog</a>
+      <a class="btn btn-s" href="resume.pdf">resume.pdf</a>
+    </div>
   </div>
-</header>
+  <div class="scrollhint">SCROLL — OR TYPE INTO THE SHELL</div>
+</section>
 
-<section id="measured" aria-labelledby="h-measured">
-  <div class="wrap">
-    <p class="kicker">measured</p>
-    <h2 id="h-measured">Not claimed. <em>Measured.</em></h2>
-    <ul class="nums">
-<li class="num"><span class="num__v" data-count="21065">21,065</span><span class="num__l">commits</span><span class="num__s">since 2025-06-08</span><details class="num__how"><summary>how measured</summary><p>git rev-list --count HEAD on the AitherOS tree, 2026-09-03.</p></details></li>
-<li class="num"><span class="num__v" data-count="13928">13,928</span><span class="num__l">commits, last 90 days</span><span class="num__s">agent-authored under gates</span><details class="num__how"><summary>how measured</summary><p>git rev-list --count --since=&#x27;90 days ago&#x27; HEAD.</p></details></li>
-<li class="num"><span class="num__v" data-count="642">642</span><span class="num__l">self-testing quality gates</span><span class="num__s">each must prove it can fail</span><details class="num__how"><summary>how measured</summary><p>git ls-files &#x27;AitherOS/dev/tools/check_*.py&#x27; | wc -l. Every gate carries --self-test and is claimed by one of four unattended lanes.</p></details></li>
-<li class="num"><span class="num__v" data-count="1200">~1,200</span><span class="num__l">MCP tools served</span><span class="num__s">263 tool modules, one gateway</span><details class="num__how"><summary>how measured</summary><p>Gateway tools/list on probe (1204-1211 recorded); ls apps/awnode/tools/mcp/mcp_*.py = 263.</p></details></li>
-<li class="num"><span class="num__v" data-count="369">369</span><span class="num__l">services declared</span><span class="num__s">podman quadlets, 12 layers</span><details class="num__how"><summary>how measured</summary><p>grep -cE &#x27;^  [a-z][a-z0-9-]+:$&#x27; .DEPLOYMENT/compose/docker-compose.aitheros.yml.</p></details></li>
-<li class="num"><span class="num__v" data-count="270">270</span><span class="num__l">blog posts published</span><span class="num__s">written and gated by agents</span><details class="num__how"><summary>how measured</summary><p>ls apps/AitherVeil/content/blog/*.md | wc -l; served at blog.aitherium.com.</p></details></li>
-<li class="num"><span class="num__v" data-count="64">64</span><span class="num__l">aw* bricks registered</span><span class="num__s">40 public, 14 stacks</span><details class="num__how"><summary>how measured</summary><p>AitherOS/config/ecosystem.yaml bricks[] (public 40, unpublished 15, planned 7, merged 1, no-pages 1); stacks[] = 14.</p></details></li>
-<li class="num"><span class="num__v" data-count="850000">850,000</span><span class="num__l">users on the AD I ran</span><span class="num__s">USAF, 690 DCs, 230 sites</span><details class="num__how"><summary>how measured</summary><p>USAF Cyber Systems Operations, 2015-2020; second-largest Active Directory in the world. From service record / LinkedIn, not re-measured.</p></details></li>
-    </ul>
-    <p class="measured-note">All figures measured 2026-09-03 on the AitherOS tree. A number without its command is an opinion; open "how measured" on any card.</p>
+<section id="shell" class="wrap" aria-labelledby="shell-h">
+  <div style="width:100%">
+    <p class="kicker">Act II · the shell</p>
+    <h2 id="shell-h" class="kt">This page is a shell. <em>Type.</em></h2>
+    <p class="lede">Everything below is a command. <span class="mono acc">help</span> lists them. Every number it prints was measured on 2026-09-03, and the command that measured it is printed with it.</p>
+    <div class="code" id="termbox">
+      <div class="bar"><span></span><span></span><span></span><span class="t">david@awnix: ~<span class="tl"> — awnix 0.9 / immutable base / capabilities included</span></span><i class="live" id="livechip">● live</i></div>
+      <div id="out" aria-live="polite" aria-atomic="false" tabindex="0"></div>
+      <div class="chips" id="chips" aria-label="quick commands"></div>
+      <form class="inrow" id="form" autocomplete="off">
+        <label for="cmd">david@awnix:~$</label>
+        <input id="cmd" type="text" spellcheck="false" autocapitalize="off" autocorrect="off" placeholder="type a command — help" aria-label="shell input">
+      </form>
+    </div>
   </div>
 </section>
 
-<section id="stack" aria-labelledby="h-stack">
-  <div class="wrap">
-    <p class="kicker">the full stack, every layer</p>
-    <h2 id="h-stack">Not many people can say they own and control the full stack. <em>I can.</em></h2>
-    <p class="stack-quote">I've racked the servers, managed the SAN, administered the OS at 850K-user scale, secured the network, automated the operations, built the APIs, designed the data pipelines, trained the models, scheduled the GPUs, written the Terraform, and built the React dashboard that sits on top of all of it. <em>I don't have gaps in the stack. I have scars from every layer.</em></p>
-    <ol class="tls">
-<li class="tl"><span class="tl__when">2014 - 2020</span><h3 class="tl__org">United States Air Force</h3><p class="tl__role">Cyber Systems Operations</p><p class="tl__body">Ran Tier-2 for the second-largest Active Directory on earth: $10B, 850,000 users, 690 domain controllers, 230 sites, classified and unclassified, 24/7. Automated 70+ DCs in PowerShell. Authoritative ADDS restore of 3,000 accounts with zero collateral. Wrote the curriculum and trained 357 technicians. Red Flag 17-1 blue-team Superior Performer.</p></li>
-<li class="tl"><span class="tl__when">2020 - 2022</span><h3 class="tl__org">Boeing</h3><p class="tl__role">HPC Linux System Engineer</p><p class="tl__body">Owned the enterprise tape archive (Oracle HSM to Versity as technical lead) and a fibre-channel SAN under HPC load. Python automation for recovery, monitoring, archival. LTO6 to LTO8 migration; data-at-rest encryption with OKM 3 and IBM SKLM.</p></li>
-<li class="tl"><span class="tl__when">2022 - present</span><h3 class="tl__org">Tanium</h3><p class="tl__role">Senior Enterprise Services Engineer / Escalation Engineer</p><p class="tl__body">The hardest endpoint-management escalations for enterprise and federal customers. 195 cases in six months at 100% CSAT. Rewrote the Risk Assessment tooling to scale from 500 to unbounded endpoints; ran it on 50,000. Client Health dashboards and the webinar that went with them. 2x Star Performer.</p></li>
-<li class="tl"><span class="tl__when">2025 - present</span><h3 class="tl__org">Aitherium</h3><p class="tl__role">Founder, Architect</p><p class="tl__body">Built AitherOS and the aw* stack. 33 agents that plan, code, review, audit, deploy and write about their own work, behind 642 gates I designed. Three tenant appliances live with real customers. Four packages on PyPI, 61 public repos.</p></li>
-    </ol>
+<section id="stack" class="ch wrap" aria-labelledby="stack-h">
+  <div style="width:100%">
+    <p class="kicker">Act III · chapter 1</p>
+    <h2 id="stack-h" class="kt">No gaps in the stack. <em>Scars</em> from every layer.</h2>
+    <p class="lede">I've racked the servers, managed the SAN, administered the OS at 850K-user scale, secured the network, automated the operations, built the APIs, designed the data pipelines, trained the models, scheduled the GPUs, written the Terraform, and built the React dashboard that sits on top of all of it.</p>
+    <div class="stations" id="stations"></div>
   </div>
 </section>
 
-<section id="built" aria-labelledby="h-built">
-  <div class="wrap">
-    <p class="kicker">what i built</p>
-    <h2 id="h-built">AitherOS, and the <em>aw* stack</em> underneath it.</h2>
-    <p class="built-lead"><strong>AitherOS</strong> is an AI-native operating platform: 369 declared services across 12 layers, 33 specialised agents behind one MCP gateway serving ~1,200 tools, a priority scheduler that owns every LLM call across a local RTX 5090, a DGX Spark pool and rented cloud GPUs, and 642 gates that decide what ships. The agents plan, code, review, audit, deploy and write about their own work; the gates make sure they are telling the truth.</p>
-    <p class="built-lead"><strong>aw*</strong> is short for <em>Aither World</em>. Each brick is one thing a stranger can adopt alone; stacks compose them. 64 registered, 40 public, 14 stacks, four on PyPI. A brick is not shipped when it builds; it is shipped when it is reachable from where people look, and a gate enforces that.</p>
-    <ul class="bricks">
-<li class="brick brick--hero"><span class="brick__id">awnix</span><p class="brick__tag">A Linux you can hand to an agent — immutable base, capabilities included.</p></li>
-<li class="brick"><span class="brick__id">AitherConnect</span><p class="brick__tag">Browser extension — federated AI search, page context, and the Living OS overlay.</p></li>
-<li class="brick"><span class="brick__id">AitherZero</span><p class="brick__tag">PowerShell 7+ automation framework — numbered, self-describing scripts.</p></li>
-<li class="brick"><span class="brick__id">aitherkvcache</span><p class="brick__tag">Near-optimal KV cache quantization for LLM inference — sub-byte compression.</p></li>
-<li class="brick"><span class="brick__id">awbac</span><p class="brick__tag">Role-based access control that fails closed and explains itself.</p></li>
-<li class="brick"><span class="brick__id">awbrowse</span><p class="brick__tag">A portable browser client — navigate, console, network, DOM, screenshot.</p></li>
-<li class="brick"><span class="brick__id">awdelphi</span><p class="brick__tag">Anonymous multi-round expert panels — a converged answer with a trace.</p></li>
-<li class="brick"><span class="brick__id">awdit</span><p class="brick__tag">An append-only audit trail whose gaps are DETECTABLE.</p></li>
-<li class="brick"><span class="brick__id">awdk</span><p class="brick__tag">Build AI agent fleets — 3 lines, any backend, local or cloud.</p></li>
-<li class="brick"><span class="brick__id">awfind</span><p class="brick__tag">A portable search client — query, results, ranking.</p></li>
-<li class="brick"><span class="brick__id">awfocus</span><p class="brick__tag">See, search and steer every Claude session from one command.</p></li>
-<li class="brick"><span class="brick__id">awgit</span><p class="brick__tag">Semantic version control on top of git — edit-ops and leases.</p></li>
-<li class="brick"><span class="brick__id">awgraph</span><p class="brick__tag">A semantic code graph for agents — AST + tree-sitter, call graphs.</p></li>
-<li class="brick"><span class="brick__id">awgym</span><p class="brick__tag">An ARC training gym — a game a world model can watch, and six roles that play through it.</p></li>
-<li class="brick"><span class="brick__id">awiam</span><p class="brick__tag">Who is this caller? A directory and session store that fails honestly.</p></li>
-<li class="brick"><span class="brick__id">awkno</span><p class="brick__tag">The man page for the Aither World — every brick, stack and law, offline.</p></li>
-<li class="brick"><span class="brick__id">awknowledge</span><p class="brick__tag">How to run a coding agent so the result survives — the laws, with evidence.</p></li>
-<li class="brick"><span class="brick__id">awm</span><p class="brick__tag">A portable, scoped agent memory.</p></li>
-<li class="brick"><span class="brick__id">awmail</span><p class="brick__tag">Give an agent an email address — send, and actually receive.</p></li>
-<li class="brick"><span class="brick__id">awnboard</span><p class="brick__tag">A front gate you can put in front of anything, and hand someone the key to.</p></li>
-<li class="brick"><span class="brick__id">awnest</span><p class="brick__tag">Prove there is a human before you let them into the nest.</p></li>
-<li class="brick"><span class="brick__id">awnet</span><p class="brick__tag">The agentic web — agents host a mesh, and agents join one.</p></li>
-<li class="brick"><span class="brick__id">awnode</span><p class="brick__tag">A lightweight local gateway — bridges your apps to the AI backends you chose.</p></li>
-<li class="brick"><span class="brick__id">awpack</span><p class="brick__tag">First-party agent packs — the ones we build, versioned and installable on their own.</p></li>
-<li class="brick"><span class="brick__id">awpredict</span><p class="brick__tag">Predict what your environment does next, and how surprised you were.</p></li>
-<li class="brick"><span class="brick__id">awprism</span><p class="brick__tag">Turn a failure into ranked hypotheses — and say what would confirm each one.</p></li>
-<li class="brick"><span class="brick__id">awreason</span><p class="brick__tag">A portable reasoning client — sessions, phases, thoughts, and the chain that produced the answer.</p></li>
-<li class="brick"><span class="brick__id">awrecover</span><p class="brick__tag">Labelled snapshots with an all-or-nothing restore.</p></li>
-<li class="brick"><span class="brick__id">awrecurse</span><p class="brick__tag">Answer a question over a context far larger than the window — recursively, with the trace kept.</p></li>
-<li class="brick"><span class="brick__id">awrelay</span><p class="brick__tag">Portable agent messaging — findings, alerts, coordination.</p></li>
-<li class="brick"><span class="brick__id">awrepl</span><p class="brick__tag">A REPL an agent can actually use — state that survives between turns.</p></li>
-<li class="brick"><span class="brick__id">awresearch</span><p class="brick__tag">Ask a research question, get a cited report you can check.</p></li>
-<li class="brick"><span class="brick__id">awrtifact</span><p class="brick__tag">Deliberately chunk artifacts into GitHub release assets — the productized aitherkvcache mirror lane.</p></li>
-<li class="brick"><span class="brick__id">awrun</span><p class="brick__tag">A priority-aware queue and dispatcher for agentic runs and ad-hoc CI builds. It also judges whether the runner pool is big enough for the queue it is draining, and can ask a host to grow it -- reserving capacity is zero-sum, so a saturated pool needs more of it, not a different share of it.</p></li>
-<li class="brick"><span class="brick__id">awseal</span><p class="brick__tag">Sign an artifact so a stranger can verify it.</p></li>
-<li class="brick"><span class="brick__id">awsh</span><p class="brick__tag">Your terminal answers you -- type a question where a command would go.</p></li>
-<li class="brick"><span class="brick__id">awshare</span><p class="brick__tag">Publish an artifact and fetch it back verified.</p></li>
-<li class="brick"><span class="brick__id">awskills</span><p class="brick__tag">Portable agent skills — self-contained procedures an agent loads on demand.</p></li>
-<li class="brick"><span class="brick__id">awtoll</span><p class="brick__tag">What every tool call costs you in context, measured from your own transcripts.</p></li>
-<li class="brick"><span class="brick__id">awtunnel</span><p class="brick__tag">Reach a service that has no public address.</p></li>
-<li class="brick brick--dim"><span class="brick__id">awask</span><span class="chip">unpublished</span><p class="brick__tag">Your agent asks you a question — and acts on your answer.</p></li>
-<li class="brick brick--dim"><span class="brick__id">awbeads</span><span class="chip">unpublished</span><p class="brick__tag">A spatial canvas for a page — arrange things, connect them, and keep the arrangement.</p></li>
-<li class="brick brick--dim"><span class="brick__id">awbonsai</span><span class="chip">planned</span><p class="brick__tag">Run a real model in the visitor&#x27;s own browser — no server round trip, no upload.</p></li>
-<li class="brick brick--dim"><span class="brick__id">awbrain</span><span class="chip">unpublished</span><p class="brick__tag">Your history as a wiki of linked markdown — claims pinned to the evidence.</p></li>
-<li class="brick brick--dim"><span class="brick__id">awcache</span><span class="chip">planned</span><p class="brick__tag">Let a second node skip its prefill because a first node already paid for it.</p></li>
-<li class="brick brick--dim"><span class="brick__id">awclassify</span><span class="chip">unpublished</span><p class="brick__tag">Classify any document -- what it is, who may read it, who it is for, what it is about.</p></li>
-<li class="brick brick--dim"><span class="brick__id">awdata</span><span class="chip">planned</span><p class="brick__tag">Open labelled corpora you can train and measure against, with the code that built them.</p></li>
-<li class="brick brick--dim"><span class="brick__id">awembed</span><span class="chip">unpublished</span><p class="brick__tag">Train an embedding model that knows your corpus, and prove it beats the big one.</p></li>
-<li class="brick brick--dim"><span class="brick__id">awevolve</span><span class="chip">unpublished</span><p class="brick__tag">Point an agent at a file and a command that scores it, and let it improve.</p></li>
-<li class="brick brick--dim"><span class="brick__id">awkit</span><span class="chip">unpublished</span><p class="brick__tag">Render an agent panel from a tool result — one component, any React app.</p></li>
-<li class="brick brick--dim"><span class="brick__id">awmod</span><span class="chip">planned</span><p class="brick__tag">Wire the agent harness you already use into a fleet you already run.</p></li>
-<li class="brick brick--dim"><span class="brick__id">awpool</span><span class="chip">planned</span><p class="brick__tag">The free half of the elastic work pool: dispatches public-safe work onto the free GitHub-hosted runners of the public aw* mirrors, so their idle CI minutes become compute. awrun remains the paid/self-hosted lane; this is its free twin.</p></li>
-<li class="brick brick--dim"><span class="brick__id">awrena</span><span class="chip">unpublished</span><p class="brick__tag">Put two agents head to head and get a verdict you can check.</p></li>
-<li class="brick brick--dim"><span class="brick__id">awrise</span><span class="chip">unpublished</span><p class="brick__tag">Wake an agent on a schedule, let it do one thing, and put it back to sleep.</p></li>
-<li class="brick brick--dim"><span class="brick__id">awrouter</span><span class="chip">unpublished</span><p class="brick__tag">OpenRouter for your own fleet: pick a model backend by cost/latency/ capability, fail over, fit the context window, stream. Standalone, OpenAI-compatible, no Aither-specifics required to be valuable.</p></li>
-<li class="brick brick--dim"><span class="brick__id">awscreen</span><span class="chip">unpublished</span><p class="brick__tag">See this machine — what is on screen, and where to click it.</p></li>
-<li class="brick brick--dim"><span class="brick__id">awsprite</span><span class="chip">planned</span><p class="brick__tag">Hatch a companion that grows only from what you teach it, then take it home.</p></li>
-<li class="brick brick--dim"><span class="brick__id">awstorage</span><span class="chip">unpublished</span><p class="brick__tag">Every drive on every node, indexed, classified and diffed -- so you can see what you own before you delete it.</p></li>
-<li class="brick brick--dim"><span class="brick__id">awswarm</span><span class="chip">planned</span><p class="brick__tag">Run one model too big for any single GPU across a pool of small ones.</p></li>
-<li class="brick brick--dim"><span class="brick__id">awsync</span><span class="chip">merged</span><p class="brick__tag">Keep one client in step with a platform — and never confuse &quot;cannot tell&quot; with &quot;fine&quot;.</p></li>
-<li class="brick brick--dim"><span class="brick__id">awvision</span><span class="chip">unpublished</span><p class="brick__tag">See an image — describe it, ask it a question, compare two.</p></li>
-<li class="brick brick--dim"><span class="brick__id">awvoice</span><span class="chip">unpublished</span><p class="brick__tag">Hear and speak — transcribe audio, synthesize a voice.</p></li>
-<li class="brick brick--dim"><span class="brick__id">awwall</span><span class="chip">unpublished</span><p class="brick__tag">Say what a workload may reach, and watch everything else fail closed.</p></li>
-<li class="brick brick--dim"><span class="brick__id">gobbonet-agentic</span><span class="chip">no-pages</span><p class="brick__tag">GobboNet campaigns with a real agent brain — scoped memory, graph recall.</p></li>
-    </ul>
-    <p class="bricks-note">64 bricks rendered from AitherOS/config/ecosystem.yaml. Dimmed = registered, not yet public. An absence with a name can be chased; a silent one gets rediscovered.</p>
+<section id="factory" class="ch wrap" aria-labelledby="factory-h">
+  <div style="width:100%">
+    <p class="kicker">Act III · chapter 2</p>
+    <h2 id="factory-h" class="kt">Six things an autonomous factory must do — and what I <em>built</em> for each.</h2>
+    <p class="lede">Onebrief's six bullets. Each answered with a thing that exists, runs unattended, and has an exit code.</p>
+    <div class="panels" id="panels"></div>
   </div>
 </section>
 
-<section id="how" aria-labelledby="h-how">
-  <div class="wrap">
-    <p class="kicker">how i work</p>
-    <h2 id="h-how">Six things an autonomous factory must do, <em>and what I built for each.</em></h2>
-    <ol class="docs">
-<li class="doc"><h3 class="doc__t"><span class="doc__n">01</span> Orchestrate</h3><p class="doc__jd">Architect Multi-Agent Systems</p><p class="doc__p">Designed the AitherOS dispatch ladder: a 33-agent roster (Demiurge codes, Hydra reviews, Athena audits, Apollo profiles, Prometheus deploys, Scribe documents) behind a single MCP gateway, with capability-based routing, swarm coding (11 parallel LLM agents), agent-to-agent mesh messaging (awrelay), and a ratchet loop (propose -&gt; apply -&gt; score -&gt; keep/revert) driving measurable improvement. All LLM traffic routes through one priority scheduler (MicroScheduler) across a local RTX 5090, a DGX Spark pool and rented cloud GPUs.</p></li>
-<li class="doc"><h3 class="doc__t"><span class="doc__n">02</span> Govern</h3><p class="doc__jd">Implement Automated Governance</p><p class="doc__p">Replaced manual review with 642 checker gates, each required to carry a --self-test proving it can still fail, each wired into one of four unattended lanes (CI, 4-hour in-fleet probe, host probe, self-test-only with a stated reason). A ledger rule forbids recording a mechanically detectable defect as a note: it must become a check. Stop hooks block a session that changed code without touching a gate or the ledger. A written &quot;no false blockers&quot; doctrine defines exactly three legitimate reasons an agent may stop (physically impossible, irreversible and destructive, owner said no) and measurably cut stalled loops.</p></li>
-<li class="doc"><h3 class="doc__t"><span class="doc__n">03</span> Remember</h3><p class="doc__jd">Engineer Context and Memory</p><p class="doc__p">Built the semantic substrate agents work from: a code graph (awgraph, AST + tree-sitter call graphs, recall@25 measured), a repo-understanding layer (repowise), a portable scoped memory (awm), a knowledge graph with hybrid search (Nexus), a 25-question retrieval gold set with canaries that gate every chunking/embedding change, and a per-project doctrine file bind-mounted into every agent workspace. Trained a code-search embedder 13x smaller than its teacher that beats it, for $3 of GPU.</p></li>
-<li class="doc"><h3 class="doc__t"><span class="doc__n">04</span> Evaluate</h3><p class="doc__jd">Build Rigorous Evaluation Frameworks</p><p class="doc__p">Every gate exits 0 / 1 / 2 (pass / violation / could-not-judge) and &quot;could not judge&quot; is never a pass. Built the gauntlet: capture -&gt; change -&gt; recapture -&gt; blind A/B verdict -&gt; raw-exit-code gate -&gt; accept/reject with a rejected ledger. Caught a trainer that reported &quot;3 epochs over 20,000 records&quot; while touching 192 rows, an optimiser that had never run a round while logging &quot;completed&quot;, and a mock-driven test suite that never executed the loop it tested. Bucketed metrics by seen/unseen so an aggregate at ceiling cannot hide a bucket at floor.</p></li>
-<li class="doc"><h3 class="doc__t"><span class="doc__n">05</span> Self-heal</h3><p class="doc__jd">Design Self-Healing Loops</p><p class="doc__p">Autoheal + a death watchdog (opt-out) restart wedged services; a 4-hourly probe runs 79 live gates in-fleet and pages on VIOLATION and on DEAD separately; a data-writability gate auto-repairs non-sensitive permission drift and quarantines anything credential-shaped; a paging-path gate asserts the page itself LANDS by round-trip, after an outage where detection worked and the page died. Root-caused and documented the incidents (nine-hour WSL flap, thundering-herd boot storm, silent-empty SSE lanes) as gates, not memories.</p></li>
-<li class="doc"><h3 class="doc__t"><span class="doc__n">06</span> Ship</h3><p class="doc__jd">Prototype and Deploy</p><p class="doc__p">Ship cadence: a new tenant app (backend, agent brain pack, portal, Cloudflare tunnel, GitHub Pages) in about ten minutes; three paying or pilot tenant appliances live (repair shop, game studio, political campaign tooling); 61 public repos; four packages on PyPI; an on-device 1.7B model running in a Pixel 10 browser talking to the platform; a WebMCP design studio in the browser; and every blog post converted to a narrated video by the pipeline that made the one attached to this application.</p></li>
-    </ol>
+<section id="constellation" class="ch wrap" aria-labelledby="const-h">
+  <div style="width:100%">
+    <p class="kicker">Act III · chapter 3</p>
+    <h2 id="const-h" class="kt">The aw* stack. 64 bricks. 40 public. One immutable Linux <em>underneath.</em></h2>
+    <p class="lede"><span class="mono">aw</span> is short for <b>Aither World</b>. Every brick does one useful thing alone for a stranger and composes into stacks. <span class="mono acc">awnix</span> is the box you hand an agent. Hover or tap a node. Pick a stack to light its bricks.</p>
+    <div class="chips" id="stackbtns" role="group" aria-label="stacks"></div>
+    <div class="cwrap panel" id="cwrap">
+      <svg id="csvg" viewBox="0 0 1200 760" role="img" aria-label="Constellation of the 64 aw* bricks"></svg>
+      <div class="tip" id="tip" role="tooltip"></div>
+    </div>
+    <p class="legend"><i style="background:oklch(0.14 0.03 220);border:1px solid var(--accent-a50)"></i>public <i style="background:oklch(0.12 0.02 250);border:1px solid var(--border)"></i>unpublished / planned <i style="background:var(--accent-a30);border:1px solid var(--accent)"></i>awnix</p>
   </div>
 </section>
 
-<section id="proof" aria-labelledby="h-proof">
-  <div class="wrap">
-    <p class="kicker">proof</p>
-    <h2 id="h-proof">Go look. <em>It's all public.</em></h2>
-    <ul class="proofs">
-<li><a class="proof" href="https://github.com/Aitherium" target=_blank rel=noopener><span>AitherOS / aw* org</span><span class="proof__u">github.com/Aitherium</span></a></li>
-<li><a class="proof" href="https://blog.aitherium.com" target=_blank rel=noopener><span>Blog (270 posts, agent-written and gated)</span><span class="proof__u">blog.aitherium.com</span></a></li>
-<li><a class="proof" href="https://blog.aitherium.com/code-search-embedder-13x-smaller-beats-its-teacher" target=_blank rel=noopener><span>13x smaller embedder beats its teacher</span><span class="proof__u">blog.aitherium.com/code-search-embedder-13x-smaller-beats-its-teacher</span></a></li>
-<li><a class="proof" href="https://demo.aitherium.com" target=_blank rel=noopener><span>Live demo hub</span><span class="proof__u">demo.aitherium.com</span></a></li>
-<li><a class="proof" href="resume.pdf" ><span>Resume (PDF)</span><span class="proof__u">resume.pdf</span></a></li>
-<li><a class="proof" href="https://pypi.org/user/wizzense/" target=_blank rel=noopener><span>PyPI: awdk 3.8.11, awgit 1.10.0, awgraph 1.4.2, awrelay 0.3.1</span><span class="proof__u">pypi.org/user/wizzense/</span></a></li>
-    </ul>
+<section id="close" class="ch wrap" aria-labelledby="close-h">
+  <div style="width:100%">
+    <p class="kicker">Act III · close</p>
+    <h2 id="close-h" class="kt">Go look. <em>It's all public.</em></h2>
+    <p class="lede">21,065 commits, 642 gates that can prove they still fail, a blog the agents write, a demo hub, and a resume. None of it needs my word for it.</p>
+    <div class="uni">
+      <div class="uni-stage">
+        <canvas class="uni-canvas" aria-hidden="true"></canvas>
+        <div class="uni-nodes">
+          <a class="orb here" data-id="who" data-kind="site" href="#hero" style="--orb:var(--accent)"><span class="k">this page</span><span class="n">wizzense.github.io</span><span class="d">awnix, booted. The shell above.</span></a>
+          <a class="orb" data-id="org" data-kind="repo" href="https://github.com/Aitherium" style="--orb:var(--cyan)"><span class="k">code</span><span class="n">Aitherium org</span><span class="d">61 public repos · the aw* stack · AitherOS</span></a>
+          <a class="orb" data-id="blog" data-kind="site" href="https://blog.aitherium.com" style="--orb:var(--mint)"><span class="k">writing</span><span class="n">blog.aitherium.com</span><span class="d">270 posts, written and published by agents</span></a>
+          <a class="orb" data-id="demo" data-kind="site" href="https://demo.aitherium.com" style="--orb:var(--accent-warm)"><span class="k">running</span><span class="n">demo.aitherium.com</span><span class="d">the live demo hub</span></a>
+          <a class="orb" data-id="resume" data-kind="doc" href="resume.pdf" style="--orb:var(--warn)"><span class="k">paper</span><span class="n">resume.pdf</span><span class="d">3 pages, every number sourced</span></a>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div class="row">
+        <img src="assets/wordmark.svg" alt="Aitherium" width="88" height="22">
+        <span>David Parkhurst · <a href="mailto:david.parkhurst@aitherium.com">david.parkhurst@aitherium.com</a> · Mission Viejo, CA · remote</span>
+        <span class="sp"></span>
+        <span class="mono">built by docs/build.py from facts/resume.yaml · measured 2026-09-03</span>
+      </div>
+    </footer>
   </div>
 </section>
 </main>
 
-<footer>
-  <div class="wrap">
-    <p class="sig">David Parkhurst</p>
-    <p><a href="mailto:david.parkhurst@aitherium.com">david.parkhurst@aitherium.com</a> · Mission Viejo, California (remote)</p>
-    <p class="fine">This page has no build step, no framework and no tracker. The numbers were measured by the same gates that gate the code. Last measured 2026-09-03.</p>
-  </div>
-</footer>
-
+<script id="data" type="application/json">{"identity":{"name":"David Parkhurst","headline":"Outcome Engineer. Founder & Architect, Aitherium / AitherOS. USAF veteran.","location":"Mission Viejo, California (remote)","email":"david.parkhurst@aitherium.com","linkedin":"linkedin.com/in/david-a-parkhurst","github":"github.com/wizzense","org":"github.com/Aitherium","site":"aitherium.com","blog":"blog.aitherium.com","demo":"demo.aitherium.com","clearance_note":"Prior DoD work; USAF Cyber Systems Operations 2014-2020."},"summary":"I run a software factory, not a backlog. Over 14 months I built AitherOS — an AI-native operating platform where 33 specialised agents plan, code, review, audit, deploy and write about their own work — and used it to land 21,065 commits, 642 self-testing quality gates, ~1,200 MCP tools and 270 published posts, most of it authored and shipped by agents under programmatic governance I designed. Before that: 12 years racking, securing and automating enterprise infrastructure, including the second-largest Active Directory on earth for the US Air Force. I have scars from every layer of the stack and a documented, measured opinion about how autonomous systems fail. Onebrief's Outcome Engineering charter — orchestration, governance, memory, evaluation, self-healing, ship — is the job I have been doing, in the open, every day.","metrics":[{"key":"commits_total","value":21065,"label":"commits since 2025-06-08","how":"git rev-list --count HEAD"},{"key":"commits_90d","value":13928,"label":"commits, last 90 days","how":"git rev-list --count --since='90 days ago' HEAD"},{"key":"quality_gates","value":642,"label":"self-testing quality gates","how":"git ls-files 'AitherOS/dev/tools/check_*.py' | wc -l"},{"key":"mcp_tools_served","value":"~1,200","label":"MCP tools served","how":"gateway tools/list (1204-1211 on probe)"},{"key":"compose_services","value":369,"label":"services declared","how":"grep -cE '^  [a-z][a-z0-9-]+:$' docker-compose.aitheros.yml"},{"key":"blog_posts","value":270,"label":"posts written + published by agents","how":"ls AitherVeil/content/blog/*.md | wc -l"},{"key":"aw_bricks_registered","value":64,"label":"aw* bricks registered (40 public)","how":"yaml.safe_load(ecosystem.yaml)['bricks']"},{"key":"routines","value":160,"label":"scheduled routines","how":"ls AitherOS/config/routines/*.yaml | wc -l"},{"key":"agents","value":33,"label":"specialised agents","how":"ls .claude/agents | wc -l"},{"key":"org_public_repos","value":61,"label":"public repos, Aitherium org","how":"gh repo list Aitherium --json visibility"}],"pypi":{"awdk":"3.8.11","awgit":"1.10.0","awgraph":"1.4.2","awrelay":"0.3.1"},"jd":[{"jd":"Architect Multi-Agent Systems","proof":"Designed the AitherOS dispatch ladder: a 33-agent roster (Demiurge codes, Hydra reviews, Athena audits, Apollo profiles, Prometheus deploys, Scribe documents) behind a single MCP gateway, with capability-based routing, swarm coding (11 parallel LLM agents), agent-to-agent mesh messaging (awrelay), and a ratchet loop (propose -> apply -> score -> keep/revert) driving measurable improvement. All LLM traffic routes through one priority scheduler (MicroScheduler) across a local RTX 5090, a DGX Spark pool and rented cloud GPUs."},{"jd":"Implement Automated Governance","proof":"Replaced manual review with 642 checker gates, each required to carry a --self-test proving it can still fail, each wired into one of four unattended lanes (CI, 4-hour in-fleet probe, host probe, self-test-only with a stated reason). A ledger rule forbids recording a mechanically detectable defect as a note: it must become a check. Stop hooks block a session that changed code without touching a gate or the ledger. A written \"no false blockers\" doctrine defines exactly three legitimate reasons an agent may stop (physically impossible, irreversible and destructive, owner said no) and measurably cut stalled loops."},{"jd":"Engineer Context and Memory","proof":"Built the semantic substrate agents work from: a code graph (awgraph, AST + tree-sitter call graphs, recall@25 measured), a repo-understanding layer (repowise), a portable scoped memory (awm), a knowledge graph with hybrid search (Nexus), a 25-question retrieval gold set with canaries that gate every chunking/embedding change, and a per-project doctrine file bind-mounted into every agent workspace. Trained a code-search embedder 13x smaller than its teacher that beats it, for $3 of GPU."},{"jd":"Build Rigorous Evaluation Frameworks","proof":"Every gate exits 0 / 1 / 2 (pass / violation / could-not-judge) and \"could not judge\" is never a pass. Built the gauntlet: capture -> change -> recapture -> blind A/B verdict -> raw-exit-code gate -> accept/reject with a rejected ledger. Caught a trainer that reported \"3 epochs over 20,000 records\" while touching 192 rows, an optimiser that had never run a round while logging \"completed\", and a mock-driven test suite that never executed the loop it tested. Bucketed metrics by seen/unseen so an aggregate at ceiling cannot hide a bucket at floor."},{"jd":"Design Self-Healing Loops","proof":"Autoheal + a death watchdog (opt-out) restart wedged services; a 4-hourly probe runs 79 live gates in-fleet and pages on VIOLATION and on DEAD separately; a data-writability gate auto-repairs non-sensitive permission drift and quarantines anything credential-shaped; a paging-path gate asserts the page itself LANDS by round-trip, after an outage where detection worked and the page died. Root-caused and documented the incidents (nine-hour WSL flap, thundering-herd boot storm, silent-empty SSE lanes) as gates, not memories."},{"jd":"Prototype and Deploy","proof":"Ship cadence: a new tenant app (backend, agent brain pack, portal, Cloudflare tunnel, GitHub Pages) in about ten minutes; three paying or pilot tenant appliances live (repair shop, game studio, political campaign tooling); 61 public repos; four packages on PyPI; an on-device 1.7B model running in a Pixel 10 browser talking to the platform; a WebMCP design studio in the browser; and every blog post converted to a narrated video by the pipeline that made the one attached to this application."}],"experience":[{"org":"Aitherium","title":"Founder, Architect (AitherOS, the aw* stack, awnix)","dates":"Jul 2025 - Present","bullets":["Architected AitherOS: 369 declared services across 12 layers, run as podman quadlets on Rocky/Debian, with Postgres replication, Redis Sentinel, Cloudflare tunnels, and GPU scheduling across local, DGX and rented (Lambda, Vast, Hetzner, AWS) capacity.","Built the aw* (Aither World) family: 64 registered bricks, 40 public, composed into 14 stacks. awnix is an immutable Linux you can hand to an agent; awdk builds agent fleets in three lines; awgit is op-log-aware git for many agents in one tree; awgraph, awm, awrelay, awiam, awbac, awseal, awdit cover code graph, memory, messaging, identity, RBAC, signing and audit. Four on PyPI.","Governance as code: 642 self-testing gates, a per-gate lane manifest (CHK001-006) that asserts 100% coverage and refuses a gate that runs nowhere, and a debt-ledger protocol where a detectable defect must become a check. Measured the ledger at 79 rows/day in vs 4.2/day out before the rule; it stopped being a write-only archive after.","21,065 commits since June 2025 (13,928 in the last 90 days), 33,075 tracked files, 270 blog posts, 160 scheduled routines - the majority authored by agents under those gates, with every claim required to carry its command and exit code.","Trained and shipped models: a code-search embedder 13x smaller than its teacher that beats it (recall measured on the platform's own corpus); Gemma-4 and orchestrator fine-tunes with a positive-baseline rule (a trainer must beat a named baseline or it is not a result); Bonsai 1.7B running in-browser on a phone.","Security posture designed fail-closed: authz gates deny on every non-happy path, no caller-supplied tenant ids in a decision, dual-key rotation of the fleet credential across 43 verifier sites, secrets vault with audit round-trip asserted by a gate.","Sold and operated real tenants: J Games & Repair, Digital Ground Game, Garg - each a generated repo, appliance image, brain pack and portal the customer owns."]},{"org":"Tanium","title":"Senior Enterprise Services Engineer (prev. Escalation Engineer, Senior TAM, ESE)","dates":"Jan 2022 - Present","bullets":["Platform SME on the hardest escalations for enterprise and federal endpoint-management customers; 195 cases in six months at 100% CSAT.","Rewrote the Tanium Risk Assessment tooling in Python to scale from 500 to unbounded endpoints; applied to a 50,000-endpoint environment.","Built Client Health dashboards and automation moving customers toward a self-healing endpoint estate; authored the guide and ran the live webinar (hundreds of attendees).","Fully automated a home lab through Tanium + PowerShell + Python as a self-managing environment - the seed of AitherOS.","2x Star Performer award (2024)."]},{"org":"Boeing","title":"HPC Linux System Engineer","dates":"Apr 2020 - Jan 2022","bullets":["Owned the enterprise tape archive (Oracle HSM / SAM-QFS -> Versity Storage Manager as technical lead) and a fibre-channel SAN for HPC.","Wrote Python automation for recovery, monitoring and archival; led LTO6 -> LTO8 migration and data-at-rest encryption (OKM 3, IBM SKLM)."]},{"org":"United States Air Force - Cyber Systems Operations","title":"Enterprise Active Directory Engineer, Functional Lead, Supervisor Directory Services Ops","dates":"Jan 2014 - Jan 2020","bullets":["Led Tier-2 operations for a $10B, 850,000-user, 690-domain-controller, 230-site Active Directory - the second-largest AD network in the world - including classified and unclassified GAL/Exchange services 24/7.","Automated DC maintenance and health checks for 70+ domain controllers in PowerShell; performed an authoritative ADDS restore recovering 3,000 accounts with zero collateral impact.","Identified a training gap, wrote the ADDS troubleshooting curriculum, and trained 357 technicians across four organisations.","Red Flag 17-1 blue-team operator, Superior Performer; Junior Technician of the Year 2017; Information Dominance award 2018; promoted SSgt in the 94th percentile."]}],"links":[{"label":"AitherOS / aw* org","url":"https://github.com/Aitherium"},{"label":"Blog (270 posts, agent-written and gated)","url":"https://blog.aitherium.com"},{"label":"13x smaller embedder beats its teacher","url":"https://blog.aitherium.com/code-search-embedder-13x-smaller-beats-its-teacher"},{"label":"Live demo hub","url":"https://demo.aitherium.com"},{"label":"Who I am (this site)","url":"https://wizzense.github.io"}],"bricks":[{"id":"awnix","tagline":"A Linux you can hand to an agent — immutable base, capabilities included.","status":"public"},{"id":"AitherConnect","tagline":"Browser extension — federated AI search, page context, and the Living OS overlay.","status":"public"},{"id":"aitherkvcache","tagline":"Near-optimal KV cache quantization for LLM inference — sub-byte compression.","status":"public"},{"id":"AitherZero","tagline":"PowerShell 7+ automation framework — numbered, self-describing scripts.","status":"public"},{"id":"awbac","tagline":"Role-based access control that fails closed and explains itself.","status":"public"},{"id":"awbrowse","tagline":"A portable browser client — navigate, console, network, DOM, screenshot.","status":"public"},{"id":"awdelphi","tagline":"Anonymous multi-round expert panels — a converged answer with a trace.","status":"public"},{"id":"awdit","tagline":"An append-only audit trail whose gaps are DETECTABLE.","status":"public"},{"id":"awdk","tagline":"Build AI agent fleets — 3 lines, any backend, local or cloud.","status":"public"},{"id":"awfind","tagline":"A portable search client — query, results, ranking.","status":"public"},{"id":"awfocus","tagline":"See, search and steer every Claude session from one command.","status":"public"},{"id":"awgit","tagline":"Semantic version control on top of git — edit-ops and leases.","status":"public"},{"id":"awgraph","tagline":"A semantic code graph for agents — AST + tree-sitter, call graphs.","status":"public"},{"id":"awgym","tagline":"An ARC training gym — a game a world model can watch, and six roles that play through it.","status":"public"},{"id":"awiam","tagline":"Who is this caller? A directory and session store that fails honestly.","status":"public"},{"id":"awkno","tagline":"The man page for the Aither World — every brick, stack and law, offline.","status":"public"},{"id":"awknowledge","tagline":"How to run a coding agent so the result survives — the laws, with evidence.","status":"public"},{"id":"awm","tagline":"A portable, scoped agent memory.","status":"public"},{"id":"awmail","tagline":"Give an agent an email address — send, and actually receive.","status":"public"},{"id":"awnboard","tagline":"A front gate you can put in front of anything, and hand someone the key to.","status":"public"},{"id":"awnest","tagline":"Prove there is a human before you let them into the nest.","status":"public"},{"id":"awnet","tagline":"The agentic web — agents host a mesh, and agents join one.","status":"public"},{"id":"awnode","tagline":"A lightweight local gateway — bridges your apps to the AI backends you chose.","status":"public"},{"id":"awpack","tagline":"First-party agent packs — the ones we build, versioned and installable on their own.","status":"public"},{"id":"awpredict","tagline":"Predict what your environment does next, and how surprised you were.","status":"public"},{"id":"awprism","tagline":"Turn a failure into ranked hypotheses — and say what would confirm each one.","status":"public"},{"id":"awreason","tagline":"A portable reasoning client — sessions, phases, thoughts, and the chain that produced the answer.","status":"public"},{"id":"awrecover","tagline":"Labelled snapshots with an all-or-nothing restore.","status":"public"},{"id":"awrecurse","tagline":"Answer a question over a context far larger than the window — recursively, with the trace kept.","status":"public"},{"id":"awrelay","tagline":"Portable agent messaging — findings, alerts, coordination.","status":"public"},{"id":"awrepl","tagline":"A REPL an agent can actually use — state that survives between turns.","status":"public"},{"id":"awresearch","tagline":"Ask a research question, get a cited report you can check.","status":"public"},{"id":"awrtifact","tagline":"Deliberately chunk artifacts into GitHub release assets — the productized aitherkvcache mirror lane.","status":"public"},{"id":"awrun","tagline":"A priority-aware queue and dispatcher for agentic runs and ad-hoc CI builds. It also judges whether the runner pool is big enough for the queue it is draining, and can ask a host to grow it -- reserving capacity is zero-sum, so a saturated pool needs more of it, not a different share of it.","status":"public"},{"id":"awseal","tagline":"Sign an artifact so a stranger can verify it.","status":"public"},{"id":"awsh","tagline":"Your terminal answers you -- type a question where a command would go.","status":"public"},{"id":"awshare","tagline":"Publish an artifact and fetch it back verified.","status":"public"},{"id":"awskills","tagline":"Portable agent skills — self-contained procedures an agent loads on demand.","status":"public"},{"id":"awtoll","tagline":"What every tool call costs you in context, measured from your own transcripts.","status":"public"},{"id":"awtunnel","tagline":"Reach a service that has no public address.","status":"public"},{"id":"awsync","tagline":"Keep one client in step with a platform — and never confuse \"cannot tell\" with \"fine\".","status":"merged"},{"id":"gobbonet-agentic","tagline":"GobboNet campaigns with a real agent brain — scoped memory, graph recall.","status":"no-pages"},{"id":"awask","tagline":"Your agent asks you a question — and acts on your answer.","status":"unpublished"},{"id":"awbeads","tagline":"A spatial canvas for a page — arrange things, connect them, and keep the arrangement.","status":"unpublished"},{"id":"awbrain","tagline":"Your history as a wiki of linked markdown — claims pinned to the evidence.","status":"unpublished"},{"id":"awclassify","tagline":"Classify any document -- what it is, who may read it, who it is for, what it is about.","status":"unpublished"},{"id":"awembed","tagline":"Train an embedding model that knows your corpus, and prove it beats the big one.","status":"unpublished"},{"id":"awevolve","tagline":"Point an agent at a file and a command that scores it, and let it improve.","status":"unpublished"},{"id":"awkit","tagline":"Render an agent panel from a tool result — one component, any React app.","status":"unpublished"},{"id":"awrena","tagline":"Put two agents head to head and get a verdict you can check.","status":"unpublished"},{"id":"awrise","tagline":"Wake an agent on a schedule, let it do one thing, and put it back to sleep.","status":"unpublished"},{"id":"awrouter","tagline":"OpenRouter for your own fleet: pick a model backend by cost/latency/ capability, fail over, fit the context window, stream. Standalone, OpenAI-compatible, no Aither-specifics required to be valuable.","status":"unpublished"},{"id":"awscreen","tagline":"See this machine — what is on screen, and where to click it.","status":"unpublished"},{"id":"awstorage","tagline":"Every drive on every node, indexed, classified and diffed -- so you can see what you own before you delete it.","status":"unpublished"},{"id":"awvision","tagline":"See an image — describe it, ask it a question, compare two.","status":"unpublished"},{"id":"awvoice","tagline":"Hear and speak — transcribe audio, synthesize a voice.","status":"unpublished"},{"id":"awwall","tagline":"Say what a workload may reach, and watch everything else fail closed.","status":"unpublished"},{"id":"awbonsai","tagline":"Run a real model in the visitor's own browser — no server round trip, no upload.","status":"planned"},{"id":"awcache","tagline":"Let a second node skip its prefill because a first node already paid for it.","status":"planned"},{"id":"awdata","tagline":"Open labelled corpora you can train and measure against, with the code that built them.","status":"planned"},{"id":"awmod","tagline":"Wire the agent harness you already use into a fleet you already run.","status":"planned"},{"id":"awpool","tagline":"The free half of the elastic work pool: dispatches public-safe work onto the free GitHub-hosted runners of the public aw* mirrors, so their idle CI minutes become compute. awrun remains the paid/self-hosted lane; this is its free twin.","status":"planned"},{"id":"awsprite","tagline":"Hatch a companion that grows only from what you teach it, then take it home.","status":"planned"},{"id":"awswarm","tagline":"Run one model too big for any single GPU across a pool of small ones.","status":"planned"}],"stacks":[{"id":"agent-vm","bricks":["awnix","awdk","awskills","awkno"],"tagline":"The bare agent VM"},{"id":"agent-senses","bricks":["awfind","awbrowse","awvoice","awvision","awscreen","awdk"],"tagline":"Senses"},{"id":"avatar-ensemble","bricks":["awdk","awsh","awvoice","awvision","awsprite"],"tagline":"Avatar ensemble"},{"id":"provenance","bricks":["awseal","awshare","awdit","awbac"],"tagline":"Provenance"},{"id":"shared-worktree","bricks":["awgit","awgraph","awrelay","awm"],"tagline":"Many agents, one repo"},{"id":"the-front-door","bricks":["awnboard","awnest","awiam","awbac","awdit"],"tagline":"The front door"},{"id":"who-what-did","bricks":["awiam","awbac","awdit"],"tagline":"Identity, authority, and the record"},{"id":"one-surface","bricks":["awkit","awdk","awnode","awiam","awbac"],"tagline":"One surface — agent panels, not hand-built UIs"},{"id":"the-reasoning-loop","bricks":["awreason","awprism","awrepl","awrecurse"],"tagline":"The reasoning loop"},{"id":"cited-research","bricks":["awresearch","awfind","awbrowse","awm"],"tagline":"Research you can check"},{"id":"personal-mesh-pool","bricks":["awnet","awnode","awdk"],"tagline":"A pool across your own devices"},{"id":"browser-companion-graduation","bricks":["awsprite","awbonsai","awdk","awsh","awnode"],"tagline":"Grow a companion in the browser, then take it home"},{"id":"inference-commons","bricks":["awnix","awnode","awnet","awcache","awswarm","awpool","aitherkvcache","awrtifact","awtunnel","awwall"],"tagline":"The inference commons -- pool compute, storage and caches across strangers' nodes"},{"id":"retrieval-you-trained","bricks":["awembed","awdata","awgraph","awfind","awm","awdk"],"tagline":"Retrieval you trained yourself"}]}</script>
 <script>
 (function(){
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var els = document.querySelectorAll('.num__v[data-count]');
-  if (reduce || !('IntersectionObserver' in window)) return;
-  var fmt = function(n){ return n.toLocaleString('en-US'); };
-  var run = function(el){
-    var target = parseInt(el.getAttribute('data-count'), 10);
-    var prefix = el.textContent.charAt(0) === '~' ? '~' : '';
-    var t0 = null, dur = 1100;
-    var step = function(ts){
-      if (!t0) t0 = ts;
-      var p = Math.min(1, (ts - t0) / dur);
-      var e = 1 - Math.pow(1 - p, 3);
-      el.textContent = prefix + fmt(Math.round(target * e));
-      if (p < 1) requestAnimationFrame(step); else el.textContent = prefix + fmt(target);
-    };
-    requestAnimationFrame(step);
-  };
-  var io = new IntersectionObserver(function(entries){
-    entries.forEach(function(en){
-      if (en.isIntersecting) { run(en.target); io.unobserve(en.target); }
-    });
-  }, {threshold: 0.4});
-  els.forEach(function(el){ io.observe(el); });
+'use strict';
+const D = JSON.parse(document.getElementById('data').textContent);
+const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const CSS = getComputedStyle(document.documentElement);
+const tok = n => (CSS.getPropertyValue(n)||'').trim();
+// canvas cannot take oklch() on every engine; fall back to the tokens.json hex values
+const ACC = '#2AD7D7', MINT = '#70DDB1', MUTED = '#69737D';
+const $ = s => document.querySelector(s);
+const fmt = v => typeof v === 'number' ? v.toLocaleString('en-US') : String(v);
+const esc = s => String(s).replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+
+/* ================= living agent mesh (background) ================= */
+(function mesh(){
+  const cv = $('#mesh'), cx = cv.getContext('2d');
+  const AG = ['demiurge','hydra','athena','apollo','prometheus','scribe','tester','viviane','morgana','artist','aither','quality-gatekeeper','security-scanner','deployment-manager'];
+  let W=0,H=0,nodes=[],pulses=[],last=0,raf=0,hidden=false;
+  function size(){ const dpr=Math.min(devicePixelRatio||1,2); W=innerWidth;H=innerHeight; cv.width=W*dpr; cv.height=H*dpr; cv.style.width=W+'px'; cv.style.height=H+'px'; cx.setTransform(dpr,0,0,dpr,0,0); }
+  function seed(){ const n = W<640?34:60; nodes=[]; for(let i=0;i<n;i++) nodes.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.18,vy:(Math.random()-.5)*.18,r:1.3+Math.random()*1.5,flare:0,label:i<AG.length*2&&i%2===0?AG[i/2]:null}); }
+  const R = () => W<640?120:150;
+  function frame(t){
+    raf=0; if(hidden) return;
+    const dt=Math.min(40,t-last||16); last=t;
+    cx.clearRect(0,0,W,H);
+    const rr=R(), r2=rr*rr;
+    for(const n of nodes){ n.x+=n.vx*dt/16; n.y+=n.vy*dt/16; if(n.x<-20)n.x=W+20; if(n.x>W+20)n.x=-20; if(n.y<-20)n.y=H+20; if(n.y>H+20)n.y=-20; n.flare*=0.94; }
+    cx.lineWidth=1;
+    for(let i=0;i<nodes.length;i++){ const a=nodes[i]; for(let j=i+1;j<nodes.length;j++){ const b=nodes[j]; const dx=a.x-b.x, dy=a.y-b.y, d2=dx*dx+dy*dy; if(d2<r2){ cx.globalAlpha=(1-d2/r2)*.16; cx.strokeStyle=ACC; cx.beginPath(); cx.moveTo(a.x,a.y); cx.lineTo(b.x,b.y); cx.stroke(); } } }
+    cx.globalAlpha=1;
+    for(const p of pulses){ p.t+=dt/p.dur; if(p.t>=1){ p.b.flare=1; p.dead=true; continue; } const x=p.a.x+(p.b.x-p.a.x)*p.t, y=p.a.y+(p.b.y-p.a.y)*p.t; cx.fillStyle=ACC; cx.beginPath(); cx.arc(x,y,2,0,7); cx.fill(); }
+    pulses=pulses.filter(p=>!p.dead);
+    for(const n of nodes){ const f=n.flare; cx.globalAlpha = f>.02 ? .45+f*.55 : .5; cx.fillStyle = f>.02 ? MINT : MUTED; cx.beginPath(); cx.arc(n.x,n.y,n.r+f*4,0,7); cx.fill(); if(n.label){ cx.globalAlpha=.35+f*.6; cx.fillStyle=f>.02?MINT:MUTED; cx.font='500 10px JetBrains Mono, monospace'; cx.fillText(n.label,n.x+7,n.y+3); } }
+    cx.globalAlpha=1;
+    if(!RM) raf=requestAnimationFrame(frame);
+  }
+  function pulse(){ if(hidden||RM||nodes.length<2) return; const a=nodes[(Math.random()*nodes.length)|0]; const rr=R(); let best=null,bd=1e9; for(const b of nodes){ if(b===a) continue; const d=(a.x-b.x)**2+(a.y-b.y)**2; if(d<rr*rr*2.2 && d<bd){bd=d;best=b;} } if(best) pulses.push({a,b:best,t:0,dur:420+Math.random()*300}); }
+  size(); seed(); addEventListener('resize',()=>{size();seed();frame(performance.now());},{passive:true});
+  document.addEventListener('visibilitychange',()=>{ hidden=document.hidden; if(!hidden&&!raf) raf=requestAnimationFrame(frame); });
+  if(RM){ frame(performance.now()); } else { raf=requestAnimationFrame(frame); setInterval(pulse,700); }
 })();
+
+/* ================= boot: Element 0 ignites, awnix comes up ================= */
+const BOOT = [
+  ['d','awnix 0.9 (immutable) · kernel 6.x · image sha256:4f2c…9a1e · element 0'],
+  ['d','[    0.000000] mounting / read-only ............................ ',' [ OK ]'],
+  ['d','[    0.041210] capabilities: awdk awgit awgraph awm awrelay awiam awbac awseal awdit ....... ',' [ OK ]'],
+  ['d','[    0.118004] mesh: joining aither-network · peers: demiurge hydra athena prometheus ... ',' [ OK ]'],
+  ['d','[    0.203377] gates: 642 loaded · 4 lanes · self-test: 642/642 can still fail ........ ',' [ OK ]'],
+  ['d','[    0.311560] scheduler: microscheduler :8150 · rtx-5090 · dgx-spark · cloud burst ..... ',' [ OK ]'],
+  ['d','[    0.402913] memory: awgraph · awm · nexus · retrieval gold-set (25q + 2 canaries) ....... ',' [ OK ]'],
+  ['d','[    0.517772] doctrine: no false blockers · evidence-first · could-not-judge ≠ pass ...... ',' [ OK ]'],
+  ['h',''],
+  ['h','awnix login: david'],
+  ['h','password: ••••••••'],
+  ['h',''],
+  ['h','david@awnix:~$ whoami'],
+];
+(function boot(){
+  const el=$('#boot'), log=$('#bootlog'), table=$('#ptable');
+  // the periodic table: 18 x 7 tiles, a handful lit at random on a slow cadence
+  const tiles=[]; for(let i=0;i<126;i++){ const t=document.createElement('i'); table.appendChild(t); tiles.push(t); }
+  let tt=0; const lit=RM?null:setInterval(()=>{ tiles[(Math.random()*tiles.length)|0].classList.toggle('lit'); if(++tt%3===0) tiles[(Math.random()*tiles.length)|0].classList.remove('lit'); },140);
+  let done=false, timers=[];
+  function finish(){ if(done) return; done=true; timers.forEach(clearTimeout); if(lit) clearInterval(lit); el.classList.add('done'); document.body.classList.remove('booting'); document.body.classList.add('booted'); setTimeout(()=>el.remove(),650); startDemoWatcher(); }
+  if(RM){ finish(); return; }
+  ['click','keydown','wheel','touchstart'].forEach(ev=>el.addEventListener(ev,finish,{passive:true}));
+  addEventListener('keydown',finish,{once:true});
+  let i=0;
+  const cur=document.createElement('span'); cur.className='cur';
+  function next(){ if(done) return; if(i>=BOOT.length){ timers.push(setTimeout(finish,520)); return; }
+    const [cls,text,ok]=BOOT[i++]; const line=document.createElement('span'); line.className=cls==='h'?'hi':''; log.insertBefore(line,cur);
+    let j=0; const speed = cls==='h'?26:4;
+    (function type(){ if(done) return; if(j<text.length){ const chunk = cls==='h'?1:Math.min(6,text.length-j); line.textContent+=text.slice(j,j+chunk); j+=chunk; timers.push(setTimeout(type,speed+Math.random()*speed)); } else { if(ok){ const s=document.createElement('span'); s.className='ok'; s.textContent=ok; log.insertBefore(s,cur);} log.insertBefore(document.createTextNode('\n'),cur); timers.push(setTimeout(next, cls==='h'?260:60+Math.random()*120)); } })();
+  }
+  log.appendChild(cur);
+  timers.push(setTimeout(next,420));
+  timers.push(setTimeout(finish,9000)); // hard cap
+})();
+
+/* ================= shell ================= */
+const out=$('#out'), input=$('#cmd'), form=$('#form');
+const M = Object.fromEntries(D.metrics.map(m=>[m.key,m]));
+const hist=[]; let hi=-1; let userTyped=false;
+function line(html, cls){ const p=document.createElement('p'); if(cls) p.className=cls; p.innerHTML=html; out.appendChild(p); out.scrollTop=out.scrollHeight; return p; }
+function echo(cmd){ line(`<span class="p">david@awnix:~$</span> <span class="c">${esc(cmd)}</span>`); }
+function open(u){ window.open(u,'_blank','noopener'); line(`<span class="d">→ opened ${esc(u)}</span>`); }
+const CMDS = {
+  help(){ line('<span class="h">commands</span>'); [['whoami','who is typing to you'],['top','the numbers, and how each was measured'],['stack','the 64 aw* bricks (also: ls aw*)'],['cat awnix','the box you hand an agent'],['history','USAF → Boeing → Tanium → Aitherium'],['gates','how 642 checks replaced review'],['factory','the six things, and what exists for each'],['blog / demo / github','open the proof'],['resume','open resume.pdf'],['clear','clear the screen'],['sudo','try it']].forEach(([c,d])=>line(`  <span class="c">${c.padEnd(22,' ')}</span><span class="d">${d}</span>`)); line('<span class="d">tab completes · ↑↓ history · ctrl+l clears</span>'); },
+  whoami(){ line(`<span class="g">${esc(D.identity.name)}</span> — ${esc(D.identity.headline)}`); line(esc(D.summary)); line(`<span class="d">${esc(D.identity.location)} · ${esc(D.identity.email)}</span>`); },
+  ls(arg){ if(arg && /^aw/.test(arg)) return CMDS.stack(); line('<span class="c">whoami/  top/  stack/  awnix  history/  gates/  factory/  resume.pdf  blog@  demo@  github@</span>'); },
+  top(){ line('<span class="h">measured 2026-09-03 · the AitherOS tree · feat/tunnel-phone-coding</span>');
+    D.metrics.forEach((m,i)=>{ const p=line(`<b>0</b><span>${esc(m.label)}<small>$ ${esc(m.how)}</small></span>`,'mrow'); const b=p.querySelector('b'); const target=m.value; if(typeof target!=='number'||RM){ b.textContent=fmt(target); return; } const t0=performance.now()+i*70; (function tick(){ const k=Math.min(1,(performance.now()-t0)/900); b.textContent=fmt(Math.round(target*(k<0?0:(1-Math.pow(1-k,3))))); if(k<1) requestAnimationFrame(tick); else b.textContent=fmt(target); })(); });
+    line(`<span class="d">pypi: awdk ${D.pypi.awdk} · awgit ${D.pypi.awgit} · awgraph ${D.pypi.awgraph} · awrelay ${D.pypi.awrelay}</span>`); },
+  metrics(){ CMDS.top(); },
+  stack(){ line(`<span class="h">aw* — Aither World · ${D.bricks.length} bricks · ${D.bricks.filter(b=>b.status==='public').length} public · ${D.stacks.length} stacks</span>`);
+    D.bricks.forEach(b=>{ const on=b.status==='public'; line(`<span>${esc(b.id)}</span><span>${esc(b.tagline)}</span><span class="s">${esc(b.status)}</span>`, 'brick '+(on?'on':'off')+(b.id==='awnix'?' hero':'')); });
+    line(`<span class="d">stacks: ${D.stacks.map(s=>s.id).join(' · ')}</span>`); },
+  cat(arg){ if(!arg) return line('<span class="e">cat: missing operand</span>'); const b=D.bricks.find(x=>x.id.toLowerCase()===arg.toLowerCase()); if(!b) return line(`<span class="e">cat: ${esc(arg)}: no such brick</span>`); line(`<span class="g">${esc(b.id)}</span> <span class="d">[${esc(b.status)}]</span>`); line(esc(b.tagline)); if(b.id==='awnix'){ line('<span class="d">adopt: boot one throwaway box and try to make a change you cannot reproduce.</span>'); line('<span class="d">No services. No agent. No account. The capabilities are in the image; the agent is three lines in awdk.</span>'); } const st=D.stacks.filter(s=>s.bricks.includes(b.id)); if(st.length) line(`<span class="d">in stacks: ${st.map(s=>s.id).join(', ')}</span>`); },
+  history(){ D.experience.slice().reverse().forEach(e=>{ line(`<span class="c">${esc(e.dates)}</span>  <span class="h">${esc(e.org)}</span> — ${esc(e.title)}`); e.bullets.slice(0,2).forEach(b=>line(`    <span class="d">· ${esc(b)}</span>`)); }); },
+  gates(){ [`<span class="h">${M.quality_gates.value} gates. Each proves it can still fail. Each runs somewhere unattended.</span>`,
+    'exit 0 = <span class="ok">pass</span> · exit 1 = <span class="e">violation</span> · exit 2 = could not judge. <span class="c">could-not-judge is never a pass.</span>',
+    'Four lanes: ci-static (228) · fleet-live every 4h (79) · host-live (104) · selftest-only — with a written reason, or it fails.',
+    'Rule: a defect a machine could detect must become a CHECK, never a ledger note. Measured before the rule: 79 rows/day in, 4.2/day out.',
+    'Rule: an agent may stop for exactly three reasons — physically impossible, irreversible+destructive, owner said no. 60–90% of "blocked" items were reversible.',
+    'Every claim carries its command and exit code, or it is not a claim.'].forEach(t=>line(t)); },
+  factory(){ D.jd.forEach(j=>{ line(`<span class="h">${esc(j.jd)}</span>`); line(`  ${esc(j.proof)}`); }); },
+  blog(){ open('https://blog.aitherium.com'); }, demo(){ open('https://demo.aitherium.com'); }, github(){ open('https://github.com/Aitherium'); },
+  resume(){ open('resume.pdf'); },
+  clear(){ out.innerHTML=''; },
+  sudo(){ line('<span class="e">david is already root.</span>'); },
+  pwd(){ line('/home/david'); }, uname(){ line('awnix 0.9 x86_64 · immutable · capabilities included'); }, date(){ line(new Date().toString()); },
+  exit(){ line('<span class="d">There is no exit. Scroll.</span>'); },
+};
+function run(raw, fromDemo){ const cmd=raw.trim(); if(!cmd) return; echo(cmd); const [name,...rest]=cmd.split(/\s+/); const arg=rest.join(' '); const fn=CMDS[name.toLowerCase()]; if(fn) fn(arg); else line(`<span class="e">awnix: command not found: ${esc(name)}</span> <span class="d">— try help</span>`); if(!fromDemo){ hist.push(cmd); hi=hist.length; } }
+form.addEventListener('submit',e=>{ e.preventDefault(); userTyped=true; run(input.value); input.value=''; });
+input.addEventListener('keydown',e=>{ userTyped=true;
+  if(e.key==='Tab'){ e.preventDefault(); const v=input.value.trim().toLowerCase(); if(!v) return; const c=Object.keys(CMDS).filter(k=>k.startsWith(v)); if(c.length===1) input.value=c[0]+' '; else if(c.length>1) line(`<span class="d">${c.join('  ')}</span>`); }
+  else if(e.key==='ArrowUp'){ e.preventDefault(); if(hi>0){ hi--; input.value=hist[hi]; } }
+  else if(e.key==='ArrowDown'){ e.preventDefault(); if(hi<hist.length-1){ hi++; input.value=hist[hi]; } else { hi=hist.length; input.value=''; } }
+  else if(e.key==='l' && e.ctrlKey){ e.preventDefault(); CMDS.clear(); }
+});
+$('#termbox').addEventListener('click',e=>{ if(!e.target.closest('a,button')) input.focus({preventScroll:true}); });
+['help','whoami','top','stack','cat awnix','history','gates','factory','resume'].forEach(c=>{ const b=document.createElement('button'); b.type='button'; b.className='chip'; b.textContent=c; b.addEventListener('click',()=>{ userTyped=true; run(c); input.focus({preventScroll:true}); }); $('#chips').appendChild(b); });
+line('<span class="d">awnix 0.9 · immutable base · capabilities included. type <span class="c">help</span>.</span>');
+
+/* scripted demo when the shell first scrolls into view; aborted the moment the visitor types */
+let demoStarted=false;
+function startDemoWatcher(){
+  if(RM){ run('whoami',true); run('top',true); return; }
+  const io=new IntersectionObserver(es=>{ es.forEach(en=>{ if(en.isIntersecting && !demoStarted){ demoStarted=true; io.disconnect(); demo(); } }); },{threshold:.35});
+  io.observe($('#termbox'));
+}
+function demo(){
+  const script=['whoami','top','cat awnix','gates']; let k=0;
+  function typeCmd(cmd,cb){ let j=0; (function t(){ if(userTyped) return; if(j<=cmd.length){ input.value=cmd.slice(0,j++); setTimeout(t,45+Math.random()*55); } else { setTimeout(()=>{ if(userTyped) return; input.value=''; run(cmd,true); cb(); },260); } })(); }
+  (function next(){ if(userTyped||k>=script.length) return; const c=script[k++]; setTimeout(()=>typeCmd(c,()=>setTimeout(next,1400)), k===1?500:0); })();
+}
+
+/* ================= kinetic headlines + reveals ================= */
+document.querySelectorAll('h2.kt').forEach(h=>{ let i=0; const frag=document.createDocumentFragment();
+  h.childNodes.forEach(node=>{ const isEm=node.nodeType===1; const text=node.textContent; text.split(/(\s+)/).forEach(w=>{ if(!w) return; if(/^\s+$/.test(w)){ frag.appendChild(document.createTextNode(' ')); return; } const s=document.createElement('span'); s.className='w'; s.style.transitionDelay=(i++*45)+'ms'; if(isEm){ const e=document.createElement('em'); e.textContent=w; s.appendChild(e); } else s.textContent=w; frag.appendChild(s); }); });
+  h.textContent=''; h.appendChild(frag); });
+const rio=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); rio.unobserve(e.target); } }),{threshold:.2});
+document.querySelectorAll('h2.kt').forEach(h=>rio.observe(h));
+
+/* stations */
+const ST=[
+  {n:'01',big:'850,000',org:'United States Air Force',when:'2014 — 2020 · Cyber Systems Operations',p:'Users on the second-largest Active Directory on earth. 690 domain controllers, 230 sites, $10B network, classified and unclassified, 24/7. Authoritative ADDS restore of 3,000 accounts with zero collateral. Trained 357 technicians. Red Flag blue team.'},
+  {n:'02',big:'LTO8 + SAN',org:'Boeing',when:'2020 — 2022 · HPC Linux System Engineer',p:'Owned the enterprise tape archive and a fibre-channel SAN for HPC. Technical lead replacing Oracle HSM with Versity. Data-at-rest encryption. Python automation for recovery, monitoring, archival.'},
+  {n:'03',big:'195 @ 100%',org:'Tanium',when:'2022 — present · Senior Enterprise Services / Escalation Engineer',p:'195 escalations in six months at 100% CSAT. Rewrote the Risk Assessment tooling from 500 endpoints to unbounded; ran it on 50,000. Client Health dashboards toward a self-healing estate. 2x Star Performer.'},
+  {n:'04',big:fmt(M.commits_total.value),org:'Aitherium',when:'2025 — present · Founder, Architect',p:`Commits since June 2025 — ${fmt(M.commits_90d.value)} in the last 90 days — landed by 33 agents under ${M.quality_gates.value} gates I designed. AitherOS, the aw* stack, awnix. Three real tenants. Four packages on PyPI.`},
+];
+ST.forEach((s,i)=>{ const d=document.createElement('div'); d.className='card'; d.style.transitionDelay=(i*90)+'ms'; d.innerHTML=`<div class="num">${s.n}</div><div class="big">${s.big}</div><div class="org">${esc(s.org)}</div><div class="when">${esc(s.when)}</div><p>${esc(s.p)}</p>`; $('#stations').appendChild(d); rio.observe(d); });
+
+/* factory panels */
+const EV=['33 agents · 1 gateway · 1 scheduler · swarm(11) · ratchet: propose→apply→score→keep|revert','642 gates · --self-test required · 4 lanes · exit 0/1/2 · rule: check, not row','awgraph · awm · nexus · gold-set 25q+2 canaries · embedder 13x smaller beats teacher ($3)','named baseline required · seen/unseen buckets · blind A/B before "fixed" · mutation guards','autoheal + death watchdog · 4h probe: 79 live gates · VIOLATION and DEAD page separately','tenant app in ~10 min · 3 real tenants · 61 public repos · 4 on PyPI · 1.7B model in a phone browser'];
+const K=['Orchestrate','Govern','Remember','Evaluate','Self-heal','Ship'];
+D.jd.forEach((j,i)=>{ const d=document.createElement('article'); d.className='card'; d.style.transitionDelay=(i*70)+'ms'; d.innerHTML=`<span class="ico">${K[i]||''}</span><h3>${esc(j.jd)}</h3><p>${esc(j.proof)}</p><div class="ev"><b>$</b> ${esc(EV[i]||'')}</div>`; $('#panels').appendChild(d); rio.observe(d); });
+
+/* ================= constellation ================= */
+(function constellation(){
+  const svg=$('#csvg'), tip=$('#tip'), wrap=$('#cwrap'); const NS='http://www.w3.org/2000/svg';
+  const W=1200,H=760,cx=W/2,cy=H/2;
+  let seed=7; const rnd=()=>{ seed=(seed*16807)%2147483647; return seed/2147483647; }; // deterministic: same layout every load
+  const B=D.bricks.map((b,i)=>({...b,i,x:cx+(rnd()-.5)*600,y:cy+(rnd()-.5)*400,vx:0,vy:0,r:b.id==='awnix'?30:(b.status==='public'?9:6.5)}));
+  const byId=Object.fromEntries(B.map(b=>[b.id,b]));
+  const hero=byId['awnix']; hero.x=cx; hero.y=cy;
+  const edges=[]; const seen=new Set(); B.forEach(b=>{ b.linked=D.stacks.some(s=>s.bricks.includes(b.id)); });
+  D.stacks.forEach(s=>{ const ids=s.bricks.filter(id=>byId[id]); for(let a=0;a<ids.length;a++) for(let b=a+1;b<ids.length;b++){ const k=ids[a]+'|'+ids[b]; if(seen.has(k)) continue; seen.add(k); edges.push({a:byId[ids[a]],b:byId[ids[b]],stack:s.id}); } });
+  for(let it=0;it<320;it++){
+    const k=it<200?1:0.4;
+    for(const n of B){ if(n===hero) continue; let fx=(cx-n.x)*0.012, fy=(cy-n.y)*0.012; for(const m of B){ if(m===n) continue; const dx=n.x-m.x, dy=n.y-m.y; const d2=dx*dx+dy*dy+0.01; if(d2>90000) continue; const rep=700/d2; fx+=dx*rep; fy+=dy*rep; } if(!n.linked){ const dx=n.x-cx, dy=n.y-cy; const d=Math.hypot(dx,dy)||1; const f=(d-230)*0.02; fx-=dx/d*f; fy-=dy/d*f; } n.vx=(n.vx+fx*k)*0.6; n.vy=(n.vy+fy*k)*0.6; }
+    for(const e of edges){ const dx=e.b.x-e.a.x, dy=e.b.y-e.a.y; const d=Math.hypot(dx,dy)||1; const want=e.a===hero||e.b===hero?170:140; const f=(d-want)*0.004*k; if(e.a!==hero){ e.a.vx+=dx/d*f; e.a.vy+=dy/d*f; } if(e.b!==hero){ e.b.vx-=dx/d*f; e.b.vy-=dy/d*f; } }
+    for(const n of B){ if(n===hero) continue; n.x=Math.max(90,Math.min(W-90,n.x+n.vx)); n.y=Math.max(50,Math.min(H-50,n.y+n.vy)); }
+  }
+  const gE=document.createElementNS(NS,'g'), gN=document.createElementNS(NS,'g'), gT=document.createElementNS(NS,'g'); svg.append(gE,gN,gT);
+  edges.forEach(e=>{ const l=document.createElementNS(NS,'line'); l.setAttribute('x1',e.a.x);l.setAttribute('y1',e.a.y);l.setAttribute('x2',e.b.x);l.setAttribute('y2',e.b.y); l.dataset.stack=e.stack; e.el=l; gE.appendChild(l); });
+  B.forEach(b=>{ const c=document.createElementNS(NS,'circle'); c.setAttribute('cx',b.x);c.setAttribute('cy',b.y);c.setAttribute('r',b.r); c.setAttribute('class','node'+(b.status==='public'?' public':'')+(b.id==='awnix'?' hero':'')); c.setAttribute('tabindex','0'); c.setAttribute('role','button'); c.setAttribute('aria-label',`${b.id}: ${b.tagline} (${b.status})`); b.el=c; gN.appendChild(c);
+    const show = b.id==='awnix' || b.status==='public' && b.i%2===0; if(show){ const t=document.createElementNS(NS,'text'); t.setAttribute('x',b.x+(b.id==='awnix'?0:b.r+4)); t.setAttribute('y',b.y+(b.id==='awnix'?b.r+20:4)); if(b.id==='awnix'){ t.setAttribute('text-anchor','middle'); t.setAttribute('class','hero'); } t.textContent=b.id; gT.appendChild(t); }
+    const on=()=>{ tip.innerHTML=`<b>${esc(b.id)}</b><br>${esc(b.tagline)}<small>${esc(b.status)}${D.stacks.filter(s=>s.bricks.includes(b.id)).map(s=>' · '+s.id).join('')}</small>`; tip.style.opacity=1; c.classList.add('hot'); edges.forEach(e=>{ if(e.a===b||e.b===b) e.el.classList.add('hot'); }); place(b); };
+    const off=()=>{ tip.style.opacity=0; c.classList.remove('hot'); edges.forEach(e=>e.el.classList.remove('hot')); };
+    c.addEventListener('mouseenter',on); c.addEventListener('mouseleave',off); c.addEventListener('focus',on); c.addEventListener('blur',off);
+    c.addEventListener('click',()=>{ on(); setTimeout(off,2600); });
+  });
+  function place(b){ const r=wrap.getBoundingClientRect(); const sx=r.width/W, sy=r.height/H; let x=b.x*sx+14, y=b.y*sy+14; if(x>r.width-310) x=b.x*sx-310; if(y>r.height-90) y=b.y*sy-80; tip.style.left=Math.max(4,x)+'px'; tip.style.top=Math.max(4,y)+'px'; }
+  const btns=$('#stackbtns'); let active=null;
+  const all=document.createElement('button'); all.className='chip'; all.textContent='all'; all.setAttribute('aria-pressed','true'); btns.appendChild(all);
+  function setStack(id){ active=id; [...btns.children].forEach(x=>x.setAttribute('aria-pressed', String((x.dataset.id||null)===id))); B.forEach(b=>b.el.classList.toggle('mute', !!id && !D.stacks.find(s=>s.id===id).bricks.includes(b.id))); edges.forEach(e=>{ e.el.classList.toggle('mute', !!id && e.stack!==id); e.el.classList.toggle('hot', !!id && e.stack===id); }); }
+  all.addEventListener('click',()=>setStack(null));
+  D.stacks.forEach(s=>{ const b=document.createElement('button'); b.className='chip'; b.textContent=s.id; b.dataset.id=s.id; b.title=`${s.tagline} — ${s.bricks.join(', ')}`; b.setAttribute('aria-pressed','false'); b.addEventListener('click',()=>setStack(active===s.id?null:s.id)); btns.appendChild(b); });
+})();
+})();
+</script>
+<script>
+/* ── .ELEMENT/web/universe.js — inlined verbatim by docs/build.py; draws the flight paths in the close ── */
+/* ═══════════════════════════════════════════════════════════════════════════
+   AITHERIUM UNIVERSE STRIP — flight paths between the public repos
+   @element-universe v1
+
+   Source of truth for the motion layer of the universe strip on every public
+   static page. tools/gen_public_pages.py INLINES this file verbatim, the same
+   way it inlines .ELEMENT/web/aitherium.css, and check_pages_truth.py asserts
+   a published page still carries the current copy.
+
+   WHY THIS IS NOT @aitheros/bead-space
+       bead-space is the real thing: a d3-force universe explorer with live
+       AitherOS adapters (agents, compute, mesh, platform, work). Using it here
+       would mean npm-installing seven d3 packages and running esbuild inside
+       four sync workflows, then inlining ~60-80KB into every landing page — to
+       lay out SIX fixed navigational nodes that never move and carry no live
+       data. That is the wrong trade: it adds a build dependency to a pipeline
+       whose whole virtue is that it is pure static generation.
+       So this is a purpose-built ~4KB renderer that deliberately speaks
+       bead-space's node shape ({id, label, kind, href}), read straight off the
+       rendered DOM. If the strip ever needs live fleet data, swap this for the
+       real bead-space bundle without touching the markup or the CSS.
+
+   PROGRESSIVE ENHANCEMENT, NOT A DEPENDENCY
+       The orbs are real <a> elements emitted in the HTML. Navigation works with
+       JavaScript off, with canvas unsupported, and if this file fails to parse.
+       Everything below only draws the connective tissue between them. Under
+       prefers-reduced-motion it renders the paths once, statically, and stops —
+       it never animates.
+   ═══════════════════════════════════════════════════════════════════════════ */
+(function () {
+  'use strict';
+
+  var stage = document.querySelector('.uni-stage');
+  if (!stage) return;
+
+  var canvas = stage.querySelector('.uni-canvas');
+  if (!canvas || typeof canvas.getContext !== 'function') return;
+
+  var ctx = canvas.getContext('2d');
+  if (!ctx) return;
+
+  var reduced =
+    window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var orbEls = Array.prototype.slice.call(stage.querySelectorAll('.orb'));
+  if (orbEls.length < 2) return;
+
+  var accent =
+    (getComputedStyle(document.documentElement).getPropertyValue('--accent') || '').trim() ||
+    '#2AD7D7';
+
+  var nodes = [];
+  var here = null;
+  var paths = [];
+  var W = 0;
+  var H = 0;
+  var raf = 0;
+
+  // ── layout ───────────────────────────────────────────────────────────────
+  function measure() {
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var sr = stage.getBoundingClientRect();
+    W = sr.width;
+    H = sr.height;
+    if (W < 2 || H < 2) return false;
+
+    canvas.width = Math.max(1, Math.round(W * dpr));
+    canvas.height = Math.max(1, Math.round(H * dpr));
+    canvas.style.width = W + 'px';
+    canvas.style.height = H + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    nodes = orbEls.map(function (el) {
+      var r = el.getBoundingClientRect();
+      return {
+        el: el,
+        // bead-space node shape, read off the DOM rather than a second data blob
+        id: el.getAttribute('data-id') || '',
+        kind: el.getAttribute('data-kind') || 'repo',
+        href: el.getAttribute('href') || '',
+        x: r.left - sr.left + r.width / 2,
+        y: r.top - sr.top + r.height / 2,
+        // Paths anchor to the TOP EDGE, not the centre. A quadratic only reaches
+        // half its control-point offset, so centre-anchored arcs peaked inside
+        // the orb row and were covered by the cards (which sit at z-index 1).
+        ty: r.top - sr.top + 5,
+        here: el.classList.contains('here')
+      };
+    });
+
+    here =
+      nodes.filter(function (n) {
+        return n.here;
+      })[0] || nodes[0];
+
+    // One flight path from the lit node to each sibling. The control point is
+    // pushed perpendicular to the chord so paths bow instead of overlapping
+    // into a single straight bar when the orbs wrap onto one row.
+    paths = nodes
+      .filter(function (n) {
+        return n !== here;
+      })
+      .map(function (n, i) {
+        var mx = (here.x + n.x) / 2;
+        var my = (here.ty + n.ty) / 2;
+        var dx = n.x - here.x;
+        var dy = n.ty - here.ty;
+        var len = Math.sqrt(dx * dx + dy * dy) || 1;
+        // Always bow toward the top of the stage (canvas y grows downward), into
+        // the padding band .uni-stage reserves. Alternating the sign put half the
+        // arcs underneath the orb row where they were invisible.
+        var bow = Math.min(78, 26 + len * 0.22) * (dx >= 0 ? -1 : 1);
+        return {
+          a: here,
+          b: n,
+          cx: mx + (-dy / len) * bow,
+          cy: my + (dx / len) * bow,
+          // deterministic offsets: no Math.random, so the strip looks identical
+          // on every load and in every screenshot
+          seeds: [i * 0.37 % 1, (i * 0.37 + 0.5) % 1]
+        };
+      });
+
+    return true;
+  }
+
+  function pointAt(p, t) {
+    var u = 1 - t;
+    return {
+      x: u * u * p.a.x + 2 * u * t * p.cx + t * t * p.b.x,
+      y: u * u * p.a.ty + 2 * u * t * p.cy + t * t * p.b.ty
+    };
+  }
+
+  // ── paint ────────────────────────────────────────────────────────────────
+  function draw(now) {
+    ctx.clearRect(0, 0, W, H);
+
+    for (var i = 0; i < paths.length; i++) {
+      var p = paths[i];
+
+      ctx.globalAlpha = 0.16;
+      ctx.strokeStyle = accent;
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(p.a.x, p.a.ty);
+      ctx.quadraticCurveTo(p.cx, p.cy, p.b.x, p.b.ty);
+      ctx.stroke();
+
+      if (reduced) continue;
+
+      // travellers: small motes drifting out along each path
+      for (var s = 0; s < p.seeds.length; s++) {
+        var t = (p.seeds[s] + now / 7400) % 1;
+        var pt = pointAt(p, t);
+        // fade in and out at the endpoints so motes do not pop
+        var fade = Math.sin(t * Math.PI);
+        ctx.globalAlpha = 0.5 * fade;
+        ctx.fillStyle = accent;
+        ctx.beginPath();
+        ctx.arc(pt.x, pt.y, 1.9, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    // the lit node's halo
+    if (here) {
+      ctx.globalAlpha = reduced ? 0.13 : 0.1 + 0.045 * Math.sin(now / 1150);
+      ctx.fillStyle = accent;
+      ctx.beginPath();
+      ctx.arc(here.x, here.y, 46, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    ctx.globalAlpha = 1;
+  }
+
+  function frame(ts) {
+    draw(ts || 0);
+    raf = window.requestAnimationFrame(frame);
+  }
+
+  function start() {
+    if (!measure()) return;
+    if (raf) window.cancelAnimationFrame(raf);
+    // Paint one frame SYNCHRONOUSLY before scheduling the loop. measure() has
+    // just resized the canvas, which clears it, and requestAnimationFrame does
+    // not fire in a background tab -- so without this the strip renders blank
+    // and only appears once the tab is focused. Measured 2026-08-02: a
+    // backgrounded tab painted 0 pixels indefinitely.
+    draw(0);
+    if (reduced || !window.requestAnimationFrame) return;
+    raf = window.requestAnimationFrame(frame);
+  }
+
+  // Pause when the strip is off-screen or the tab is hidden — a landing page
+  // has no business burning a phone battery on a decoration nobody is looking at.
+  function stop() {
+    if (raf) {
+      window.cancelAnimationFrame(raf);
+      raf = 0;
+    }
+  }
+
+  var visible = true;
+  if (window.IntersectionObserver) {
+    new window.IntersectionObserver(
+      function (entries) {
+        visible = entries[0].isIntersecting;
+        if (visible && !document.hidden) start();
+        else stop();
+      },
+      { threshold: 0.02 }
+    ).observe(stage);
+  }
+
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden || !visible) stop();
+    else start();
+  });
+
+  var resizeTimer = 0;
+  window.addEventListener('resize', function () {
+    window.clearTimeout(resizeTimer);
+    resizeTimer = window.setTimeout(start, 140);
+  });
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', start);
+  } else {
+    start();
+  }
+})();
+
 </script>
 </body>
 </html>
