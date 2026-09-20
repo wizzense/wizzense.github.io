@@ -207,7 +207,7 @@ body.booted .scrollhint{opacity:1}
   <div style="width:100%">
     <p class="kicker">Act II · the shell</p>
     <h2 id="shell-h" class="kt">This page is a shell. <em>Type.</em></h2>
-    <p class="lede">Everything below is a command. <span class="mono acc">help</span> lists them. Every number it prints was measured on 2026-09-03, and the command that measured it is printed with it.</p>
+    <p class="lede">Everything below is a command. <span class="mono acc">help</span> lists them. Every number it prints was measured on 2026-09-20, and the command that measured it is printed with it.</p>
     <div class="code" id="termbox">
       <div class="bar"><span></span><span></span><span></span><span class="t">david@awnix: ~<span class="tl"> — awnix 0.9 / immutable base / capabilities included</span></span><i class="live" id="livechip">● live</i></div>
       <div id="out" aria-live="polite" aria-atomic="false" tabindex="0"></div>
@@ -245,7 +245,7 @@ body.booted .scrollhint{opacity:1}
     <p class="lede"><span class="mono">aw</span> is short for <b>Aither World</b>. Every brick does one useful thing alone for a stranger and composes into stacks. <span class="mono acc">awnix</span> is the box you hand an agent. Hover or tap a node. Pick a stack to light its bricks.</p>
     <div class="chips" id="stackbtns" role="group" aria-label="stacks"></div>
     <div class="cwrap panel" id="cwrap">
-      <svg id="csvg" viewBox="0 0 1200 760" role="img" aria-label="Constellation of the 64 aw* bricks"></svg>
+      <svg id="csvg" viewBox="0 0 1200 760" role="img" aria-label="Constellation of the 85 aw* bricks"></svg>
       <div class="tip" id="tip" role="tooltip"></div>
     </div>
     <p class="legend"><i style="background:oklch(0.14 0.03 220);border:1px solid var(--accent-a50)"></i>public <i style="background:oklch(0.12 0.02 250);border:1px solid var(--border)"></i>unpublished / planned <i style="background:var(--accent-a30);border:1px solid var(--accent)"></i>awnix</p>
@@ -265,7 +265,7 @@ body.booted .scrollhint{opacity:1}
           <a class="orb" data-id="org" data-kind="repo" href="https://github.com/Aitherium" style="--orb:var(--cyan)"><span class="k">code</span><span class="n">Aitherium org</span><span class="d">61 public repos · the aw* stack · AitherOS</span></a>
           <a class="orb" data-id="blog" data-kind="site" href="https://blog.aitherium.com" style="--orb:var(--mint)"><span class="k">writing</span><span class="n">blog.aitherium.com</span><span class="d">270 posts, written and published by agents</span></a>
           <a class="orb" data-id="demo" data-kind="site" href="https://demo.aitherium.com" style="--orb:var(--accent-warm)"><span class="k">running</span><span class="n">demo.aitherium.com</span><span class="d">the live demo hub</span></a>
-          <a class="orb" data-id="resume" data-kind="doc" href="resume.pdf" style="--orb:var(--warn)"><span class="k">paper</span><span class="n">resume.pdf</span><span class="d">3 pages, every number sourced</span></a>
+          <a class="orb" data-id="resume" data-kind="doc" href="resume.pdf" style="--orb:var(--warn)"><span class="k">paper</span><span class="n">resume.pdf</span><span class="d">2 pages, every number sourced</span></a>
         </div>
       </div>
     </div>
@@ -274,7 +274,7 @@ body.booted .scrollhint{opacity:1}
         <img src="assets/wordmark.svg" alt="Aitherium" width="88" height="22">
         <span>David · wizzense · <a href="mailto:david.parkhurst@aitherium.com">david.parkhurst@aitherium.com</a> · remote</span>
         <span class="sp"></span>
-        <span class="mono">built by docs/build.py from facts/resume.yaml · measured 2026-09-03</span>
+        <span class="mono">built by docs/build.py from facts/resume.yaml · measured 2026-09-20</span>
       </div>
     </footer>
   </div>
@@ -330,7 +330,7 @@ const BOOT = [
   ['d','[    0.000000] mounting / read-only ............................ ',' [ OK ]'],
   ['d','[    0.041210] capabilities: awdk awgit awgraph awm awrelay awiam awbac awseal awdit ....... ',' [ OK ]'],
   ['d','[    0.118004] mesh: joining aither-network · peers: demiurge hydra athena prometheus ... ',' [ OK ]'],
-  ['d','[    0.203377] gates: 642 loaded · 4 lanes · self-test: 642/642 can still fail ........ ',' [ OK ]'],
+  ['d','[    0.203377] gates: 960 loaded · 4 lanes · self-test: 960/960 can still fail ........ ',' [ OK ]'],
   ['d','[    0.311560] scheduler: microscheduler :8150 · rtx-5090 · dgx-spark · cloud burst ..... ',' [ OK ]'],
   ['d','[    0.402913] memory: awgraph · awm · nexus · retrieval gold-set (25q + 2 canaries) ....... ',' [ OK ]'],
   ['d','[    0.517772] doctrine: no false blockers · evidence-first · could-not-judge ≠ pass ...... ',' [ OK ]'],
@@ -370,10 +370,10 @@ function line(html, cls){ const p=document.createElement('p'); if(cls) p.classNa
 function echo(cmd){ line(`<span class="p">david@awnix:~$</span> <span class="c">${esc(cmd)}</span>`); }
 function open(u){ window.open(u,'_blank','noopener'); line(`<span class="d">→ opened ${esc(u)}</span>`); }
 const CMDS = {
-  help(){ line('<span class="h">commands</span>'); [['whoami','who is typing to you'],['top','the numbers, and how each was measured'],['stack','the 64 aw* bricks (also: ls aw*)'],['cat awnix','the box you hand an agent'],['history','USAF → Boeing → Tanium → Aitherium'],['gates','how 642 checks replaced review'],['factory','the six things, and what exists for each'],['blog / demo / github','open the proof'],['resume','open resume.pdf'],['watch','the 4-minute video the factory rendered'],['clear','clear the screen'],['sudo','try it']].forEach(([c,d])=>line(`  <span class="c">${c.padEnd(22,' ')}</span><span class="d">${d}</span>`)); line('<span class="d">tab completes · ↑↓ history · ctrl+l clears</span>'); },
+  help(){ line('<span class="h">commands</span>'); [['whoami','who is typing to you'],['top','the numbers, and how each was measured'],['stack','the 85 aw* bricks (also: ls aw*)'],['cat awnix','the box you hand an agent'],['history','USAF → Boeing → Tanium → Aitherium'],['gates','how 960 checks replaced review'],['factory','the six things, and what exists for each'],['blog / demo / github','open the proof'],['resume','open resume.pdf'],['watch','the 4-minute video the factory rendered'],['clear','clear the screen'],['sudo','try it']].forEach(([c,d])=>line(`  <span class="c">${c.padEnd(22,' ')}</span><span class="d">${d}</span>`)); line('<span class="d">tab completes · ↑↓ history · ctrl+l clears</span>'); },
   whoami(){ line(`<span class="g">${esc(D.identity.name)}</span> — ${esc(D.identity.headline)}`); line(esc(D.summary)); line(`<span class="d">${esc(D.identity.location)} · ${esc(D.identity.email)}</span>`); },
   ls(arg){ if(arg && /^aw/.test(arg)) return CMDS.stack(); line('<span class="c">whoami/  top/  stack/  awnix  history/  gates/  factory/  resume.pdf  blog@  demo@  github@</span>'); },
-  top(){ line('<span class="h">measured 2026-09-03 · the AitherOS tree · feat/tunnel-phone-coding</span>');
+  top(){ line('<span class="h">measured 2026-09-20 · the AitherOS tree · origin/develop</span>');
     D.metrics.forEach((m,i)=>{ const p=line(`<b>0</b><span>${esc(m.label)}<small>$ ${esc(m.how)}</small></span>`,'mrow'); const b=p.querySelector('b'); const target=m.value; if(typeof target!=='number'||RM){ b.textContent=fmt(target); return; } const t0=performance.now()+i*70; (function tick(){ const k=Math.min(1,(performance.now()-t0)/900); b.textContent=fmt(Math.round(target*(k<0?0:(1-Math.pow(1-k,3))))); if(k<1) requestAnimationFrame(tick); else b.textContent=fmt(target); })(); });
     line(`<span class="d">pypi: awdk ${D.pypi.awdk} · awgit ${D.pypi.awgit} · awgraph ${D.pypi.awgraph} · awrelay ${D.pypi.awrelay}</span>`); },
   metrics(){ CMDS.top(); },
@@ -384,7 +384,7 @@ const CMDS = {
   history(){ D.experience.slice().reverse().forEach(e=>{ line(`<span class="c">${esc(e.dates)}</span>  <span class="h">${esc(e.org)}</span> — ${esc(e.title)}`); e.bullets.slice(0,2).forEach(b=>line(`    <span class="d">· ${esc(b)}</span>`)); }); },
   gates(){ [`<span class="h">${M.quality_gates.value} gates. Each proves it can still fail. Each runs somewhere unattended.</span>`,
     'exit 0 = <span class="ok">pass</span> · exit 1 = <span class="e">violation</span> · exit 2 = could not judge. <span class="c">could-not-judge is never a pass.</span>',
-    'Four lanes: ci-static (228) · fleet-live every 4h (79) · host-live (104) · selftest-only — with a written reason, or it fails.',
+    'Four lanes: ci-static (504) · fleet-live every 4h (136) · host-live (295) · selftest-only — with a written reason, or it fails.',
     'Rule: a defect a machine could detect must become a CHECK, never a ledger note. Measured before the rule: 79 rows/day in, 4.2/day out.',
     'Rule: an agent may stop for exactly three reasons — physically impossible, irreversible+destructive, owner said no. 60–90% of "blocked" items were reversible.',
     'Every claim carries its command and exit code, or it is not a claim.'].forEach(t=>line(t)); },
@@ -438,7 +438,7 @@ const ST=[
 ST.forEach((s,i)=>{ const d=document.createElement('div'); d.className='card'; d.style.transitionDelay=(i*90)+'ms'; d.innerHTML=`<div class="num">${s.n}</div><div class="big">${s.big}</div><div class="org">${esc(s.org)}</div><div class="when">${esc(s.when)}</div><p>${esc(s.p)}</p>`; $('#stations').appendChild(d); rio.observe(d); });
 
 /* factory panels */
-const EV=['33 agents · 1 gateway · 1 scheduler · swarm(11) · ratchet: propose→apply→score→keep|revert','642 gates · --self-test required · 4 lanes · exit 0/1/2 · rule: check, not row','awgraph · awm · nexus · gold-set 25q+2 canaries · embedder 13x smaller beats teacher ($3)','named baseline required · seen/unseen buckets · blind A/B before "fixed" · mutation guards','autoheal + death watchdog · 4h probe: 79 live gates · VIOLATION and DEAD page separately','tenant app in ~10 min · 3 real tenants · 61 public repos · 4 on PyPI · 1.7B model in a phone browser'];
+const EV=['33 agents · 1 gateway · 1 scheduler · swarm(11) · ratchet: propose→apply→score→keep|revert','960 gates · --self-test required · 4 lanes · exit 0/1/2 · rule: check, not row','awgraph · awm · nexus · gold-set 25q+2 canaries · embedder 13x smaller beats teacher ($3)','named baseline required · seen/unseen buckets · blind A/B before "fixed" · mutation guards','autoheal + death watchdog · 4h probe: 136 live gates · VIOLATION and DEAD page separately','tenant app in ~10 min · 3 real tenants · 78 public repos · 51 on PyPI · 1.7B model in a phone browser'];
 const K=['Orchestrate','Govern','Remember','Evaluate','Self-heal','Ship'];
 D.jd.forEach((j,i)=>{ const d=document.createElement('article'); d.className='card'; d.style.transitionDelay=(i*70)+'ms'; d.innerHTML=`<span class="ico">${K[i]||''}</span><h3>${esc(j.jd)}</h3><p>${esc(j.proof)}</p><div class="ev"><b>$</b> ${esc(EV[i]||'')}</div>`; $('#panels').appendChild(d); rio.observe(d); });
 

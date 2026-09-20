@@ -3,6 +3,7 @@ assert zero console errors. Exit 1 on any error or missing element.
 
     python docs/verify.py
 """
+import json
 import pathlib
 import socket
 import subprocess
@@ -13,6 +14,8 @@ from playwright.sync_api import sync_playwright
 
 site = pathlib.Path(__file__).resolve().parent
 shots = site / "_shots"
+# the expected count comes from the facts the page was built from, never a literal
+WANT = len(json.loads((site.parent / "facts" / "bricks.json").read_text(encoding="utf-8"))["bricks"])
 shots.mkdir(exist_ok=True)
 port = 8765
 srv = subprocess.Popen(
@@ -66,9 +69,9 @@ try:
             pg.screenshot(path=str(shots / f"{name}-close.png"))
             print(f"{name}: {w}x{h} shell-bricks={bricks} metric-rows={rows} constellation-nodes={nodes}")
             print(f"  h1 font: {h1font} | loaded: {fonts}")
-            if bricks != 64 or nodes != 64 or rows < 8:
+            if bricks != WANT or nodes != WANT or rows < 8:
                 rc = 1
-                print("  MISMATCH: expected 64 bricks / 64 nodes / >=8 metric rows")
+                print(f"  MISMATCH: expected {WANT} bricks / {WANT} nodes / >=8 metric rows")
             if "Cinzel" not in h1font:
                 rc = 1
                 print("  h1 is not Cinzel")

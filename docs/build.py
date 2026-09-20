@@ -30,7 +30,7 @@ METRICS_TABLE = [  # key, label, how measured (from facts/measured.md)
     ("mcp_tools_served", "MCP tools served", "gateway tools/list (1204-1211 on probe)"),
     ("compose_services", "services declared", "grep -cE '^  [a-z][a-z0-9-]+:$' docker-compose.aitheros.yml"),
     ("blog_posts", "posts written + published by agents", "ls AitherVeil/content/blog/*.md | wc -l"),
-    ("aw_bricks_registered", "aw* bricks registered (40 public)", "yaml.safe_load(ecosystem.yaml)['bricks']"),
+    ("aw_bricks_registered", "aw* bricks registered (63 public)", "yaml.safe_load(ecosystem.yaml)['bricks']"),
     ("routines", "scheduled routines", "ls AitherOS/config/routines/*.yaml | wc -l"),
     ("agents", "specialised agents", "ls .claude/agents | wc -l"),
     ("org_public_repos", "public repos, Aitherium org", "gh repo list Aitherium --json visibility"),

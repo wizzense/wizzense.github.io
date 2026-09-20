@@ -20,15 +20,15 @@
   "stats": [
    {
     "label": "commits since June 2025",
-    "value": "21,065"
+    "value": "25,247"
    },
    {
     "label": "commits in the last 90 days",
-    "value": "13,928"
+    "value": "16,954"
    },
    {
     "label": "self-testing quality gates",
-    "value": "642"
+    "value": "960"
    },
    {
     "label": "MCP tools served",
@@ -36,15 +36,15 @@
    },
    {
     "label": "services declared",
-    "value": "369"
+    "value": "378"
    },
    {
     "label": "posts written and published by agents",
-    "value": "270"
+    "value": "278"
    }
   ],
   "duration_seconds": 22,
-  "narration_text": "Fourteen months ago I founded Aitherium and started building AitherOS: an AI-native platform where thirty-three specialised agents plan, code, review, audit, deploy, and write about their own work. The numbers on screen were measured this morning, and the command behind each one is published. Twenty-one thousand commits. Nearly fourteen thousand of them in the last ninety days. Six hundred and forty-two quality gates. Twelve hundred tools. Two hundred and seventy published posts. Most of it authored by agents under governance I designed."
+  "narration_text": "Fifteen months ago I founded Aitherium and started building AitherOS: an AI-native platform where thirty-three specialised agents plan, code, review, audit, deploy, and write about their own work. The numbers on screen were measured this morning, and the command behind each one is published. Twenty-one thousand commits. Nearly fourteen thousand of them in the last ninety days. Six hundred and forty-two quality gates. Twelve hundred tools. Two hundred and seventy published posts. Most of it authored by agents under governance I designed."
  },
  {
   "layout": "bullets",
@@ -62,13 +62,13 @@
   "layout": "bullets",
   "title": "Automated governance that replaces review",
   "bullets": [
-   "642 gates. Each must prove it can still fail. Each runs in one of four unattended lanes.",
+   "960 gates. Each must prove it can still fail. Each runs in one of four unattended lanes.",
    "Exit 0 pass, 1 violation, 2 could-not-judge — and could-not-judge is never a pass",
    "Rule: a detectable defect must become a check, never a note. Measured: 79 rows/day in, 4 out, before the rule.",
    "Rule: exactly three reasons an agent may stop. 60–90% of 'blocked' items were reversible."
   ],
   "duration_seconds": 24,
-  "narration_text": "Governance. I replaced manual review with six hundred and forty-two gates. Every gate must carry a self-test that proves it can still fail, and must run somewhere unattended. Every gate distinguishes a violation from could-not-judge, and could-not-judge never counts as a pass. Two written rules do most of the work. A defect a machine could detect must become a check, not a ledger row: I measured the ledger taking seventy-nine rows a day and paying down four. And an agent may stop for exactly three reasons, because I measured that most blocked items were reversible or already decided."
+  "narration_text": "Governance. I replaced manual review with nine hundred and sixty gates. Every gate must carry a self-test that proves it can still fail, and must run somewhere unattended. Every gate distinguishes a violation from could-not-judge, and could-not-judge never counts as a pass. Two written rules do most of the work. A defect a machine could detect must become a check, not a ledger row: I measured the ledger taking seventy-nine rows a day and paying down four. And an agent may stop for exactly three reasons, because I measured that most blocked items were reversible or already decided."
  },
  {
   "layout": "bullets",
@@ -112,11 +112,11 @@
   "bullets": [
    "A new tenant app — backend, agent brain pack, portal, tunnel, Pages — in about ten minutes",
    "Three real tenants live: a repair shop, a game studio, campaign tooling",
-   "The aw* stack: 64 registered bricks, 40 public, 14 stacks, 61 public repos, 4 on PyPI",
+   "The aw* stack: 85 registered bricks, 63 public, 21 stacks, 78 public repos, 51 on PyPI",
    "awnix — a Linux you can hand to an agent. Bonsai 1.7B running in a phone's browser."
   ],
   "duration_seconds": 22,
-  "narration_text": "Shipping. A new tenant application, with its backend, brain pack, portal and tunnel, deploys in about ten minutes, and three real customers run on that. The Aither World stack is sixty-four registered bricks, forty of them public, across sixty-one public repositories. awnix is an immutable Linux you can hand to an agent. And a one point seven billion parameter model runs in the browser of my phone, talking to the platform."
+  "narration_text": "Shipping. A new tenant application, with its backend, brain pack, portal and tunnel, deploys in about ten minutes, and three real customers run on that. The Aither World stack is eighty-five registered bricks, sixty-three of them public, across seventy-eight public repositories. awnix is an immutable Linux you can hand to an agent. And a one point seven billion parameter model runs in the browser of my phone, talking to the platform."
  },
  {
   "layout": "closing",
