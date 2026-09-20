@@ -17,13 +17,13 @@ mp.create_sync_client = _csc
 slides = json.load(open(r"E:\repos\david-parkhurst\video\slides-public.json", encoding="utf-8"))
 t0 = time.time()
 out = mp.render_presentation_video(
-    name="david-parkhurst-onebrief-public-cut",
+    name="wizzense-platform-engineer-public-cut",
     slides_json=json.dumps(slides),
     title="I built the factory that builds the software.",
     subtitle="wizzense - Platform Engineer",
     author="wizzense",
     theme="dark", accent_color="#2AD7D7",
-    background_music=r"C:\AitherOS-Fresh\.ELEMENTssets\musicisionary-tatami-main-version-25948-02-41.mp3", music_volume=0.06,
+    background_music=r"C:\AitherOS-Fresh\.ELEMENT\assets\music\visionary-tatami-main-version-25948-02-41.mp3", music_volume=0.06,
     narrate=True, voice="onyx", auto_pace=True, format="mp4",
 )
 print(f"ELAPSED {time.time()-t0:.0f}s")

@@ -16,7 +16,7 @@
  },
  {
   "layout": "stats",
-  "title": "AitherOS, measured on the third of September, 2026",
+  "title": "AitherOS, measured on the twentieth of September, 2026",
   "stats": [
    {
     "label": "commits since June 2025",
@@ -44,7 +44,7 @@
    }
   ],
   "duration_seconds": 22,
-  "narration_text": "Fifteen months ago I founded Aitherium and started building AitherOS: an AI-native platform where thirty-three specialised agents plan, code, review, audit, deploy, and write about their own work. The numbers on screen were measured this morning, and the command behind each one is published. Twenty-one thousand commits. Nearly fourteen thousand of them in the last ninety days. Six hundred and forty-two quality gates. Twelve hundred tools. Two hundred and seventy published posts. Most of it authored by agents under governance I designed."
+  "narration_text": "Fifteen months ago I founded Aitherium and started building AitherOS: an AI-native platform where thirty-three specialised agents plan, code, review, audit, deploy, and write about their own work. The numbers on screen were measured on the twentieth of September, and the command behind each one is published. Twenty-five thousand commits. Nearly seventeen thousand of them in the last ninety days. Nine hundred and sixty quality gates. Twelve hundred tools. Two hundred and seventy-eight published posts. Most of it authored by agents under governance I designed."
  },
  {
   "layout": "bullets",
@@ -56,7 +56,7 @@
    "awdk: build an agent fleet in three lines, any backend"
   ],
   "duration_seconds": 20,
-  "narration_text": "Your first bullet is multi-agent orchestration. Mine is a thirty-three agent roster behind a single gateway, with capability-based dispatch, swarm coding, agent-to-agent messaging, and a ratchet loop that proposes a change, applies it, scores it, and keeps or reverts. Every model call, local or rented, goes through one priority scheduler. The kit that builds fleets, awdk, is on PyPI."
+  "narration_text": "Multi-agent orchestration. I run a thirty-three agent roster behind a single gateway, with capability-based dispatch, swarm coding, agent-to-agent messaging, and a ratchet loop that proposes a change, applies it, scores it, and keeps or reverts. Every model call, local or rented, goes through one priority scheduler. The kit that builds fleets, awdk, is on PyPI."
  },
  {
   "layout": "bullets",
