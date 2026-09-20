@@ -14,7 +14,30 @@ _orig_csc = mp.create_sync_client
 def _csc(timeout=120, **kw):
     return _orig_csc(timeout=max(timeout, 900), **kw)
 mp.create_sync_client = _csc
-slides = json.load(open(r"E:\repos\david-parkhurst\video\slides-public.json", encoding="utf-8"))
+
+# Narration: the fleet voice plane serves one British female voice at a fixed speed=1.0,
+# which is wrong for a first-person film and was judged too slow (owner, 2026-09-20).
+# Force the tool's RECORDED local path (edge-tts, onyx -> en-US-ChristopherNeural, the
+# voice of the published 09-03 cut) and speed it up. narration.py hardcodes no rate, so
+# the rate is added to the one-line edge-tts script it hands its subprocess.
+os.environ["AWVOICE_TTS_URL"] = "http://127.0.0.1:9/voice/synthesize"  # dead port -> local path
+RATE = os.environ.get("FILM_NARRATION_RATE", "+20%")
+import subprocess as _sp
+import lib.media.narration as _nar
+
+class _SpShim:
+    def __getattr__(self, k):
+        return getattr(_sp, k)
+    @staticmethod
+    def run(cmd, *a, **kw):
+        if len(cmd) == 3 and cmd[1] == "-c" and "edge_tts.Communicate(" in cmd[2] and "rate=" not in cmd[2]:
+            head, sep, tail = cmd[2].partition(")\n    await c.save(")
+            if sep:
+                cmd = [cmd[0], cmd[1], head + ", rate=" + repr(RATE) + sep + tail]
+        return _sp.run(cmd, *a, **kw)
+
+_nar.subprocess = _SpShim()
+slides =json.load(open(r"E:\repos\david-parkhurst\video\slides-public.json", encoding="utf-8"))
 t0 = time.time()
 out = mp.render_presentation_video(
     name="wizzense-platform-engineer-public-cut",
