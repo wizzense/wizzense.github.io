@@ -47,7 +47,7 @@ def main() -> int:
     m = facts["metrics"]
     payload = {
         "identity": facts["public_identity"],  # never facts["identity"] on the public site
-        "summary": " ".join(facts["summary"].split()).replace("Onebrief's Outcome Engineering charter", "Outcome engineering"),
+        "summary": " ".join(facts["summary"].split()).replace("Onebrief's Outcome Engineering charter", "Platform engineering"),
         "metrics": [{"key": k, "value": m[k], "label": lbl, "how": how} for k, lbl, how in METRICS_TABLE],
         "pypi": m["pypi"],
         "jd": [{"jd": r["jd"], "proof": " ".join(r["proof"].split()).replace("the one attached to this application", "the film on this page")} for r in facts["jd_map"]],

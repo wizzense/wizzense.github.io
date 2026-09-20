@@ -20,7 +20,7 @@ out = mp.render_presentation_video(
     name="david-parkhurst-onebrief-public-cut",
     slides_json=json.dumps(slides),
     title="I built the factory that builds the software.",
-    subtitle="wizzense - Outcome Engineer",
+    subtitle="wizzense - Platform Engineer",
     author="wizzense",
     theme="dark", accent_color="#2AD7D7",
     background_music=r"C:\AitherOS-Fresh\.ELEMENTssets\musicisionary-tatami-main-version-25948-02-41.mp3", music_volume=0.06,
