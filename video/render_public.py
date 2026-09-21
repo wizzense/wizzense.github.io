@@ -6,7 +6,7 @@ os.chdir(r"C:\AitherOS-Fresh\AitherOS")
 sys.path[:0] = [r"C:\AitherOS-Fresh\AitherOS", r"C:\AitherOS-Fresh\AitherOS\apps\awnode"]
 os.environ.setdefault("AITHER_LIBRARY_ROOT", r"C:\AitherOS-Data\Library")
 from tools.mcp import mcp_presentation as mp
-mp._REMOTION_URL = "http://127.0.0.1:3700"
+mp._REMOTION_URL = os.environ.get("FILM_REMOTION_URL", "http://127.0.0.1:3700")
 # The tool pins the submit POST to 120 s; the rebuilt renderer loads Inter's full weight
 # set per composition and an 11-slide submit now exceeds that (measured 2026-09-03: two
 # "timed out" submits, the 2-slide probe passed). Widen the client for this run only.
