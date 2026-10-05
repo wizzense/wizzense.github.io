@@ -27,12 +27,13 @@ METRICS_TABLE = [  # key, label, how measured (from facts/measured.md)
     ("commits_total", "commits since 2025-06-08", "git rev-list --count HEAD"),
     ("commits_90d", "commits, last 90 days", "git rev-list --count --since='90 days ago' HEAD"),
     ("quality_gates", "self-testing quality gates", "git ls-files 'AitherOS/dev/tools/check_*.py' | wc -l"),
-    ("mcp_tools_served", "MCP tools served", "gateway tools/list (1204-1211 on probe)"),
+    ("mcp_tools_served", "MCP tools served", "gateway tools/list (MCP initialize + tools/list, 2026-10-05)"),
+    ("merged_prs_total", "merged pull requests", r"git log origin/develop --format=%s | grep -oE '\(#[0-9]+\)$' | sort -u | wc -l"),
     ("compose_services", "services declared", "grep -cE '^  [a-z][a-z0-9-]+:$' docker-compose.aitheros.yml"),
     ("blog_posts", "posts written + published by agents", "ls AitherVeil/content/blog/*.md | wc -l"),
-    ("aw_bricks_registered", "aw* bricks registered (63 public)", "yaml.safe_load(ecosystem.yaml)['bricks']"),
+    ("aw_bricks_registered", "aw* bricks registered (55 public)", "yaml.safe_load(ecosystem.yaml)['bricks']"),
     ("routines", "scheduled routines", "ls AitherOS/config/routines/*.yaml | wc -l"),
-    ("agents", "specialised agents", "ls .claude/agents | wc -l"),
+    ("agents", "specialised agents", "len(yaml.safe_load(config/agent-portraits.yaml)['agents'])"),
     ("org_public_repos", "public repos, Aitherium org", "gh repo list Aitherium --json visibility"),
 ]
 
@@ -56,6 +57,7 @@ def main() -> int:
             for e in facts["experience"]
         ],
         "links": facts["links"],
+        "recent": facts.get("recent", []),
         "bricks": eco["bricks"],
         "stacks": eco["stacks"],
     }
@@ -69,6 +71,8 @@ def main() -> int:
         "{{GATES}}": str(m["quality_gates"]),
         "{{BRICKS}}": str(m["aw_bricks_registered"]),
         "{{PUBLIC}}": str(m["aw_bricks_public"]),
+        "{{PRS_RECENT}}": f"{m['merged_prs_since_2026_09_20']:,}",
+        "{{FEAT_RECENT}}": str(m["feature_prs_since_2026_09_20"]),
     }.items():
         html = html.replace(tok, val)
     leftover = re.findall(r"\{\{[A-Z_]+\}\}", html)

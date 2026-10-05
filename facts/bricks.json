@@ -13,7 +13,7 @@
   {
    "id": "awpack",
    "tagline": "First-party agent packs — the ones we build, versioned and installable on their own.",
-   "status": "no-pages"
+   "status": "public"
   },
   {
    "id": "awm",
@@ -48,7 +48,7 @@
   {
    "id": "awpool",
    "tagline": "The free half of the elastic work pool: dispatches public-safe work onto the free GitHub-hosted runners of the public aw* mirrors, so their idle CI minutes become compute. awrun remains the paid/self-hosted lane; this is its free twin.",
-   "status": "planned"
+   "status": "unpublished"
   },
   {
    "id": "awgraph",
@@ -68,12 +68,12 @@
   {
    "id": "awclassify",
    "tagline": "Classify any document -- what it is, who may read it, who it is for, what it is about.",
-   "status": "public"
+   "status": "no-pages"
   },
   {
    "id": "awdecide",
    "tagline": "One typed-decision contract -- choice / score / bool with a probability -- over a ladder of backends you already run (rules, tiny local models, an LLM's logprobs), fail-closed, with a Brier ledger that resolves every decision against its outcome.",
-   "status": "planned"
+   "status": "no-pages"
   },
   {
    "id": "awtoll",
@@ -126,6 +126,11 @@
    "status": "public"
   },
   {
+   "id": "awscope",
+   "tagline": "One scope graph for work and home, where crossing between them takes consent.",
+   "status": "planned"
+  },
+  {
    "id": "awnix",
    "tagline": "A Linux you can hand to an agent — immutable base, capabilities included.",
    "status": "public"
@@ -138,7 +143,7 @@
   {
    "id": "awstorage",
    "tagline": "Every drive on every node, indexed, classified and diffed -- so you can see what you own before you delete it.",
-   "status": "no-pages"
+   "status": "public"
   },
   {
    "id": "awsync",
@@ -178,7 +183,7 @@
   {
    "id": "awswarm",
    "tagline": "Run one model too big for any single GPU across a pool of small ones.",
-   "status": "public"
+   "status": "no-pages"
   },
   {
    "id": "awcache",
@@ -228,22 +233,22 @@
   {
    "id": "awkit",
    "tagline": "Render an agent panel from a tool result — one component, any React app.",
-   "status": "public"
+   "status": "no-pages"
   },
   {
    "id": "awbeads",
    "tagline": "A spatial canvas for a page — arrange things, connect them, and keep the arrangement.",
-   "status": "public"
+   "status": "no-pages"
   },
   {
    "id": "awsprite",
    "tagline": "Hatch a companion that grows only from what you teach it, then take it home.",
-   "status": "planned"
+   "status": "unpublished"
   },
   {
    "id": "awbonsai",
    "tagline": "Run a real model in the visitor's own browser — no server round trip, no upload.",
-   "status": "public"
+   "status": "no-pages"
   },
   {
    "id": "awasp",
@@ -258,7 +263,7 @@
   {
    "id": "awbrain",
    "tagline": "Your history as a wiki of linked markdown — claims pinned to the evidence.",
-   "status": "public"
+   "status": "no-pages"
   },
   {
    "id": "gawbbonet",
@@ -308,7 +313,7 @@
   {
    "id": "awreport",
    "tagline": "File a bug report that has already scrubbed your secrets and collapsed the duplicate.",
-   "status": "public"
+   "status": "no-pages"
   },
   {
    "id": "awresearch",
@@ -333,7 +338,7 @@
   {
    "id": "awevolve",
    "tagline": "Point an agent at a file and a command that scores it, and let it improve.",
-   "status": "public"
+   "status": "no-pages"
   },
   {
    "id": "awsh",
@@ -348,7 +353,7 @@
   {
    "id": "awmine",
    "tagline": "Mine what your agents did -- outcomes, lessons and procedures out of the transcripts they left behind.",
-   "status": "public"
+   "status": "no-pages"
   },
   {
    "id": "awrise",
@@ -368,7 +373,7 @@
   {
    "id": "awrouter",
    "tagline": "OpenRouter for your own fleet: pick a model backend by cost/latency/ capability, fail over, fit the context window, stream. Standalone, OpenAI-compatible, no Aither-specifics required to be valuable.",
-   "status": "public"
+   "status": "no-pages"
   },
   {
    "id": "awembed",
@@ -554,6 +559,26 @@
    "tagline": "A pool across your own devices"
   },
   {
+   "id": "personal-agent-home",
+   "bricks": [
+    "awdesk",
+    "AitherConnect",
+    "awsprite",
+    "awdk",
+    "awm",
+    "awkno",
+    "awknowledge",
+    "awnboard",
+    "awiam",
+    "awtunnel",
+    "awnet",
+    "awnode",
+    "awnix",
+    "awsh"
+   ],
+   "tagline": "A personal agent that lives with you -- desk, browser, site, devices, tunnels"
+  },
+  {
    "id": "browser-companion-graduation",
    "bricks": [
     "awsprite",
@@ -591,6 +616,18 @@
     "awdk"
    ],
    "tagline": "Retrieval you trained yourself"
+  },
+  {
+   "id": "dark-matters-living-world",
+   "bricks": [
+    "awavatar",
+    "awdk",
+    "awdecide",
+    "awsprite",
+    "awrtifact",
+    "awrun"
+   ],
+   "tagline": "Dark Matters Living World"
   },
   {
    "id": "creator-stack",
@@ -631,6 +668,25 @@
    "tagline": "The scheduler, open -- route, queue, clock"
   },
   {
+   "id": "agentic-orchestrator",
+   "bricks": [
+    "awrun",
+    "awflow",
+    "awrise",
+    "awrouter",
+    "awnode",
+    "awdk",
+    "awrepl",
+    "awnix",
+    "awiam",
+    "awbac",
+    "awdit",
+    "awseal",
+    "awshare"
+   ],
+   "tagline": "An orchestrator for agent workloads -- stateful, governed, no cluster"
+  },
+  {
    "id": "wake-learning-loop",
    "bricks": [
     "awrise",
@@ -668,6 +724,38 @@
     "awrise"
    ],
    "tagline": "Mine what you ran -- transcripts in, packs and outcomes out"
+  },
+  {
+   "id": "the-daily-driver",
+   "bricks": [
+    "awsh",
+    "awdk",
+    "awnode",
+    "awdesk",
+    "awskills"
+   ],
+   "tagline": "The daily driver"
+  },
+  {
+   "id": "the-aither-way-claude-code",
+   "bricks": [
+    "awdk",
+    "awsh",
+    "awsettings",
+    "awskills",
+    "awknowledge",
+    "awkno",
+    "awgit",
+    "awrelay",
+    "awm",
+    "awgraph",
+    "awfind",
+    "awfocus",
+    "awprism",
+    "awdecide",
+    "awvoice"
+   ],
+   "tagline": "The Aither way to run Claude Code"
   }
  ]
 }
