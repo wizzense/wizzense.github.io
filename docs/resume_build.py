@@ -63,7 +63,7 @@ def build() -> str:
     out = [f"<!doctype html><html><head><meta charset='utf-8'><title>{E(me['name'])} - resume</title><style>{CSS}</style></head><body>"]
     out.append(f"<header><div class='plate'><img src='{mark}' alt=''></div><div>"
                f"<h1>David <b>wizzense</b></h1><div class='head'>{E(me['headline'])}</div>"
-               f"<div class='persona'>The copy ninja: see a technique once, and the factory performs it a thousand times.</div></div>"
+               f"<div class='persona'>The Reverse Engineer Ninja (REN): take any system apart once, and the factory rebuilds it a thousand times.</div></div>"
                f"<div class='contact'>{E(me['email'])}<br>{E(me['site'])}<br>{E(me['github'])} · {E(me['org'])}<br>{E(me['blog'])}</div></header>")
     summary = " ".join(f["summary"].split()).replace("Onebrief's Outcome Engineering charter", "Platform engineering")
     out.append("<h2>Summary</h2><p class='summary'>" + E(summary) + "</p>")
