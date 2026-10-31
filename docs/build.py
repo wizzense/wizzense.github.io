@@ -24,7 +24,7 @@ METRICS_TABLE = [  # key, label, how measured (from facts/measured.md)
     ("commits_total", "commits since 2025-06-08", "git rev-list --count HEAD"),
     ("commits_90d", "commits, last 90 days", "git rev-list --count --since='90 days ago' HEAD"),
     ("quality_gates", "self-testing quality gates", "git ls-files 'AitherOS/dev/tools/check_*.py' | wc -l"),
-    ("mcp_tools_served", "MCP tools served", "gateway tools/list (MCP initialize + tools/list, 2026-10-05)"),
+    ("mcp_tools_served", "MCP tools served", "gateway tools/list (MCP initialize + tools/list, 2026-10-31)"),
     ("merged_prs_total", "merged pull requests", r"git log origin/develop --format=%s | grep -oE '\(#[0-9]+\)$' | sort -u | wc -l"),
     ("compose_services", "services declared", "grep -cE '^  [a-z][a-z0-9-]+:$' docker-compose.aitheros.yml"),
     ("blog_posts", "posts written + published by agents", "ls AitherVeil/content/blog/*.md | wc -l"),
