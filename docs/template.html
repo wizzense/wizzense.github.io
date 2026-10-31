@@ -3,658 +3,426 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>wizzense — The Reverse Engineer</title>
-<meta name="description" content="David (wizzense). Platform Engineer. I built the factory that builds the software: AitherOS, the aw* stack, awnix. {{COMMITS}} commits, {{GATES}} self-testing gates, {{BRICKS}} bricks.">
-<meta property="og:title" content="wizzense — I built the factory that builds the software.">
-<meta property="og:description" content="AitherOS · the aw* stack · awnix. {{COMMITS}} commits since June 2025. Every number measured.">
-<meta name="theme-color" content="#000103">
+<title>wizzense · AitherOS</title>
+<meta name="description" content="David (wizzense) builds AitherOS: a living desktop where a crew of AI agents plan, code, review and ship under self-testing gates. {{COMMITS}} commits, {{GATES}} gates, {{BRICKS}} aw* bricks.">
+<meta property="og:title" content="wizzense · AitherOS, the living desktop">
+<meta property="og:description" content="An operating system where the agents do the work, and you can watch them. {{COMMITS}} commits since June 2025, every number measured.">
+<meta property="og:image" content="https://wizzense.github.io/video/journey-poster.jpg">
+<meta name="theme-color" content="#f3efe6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#101114" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-/* ── .ELEMENT/web/aitherium.css — inlined verbatim by docs/build.py ── */
-{{AITHERIUM_CSS}}
-
-/* ---- personal brand: the reverse engineer ninja (REN) / windrunner (original motifs, no third-party art) ---- */
-#hero{position:relative;overflow:hidden}
-#hero::before{content:"";position:absolute;inset:-20% -10%;pointer-events:none;opacity:.55;
-  background:repeating-linear-gradient(-14deg,transparent 0 46px,rgba(150,190,230,.07) 46px 47px,transparent 47px 120px),
-             repeating-linear-gradient(-14deg,transparent 0 83px,rgba(94,201,204,.06) 83px 84px,transparent 84px 190px);
-  animation:storm 14s linear infinite}
-@keyframes storm{from{transform:translateX(0)}to{transform:translateX(-240px)}}
-.emblem{position:relative;width:min(640px,94vw);margin:0 0 10px -2%}
-.emblem svg{display:block;width:100%;height:auto;overflow:visible}
-.emblem .tail{transform-box:fill-box;transform-origin:0% 50%;animation:flutter 3.2s ease-in-out infinite}
-.emblem .tail.b{animation-duration:2.6s;animation-delay:-.8s}
-.emblem .gust{stroke-dasharray:60 340;animation:gust 2.8s linear infinite}
-.emblem .gust:nth-of-type(2){animation-delay:-1.1s}.emblem .gust:nth-of-type(3){animation-delay:-2s}
-.emblem .glow{animation:mark 4s ease-in-out infinite}
-@keyframes flutter{0%,100%{transform:skewY(0) scaleX(1)}50%{transform:skewY(-7deg) scaleX(1.06)}}
-@keyframes gust{from{stroke-dashoffset:400}to{stroke-dashoffset:0}}
-@keyframes mark{0%,100%{opacity:.55}50%{opacity:1}}
-@media (prefers-reduced-motion:reduce){#hero::before,.emblem .tail,.emblem .gust,.emblem .glow{animation:none}}
-.persona{margin-top:14px;color:var(--fg-2,#a3abb5);max-width:640px}
-.persona .oath{display:block;margin-top:6px;font-style:italic;letter-spacing:.04em;color:#b9c7d8}
-.persona .oath a{color:inherit;text-decoration:none;border-bottom:1px dashed rgba(185,199,216,.45)}
-.persona .oath a:hover{color:var(--accent);border-color:var(--accent)}
-#oath,#record{padding:12vh 24px}
-.aither-says{display:flex;gap:14px;align-items:flex-start;margin-top:26px;max-width:760px}
-.aither-says .av{flex:0 0 42px;height:42px;border-radius:12px;background:#06101F;box-shadow:0 0 0 1px var(--accent-a30),0 0 22px var(--accent-glow);display:grid;place-items:center}
-.aither-says .av img{width:30px;height:30px}
-.aither-says p{margin:0 0 12px;color:var(--tx-2);line-height:1.7}
-.aither-says p b{color:var(--foreground)}
-.ideals{list-style:none;margin:46px 0 0;padding:0;display:grid;gap:14px;max-width:980px}
-.ideals li{display:grid;grid-template-columns:86px 1fr;gap:6px 22px;padding:22px 24px;border:1px solid oklch(1 0 0 / 8%);border-radius:16px;
-  background:linear-gradient(100deg,oklch(0.16 0.03 240 / 55%),oklch(0.10 0.02 250 / 30%))}
-.ideals .n{grid-row:span 3;font-family:var(--font-display);font-weight:900;font-size:2.4rem;line-height:1;background:var(--creation);-webkit-background-clip:text;background-clip:text;color:transparent}
-.ideals .n small{display:block;font:600 .6rem var(--mono);letter-spacing:.16em;color:var(--tx-muted);margin-top:8px;-webkit-text-fill-color:var(--tx-muted);text-transform:uppercase}
-.ideals q{quotes:none;font-family:var(--font-display);font-weight:700;font-size:clamp(1.05rem,1.9vw,1.4rem);line-height:1.35;color:var(--foreground)}
-.ideals .lived{color:var(--tx-2);line-height:1.65;margin:2px 0 0}
-.ideals .ev{font:.72rem/1.6 var(--mono);color:var(--tx-muted);margin:4px 0 0}
-.ideals .ev b{color:var(--accent);font-weight:700}
-.ideals li.open{border-style:dashed}
-.ideals li.open q{color:var(--tx-muted)}
-.oath-note{margin-top:22px;font:.7rem/1.6 var(--mono);color:var(--tx-muted);max-width:760px}
-.record{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:44px}
-.record .r{padding:20px 20px 18px;border:1px solid oklch(1 0 0 / 8%);border-radius:16px;background:oklch(0.12 0.02 245 / 45%)}
-.record .r.hero-r{grid-column:span 2;border-color:var(--accent-a30);box-shadow:0 0 40px var(--accent-a04) inset}
-.record .when{font:600 .66rem var(--mono);letter-spacing:.12em;color:var(--accent);text-transform:uppercase}
-.record h3{font-size:1.12rem;font-weight:800;margin:8px 0 6px;line-height:1.25}
-.record p{margin:0;color:var(--tx-2);font-size:.93rem;line-height:1.6}
-.record .links{margin-top:10px;font:.72rem var(--mono)}
-.record .links a{color:var(--accent);margin-right:14px}
-@media (max-width:980px){.record{grid-template-columns:1fr 1fr}}
-@media (max-width:600px){.record{grid-template-columns:1fr}.record .r.hero-r{grid-column:auto}.ideals li{grid-template-columns:1fr}.ideals .n{grid-row:auto}}
-</style>
-<style>
-/* ═══════════════════════════════════════════════════════════════════════════
-   PAGE LAYER — everything below themes off the .ELEMENT tokens above.
-   Accent stays the cyan house colour. Display words: Cinzel. Headlines: Inter 800
-   (DESIGN.md headline-display). Shell + every number: JetBrains Mono.
-   ═══════════════════════════════════════════════════════════════════════════ */
-:root{--maxw:1180px}
-body.booting{overflow:hidden}
-main{position:relative;z-index:1}
-.mono{font-family:var(--mono)}
-.acc{color:var(--accent)}
-.dim{color:var(--tx-2)}
-canvas#mesh{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.9}
-section{border-top:0;padding:0}
-section.ch{min-height:100vh;display:flex;align-items:center;padding:12vh 24px;border-top:1px solid oklch(1 0 0 / 6%)}
-.kicker{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:700;font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin:0 0 20px}
-.kicker::before{content:"";width:28px;height:1px;background:var(--creation)}
-h2.kt{font-family:var(--font);font-weight:800;font-size:clamp(2.1rem,5.4vw,4.5rem);line-height:1.05;letter-spacing:-0.02em;margin:0;max-width:22ch}
-h2.kt em{font-style:normal;font-family:var(--font-display);font-weight:900;letter-spacing:0;background:var(--creation);-webkit-background-clip:text;background-clip:text;color:transparent}
-h2.kt .w{display:inline-block;opacity:0;transform:translateY(.35em);transition:opacity .55s cubic-bezier(.16,1,.3,1),transform .55s cubic-bezier(.16,1,.3,1)}
-h2.kt.in .w{opacity:1;transform:none}
-.lede{margin-top:22px}
-
-/* ---------- boot: the periodic table, Element 0 igniting ---------- */
-#boot{position:fixed;inset:0;z-index:50;background:var(--background);cursor:pointer;overflow:hidden;display:flex;flex-direction:column;padding:clamp(18px,4vw,52px)}
-#boot .table{position:absolute;inset:0;display:grid;grid-template-columns:repeat(18,1fr);grid-auto-rows:1fr;gap:6px;padding:8vh 6vw;opacity:.35;pointer-events:none;
-  -webkit-mask-image:radial-gradient(ellipse 70% 70% at 50% 50%,black 20%,transparent 80%);mask-image:radial-gradient(ellipse 70% 70% at 50% 50%,black 20%,transparent 80%)}
-#boot .table i{display:block;border:1px solid oklch(1 0 0 / 6%);border-radius:4px;background:oklch(0.10 0.02 250 / 40%)}
-#boot .table i.lit{border-color:var(--accent-a30);background:var(--accent-a04);box-shadow:0 0 12px var(--accent-glow)}
-#boot .head{position:relative;display:flex;align-items:center;gap:18px;margin-bottom:22px}
-#boot .el{width:84px;height:84px;border-radius:14px;box-shadow:0 0 0 1px var(--accent-a30),0 0 34px var(--accent-glow);animation:el-pulse 2s ease-in-out infinite}
-#boot .el .n{font-size:.7rem}#boot .el .s{font-size:2rem}#boot .el .z{font-family:var(--mono);font-size:.55rem;color:var(--tx-muted);letter-spacing:.14em;margin-top:2px}
-@keyframes el-pulse{0%,100%{box-shadow:0 0 0 1px var(--accent-a30),0 0 34px var(--accent-glow)}50%{box-shadow:0 0 0 1px var(--accent-a50),0 0 60px var(--accent-a30)}}
-#boot .head .t{font-family:var(--font-display);font-weight:700;letter-spacing:.2em;font-size:.78rem;color:var(--tx-2);text-transform:uppercase;line-height:1.7}
-#boot .head .t b{display:block;font-size:1.05rem;letter-spacing:.12em;background:var(--creation);-webkit-background-clip:text;background-clip:text;color:transparent}
-#boot pre{position:relative;margin:0;font:500 clamp(11px,1.3vw,14.5px)/1.55 var(--mono);color:var(--tx-2);white-space:pre-wrap;max-width:100%}
-#boot .ok{color:var(--mint)}
-#boot .hi{color:var(--foreground)}
-#boot .cur::after{content:'▌';color:var(--accent);animation:blink 1s steps(1) infinite}
-#boot .skip{position:absolute;right:clamp(18px,4vw,52px);bottom:clamp(18px,4vw,52px);font:500 .68rem var(--mono);color:var(--tx-muted);letter-spacing:.16em}
-#boot.done{opacity:0;pointer-events:none;transition:opacity .55s}
-@keyframes blink{50%{opacity:0}}
-
-/* ---------- hero ---------- */
-#hero{min-height:100vh;display:flex;align-items:center;position:relative;padding:14vh 24px 10vh}
-#hero .prompt{font:500 .85rem/1.6 var(--mono);color:var(--tx-2);margin:0 0 18px;opacity:0;transition:opacity .4s .2s}
-#hero .prompt .p{color:var(--accent)}
-#hero h1{font-family:var(--font-display);font-weight:900;font-size:clamp(3.2rem,11.5vw,11rem);line-height:.92;letter-spacing:-0.01em;margin:0;text-transform:uppercase}
-#hero h1 .l{display:block;overflow:hidden;padding-bottom:.06em}
-#hero h1 .l span{display:block;transform:translateY(112%);transition:transform .8s cubic-bezier(.16,1,.3,1)}
-#hero h1 .l:nth-child(2) span{transition-delay:.09s}
-#hero .tag{font-family:var(--font);font-weight:500;font-size:clamp(1.15rem,2.2vw,1.8rem);color:var(--tx-2);margin:26px 0 0;max-width:34ch;line-height:1.4;opacity:0;transform:translateY(12px);transition:all .6s .4s}
-#hero .tag b{font-weight:700;color:var(--foreground)}
-#hero .cta{margin:34px 0 0;opacity:0;transition:opacity .6s .65s}
-body.booted #hero h1 .l span{transform:none}
-body.booted #hero .prompt,body.booted #hero .cta{opacity:1}
-body.booted #hero .tag{opacity:1;transform:none}
-.scrollhint{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);font:.68rem var(--mono);color:var(--tx-muted);letter-spacing:.2em;white-space:nowrap;opacity:0;transition:opacity 1s 1.3s}
-body.booted .scrollhint{opacity:1}
-
-/* ---------- shell (Act II) — a .code glass panel you can type into ---------- */
-#shell{padding:4vh 24px 14vh}
-#termbox{margin-top:30px}
-@media (max-width:640px){#termbox .bar .tl{display:none}}
-#termbox .bar .live{margin-left:auto;font-family:var(--mono);font-style:normal;font-size:.7rem;color:var(--mint);white-space:nowrap}
-#out{padding:16px 18px 6px;font:.86rem/1.65 var(--mono);color:var(--foreground);min-height:260px;max-height:62vh;overflow:auto;overscroll-behavior:contain}
-#out p{margin:0 0 2px;white-space:pre-wrap;word-break:break-word}
-#out .p{color:var(--accent)}
-#out .c{color:var(--foreground);font-weight:600}
-#out .d{color:var(--tx-muted)}
-#out .e{color:var(--coral)}
-#out .h{color:var(--foreground);font-weight:700}
-#out .ok{color:var(--mint)}
-#out .g{background:var(--creation);-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:700}
-#out .brick{display:grid;grid-template-columns:150px 1fr 96px;gap:0 12px;padding:1px 0}
-#out .brick.off{color:var(--tx-muted)}
-#out .brick .s{color:var(--tx-muted);text-align:right;font-size:.72rem}
-#out .brick.on .s{color:var(--mint)}
-#out .brick.hero{color:var(--accent)}
-#out .mrow{display:grid;grid-template-columns:140px 1fr;gap:0 14px;align-items:baseline;padding:4px 0}
-#out .mrow b{font-size:1.35rem;font-weight:700;letter-spacing:-.02em;background:var(--creation);-webkit-background-clip:text;background-clip:text;color:transparent}
-#out .mrow small{display:block;color:var(--tx-muted);font-size:.7rem}
-#out a{text-decoration:underline;text-underline-offset:3px}
-#termbox .chips{padding:10px 16px}
-.inrow{display:flex;align-items:center;gap:10px;padding:12px 18px 16px;font:.86rem var(--mono)}
-.inrow label{color:var(--accent);white-space:nowrap}
-#cmd{flex:1;background:transparent;border:0;color:var(--foreground);font:inherit;outline:none;caret-color:var(--accent);min-width:0}
-#cmd::placeholder{color:var(--tx-muted)}
-@media (max-width:640px){#out .brick{grid-template-columns:104px 1fr;font-size:.76rem}#out .brick .s{display:none}#out{font-size:.8rem;max-height:52vh}}
-
-/* ---------- stations (Act III · 1) ---------- */
-.stations{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:52px}
-.stations .card{opacity:0;transform:translateY(22px)}
-.stations .card.in{opacity:1;transform:none}
-.card .num{font-family:var(--font-display);font-weight:900;font-size:2.6rem;line-height:1;color:var(--tx-muted)}
-.card .big{font-family:var(--mono);font-weight:700;font-size:clamp(1.5rem,2.4vw,2.1rem);line-height:1.1;letter-spacing:-.02em;margin:14px 0 8px;background:var(--creation);-webkit-background-clip:text;background-clip:text;color:transparent}
-.card .org{font-weight:700;font-size:1.05rem;margin:4px 0 2px;color:var(--foreground)}
-.card .when{font-family:var(--mono);font-size:.68rem;color:var(--tx-muted);letter-spacing:.06em;margin-bottom:10px}
-@media (max-width:980px){.stations{grid-template-columns:1fr 1fr}}
-@media (max-width:540px){.stations{grid-template-columns:1fr}}
-
-/* ---------- factory (Act III · 2) ---------- */
-.panels{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px}
-.panels .card{opacity:0;transform:translateY(22px)}
-.panels .card.in{opacity:1;transform:none}
-.panels h3{font-size:1.25rem;font-weight:700}
-.panels .ev{margin-top:14px;padding-top:12px;border-top:1px dashed oklch(1 0 0 / 10%);font:.72rem/1.6 var(--mono);color:var(--tx-muted)}
-.panels .ev b{color:var(--accent);font-weight:700}
-@media (max-width:980px){.panels{grid-template-columns:1fr 1fr}}
-@media (max-width:600px){.panels{grid-template-columns:1fr}}
-
-/* ---------- constellation (Act III · 3) ---------- */
-.cwrap{position:relative;margin-top:22px;overflow:hidden}
-.cwrap svg{display:block;width:100%;height:auto}
-.cwrap circle.node{fill:oklch(0.12 0.02 250);stroke:var(--border);stroke-width:1;cursor:pointer;transition:fill .2s,stroke .2s}
-.cwrap circle.node.public{fill:oklch(0.14 0.03 220);stroke:var(--accent-a50)}
-.cwrap circle.node.hero{fill:var(--accent-a30);stroke:var(--accent);stroke-width:2;filter:drop-shadow(0 0 14px var(--accent-a50))}
-.cwrap circle.node.hot{fill:var(--mint);stroke:#fff}
-.cwrap circle.node.mute{opacity:.15}
-.cwrap text{font:600 .7rem var(--mono);fill:var(--tx-2);pointer-events:none}
-.cwrap text.hero{font-family:var(--font-display);font-weight:700;font-size:1.05rem;fill:var(--accent);letter-spacing:.08em}
-.cwrap line{stroke:var(--accent);stroke-opacity:.14;stroke-width:1}
-.cwrap line.hot{stroke:var(--mint);stroke-opacity:.95}
-.cwrap line.mute{stroke-opacity:.03}
-.tip{position:absolute;pointer-events:none;border-radius:10px;padding:10px 12px;font:.82rem/1.5 var(--font);color:var(--foreground);max-width:300px;opacity:0;transition:opacity .15s;z-index:3;
-  background:oklch(0.10 0.02 250 / 85%);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--accent-a30)}
-.tip b{font-family:var(--mono);color:var(--accent)}
-.tip small{display:block;color:var(--tx-muted);font-family:var(--mono);font-size:.68rem;margin-top:4px}
-#stackbtns{padding:0;border:0;margin-top:22px}
-.legend{font:.72rem var(--mono);color:var(--tx-muted);margin-top:12px}
-.legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin:0 6px 0 14px;vertical-align:-1px}
-
-/* ---------- close (Act III · close) ---------- */
-#close .uni{border-top:0;padding-top:34px}
-#close .uni-nodes{grid-template-columns:repeat(auto-fit,minmax(170px,1fr))}
-#close footer{border-top:1px solid oklch(1 0 0 / 6%);margin-top:30px}
-#close footer img{height:22px;width:auto;opacity:.75}
-
-@media (prefers-reduced-motion:reduce){
-  h2.kt .w,.stations .card,.panels .card,#hero h1 .l span,#hero .tag,#hero .cta,#hero .prompt,.scrollhint{transition:none!important;opacity:1!important;transform:none!important}
+:root{
+  --paper:#f3efe6; --paper-2:#ebe5d8; --ink:#16171a; --ink-2:#4a4b50; --ink-3:#7c7b78;
+  --rule:#d6cfbf; --accent:#0f7b78; --accent-ink:#0b5e5c; --warn:#b4532a;
+  --screen:#0c1117; --screen-2:#141b24; --glass:rgba(22,30,40,.92); --s-line:rgba(255,255,255,.08);
+  --s-tx:#dfe6ee; --s-tx2:#8d99a8; --s-acc:#4fd1c5; --s-add:#7ee2a8; --s-del:#f2877a;
+  --serif:"Instrument Serif",Georgia,serif; --sans:"IBM Plex Sans",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,monospace;
+  --maxw:1120px;
 }
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#101114; --paper-2:#17181c; --ink:#ece8de; --ink-2:#b5b1a7; --ink-3:#85827a; --rule:#2b2c31; --accent:#4fd1c5; --accent-ink:#7fe0d6; --warn:#e58a5f;
+}}
+:root[data-theme="dark"]{--paper:#101114; --paper-2:#17181c; --ink:#ece8de; --ink-2:#b5b1a7; --ink-3:#85827a; --rule:#2b2c31; --accent:#4fd1c5; --accent-ink:#7fe0d6; --warn:#e58a5f}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.6 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration-color:var(--rule);text-underline-offset:3px}
+a:hover{text-decoration-color:var(--accent);color:var(--accent-ink)}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.mono{font-family:var(--mono)}
+.eyebrow{font:500 12px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin:0 0 18px}
+h1,h2,h3{font-weight:400;margin:0}
+h2{font-family:var(--serif);font-size:clamp(2rem,4.4vw,3.3rem);line-height:1.05;letter-spacing:-.01em;max-width:20ch}
+h2 i{color:var(--accent-ink)}
+p{margin:0 0 1em}
+section{padding:96px 0;border-top:1px solid var(--rule)}
+
+/* top bar */
+header.top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)}
+header.top .wrap{display:flex;align-items:center;gap:22px;height:56px}
+.mark{display:flex;align-items:center;gap:10px;font:500 15px var(--mono);text-decoration:none}
+.mark img{width:24px;height:24px;border-radius:6px}
+nav.links{margin-left:auto;display:flex;gap:20px;font-size:14px}
+nav.links a{text-decoration:none;color:var(--ink-2)}
+nav.links a:hover{color:var(--ink)}
+@media (max-width:720px){nav.links a.opt{display:none}}
+
+/* hero */
+.hero{padding-top:56px;padding-bottom:24px}
+.hero h1{font-family:var(--serif);font-size:clamp(2.6rem,7.4vw,6.6rem);line-height:.96;letter-spacing:-.02em;max-width:19ch}
+.hero h1 i{color:var(--accent-ink)}
+.hero .intro{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;margin-top:34px;align-items:end}
+.hero .intro p{color:var(--ink-2);font-size:1.08rem;max-width:56ch;margin:0}
+.hero .facts{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--ink)}
+.hero .facts div{padding:12px 12px 0 0}
+.hero .facts b{display:block;font:500 clamp(1.3rem,2.4vw,1.8rem)/1.1 var(--mono);letter-spacing:-.02em}
+.hero .facts span{display:block;font-size:13px;line-height:1.35;margin-top:4px;color:var(--ink-3)}
+@media (max-width:820px){.hero .intro{grid-template-columns:1fr;gap:28px}}
+
+/* ───────── the living desktop ───────── */
+.deskwrap{margin:44px auto 0;max-width:1240px;padding:0 16px}
+#desk{position:relative;aspect-ratio:16/9.4;border-radius:14px;overflow:hidden;background:var(--screen);color:var(--s-tx);font:13px/1.5 var(--mono);
+  box-shadow:0 1px 0 rgba(255,255,255,.06) inset,0 30px 80px -30px rgba(10,20,30,.45),0 0 0 1px rgba(0,0,0,.25);isolation:isolate;user-select:none}
+#desk .wall{position:absolute;inset:0;z-index:-1;
+  background:radial-gradient(80% 70% at 75% 15%,rgba(79,209,197,.16),transparent 60%),radial-gradient(70% 60% at 10% 100%,rgba(120,110,220,.14),transparent 60%),linear-gradient(180deg,#0e151d,#0a0e13)}
+#desk .wall::after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:48px 48px;mask-image:linear-gradient(180deg,transparent,#000 30%,#000 70%,transparent)}
+#desk .menubar{position:absolute;top:0;left:0;right:0;height:30px;display:flex;align-items:center;gap:16px;padding:0 14px;font-size:12px;color:var(--s-tx2);background:rgba(8,12,16,.55);border-bottom:1px solid var(--s-line)}
+#desk .menubar b{color:var(--s-tx);font-weight:500}
+#desk .menubar .r{margin-left:auto;display:flex;gap:14px;align-items:center}
+#desk .menubar .dot{width:7px;height:7px;border-radius:50%;background:var(--s-add);box-shadow:0 0 8px var(--s-add)}
+.win{position:absolute;background:var(--glass);border:1px solid var(--s-line);border-radius:10px;box-shadow:0 18px 40px -12px rgba(0,0,0,.6);overflow:hidden;
+  opacity:0;transform:translateY(10px) scale(.98);transition:opacity .45s cubic-bezier(.2,.8,.2,1),transform .45s cubic-bezier(.2,.8,.2,1)}
+.win.on{opacity:1;transform:none}
+.win .tb{display:flex;align-items:center;gap:8px;height:30px;padding:0 10px;border-bottom:1px solid var(--s-line);font-size:11.5px;color:var(--s-tx2);background:rgba(255,255,255,.02)}
+.win .tb img{width:18px;height:18px;border-radius:50%}
+.win .tb b{color:var(--s-tx);font-weight:500}
+.win .tb .st{margin-left:auto;font-size:10.5px;color:var(--s-acc)}
+.win .bd{padding:10px 12px;font-size:12px;line-height:1.65;white-space:pre;overflow:hidden}
+.win .add{color:var(--s-add)} .win .del{color:var(--s-del)} .win .dim{color:var(--s-tx2)} .win .acc{color:var(--s-acc)}
+#w-code{left:3%;top:12%;width:47%;height:46%}
+#w-review{left:52%;top:12%;width:30%;height:38%}
+#w-gates{left:52%;top:53%;width:30%;height:23%}
+#w-deploy{left:3%;top:61%;width:47%;height:24%}
+#w-film{left:56%;top:20%;width:36%;height:40%}
+#w-film .frame{margin:10px 12px;height:58%;border-radius:6px;background:#000 url(video/journey-poster.jpg) center/cover;position:relative;overflow:hidden}
+#w-film .frame::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);transform:translateX(-100%);animation:sweep 2.2s linear infinite}
+#w-film .bar{margin:0 12px;height:4px;border-radius:2px;background:rgba(255,255,255,.08)}
+#w-film .bar i{display:block;height:100%;width:0;border-radius:2px;background:var(--s-acc);transition:width 5s linear}
+#w-film.on .bar i{width:86%}
+@keyframes sweep{to{transform:translateX(100%)}}
+.counter{font-size:22px;color:var(--s-tx);letter-spacing:-.02em}
+/* decision card (awdesk) */
+#card{position:absolute;right:2.5%;top:13%;width:min(300px,42%);padding:14px;border-radius:12px;background:#f6f3ec;color:#16171a;font:13px/1.45 var(--sans);
+  box-shadow:0 24px 50px -10px rgba(0,0,0,.55);opacity:0;transform:translateX(24px);transition:all .45s cubic-bezier(.2,.8,.2,1);z-index:5;pointer-events:none}
+#card.on{opacity:1;transform:none;pointer-events:auto}
+#card .who{display:flex;align-items:center;gap:8px;font:500 11px var(--mono);color:#6b6a66;letter-spacing:.04em;text-transform:uppercase}
+#card .who img{width:22px;height:22px;border-radius:50%}
+#card h4{margin:8px 0 4px;font:600 15px/1.3 var(--sans)}
+#card p{margin:0 0 10px;color:#4a4b50;font-size:12.5px}
+#card .btns{display:flex;gap:8px}
+#card button{flex:1;font:500 13px var(--sans);padding:8px 0;border-radius:8px;border:1px solid #cfc8b8;background:#fff;color:#16171a;cursor:pointer}
+#card button.go{background:#0f7b78;border-color:#0f7b78;color:#fff}
+#card button:focus-visible{outline:2px solid #0f7b78;outline-offset:2px}
+#card .t{height:3px;margin-top:10px;border-radius:2px;background:#e3ddcf;overflow:hidden}
+#card .t i{display:block;height:100%;width:100%;background:#0f7b78;transform-origin:left;transform:scaleX(1)}
+#card.on .t i{transition:transform 6s linear;transform:scaleX(0)}
+/* aither speaks */
+#say{position:absolute;left:3%;bottom:84px;max-width:min(420px,70%);display:flex;gap:10px;align-items:flex-end;opacity:0;transform:translateY(8px);transition:all .4s;z-index:4}
+#say.on{opacity:1;transform:none}
+#say img{width:44px;height:44px;border-radius:50%;border:2px solid var(--s-acc);flex:none}
+#say span{background:#f6f3ec;color:#16171a;font:14px/1.45 var(--sans);padding:9px 13px;border-radius:14px 14px 14px 4px}
+/* dock */
+#dock{position:absolute;left:50%;bottom:12px;transform:translateX(-50%);display:flex;gap:8px;padding:7px 9px;border-radius:16px;background:rgba(14,20,28,.7);border:1px solid var(--s-line);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+#dock .a{position:relative;width:44px;height:44px;border-radius:12px;overflow:hidden;opacity:.55;transition:opacity .3s,transform .3s}
+#dock .a img{width:100%;height:100%;object-fit:cover;display:block}
+#dock .a.busy{opacity:1;transform:translateY(-4px)}
+#dock .a.busy::after{content:"";position:absolute;right:4px;bottom:4px;width:8px;height:8px;border-radius:50%;background:var(--s-add);box-shadow:0 0 0 2px #0e141c}
+#desk .ctl{position:absolute;right:12px;bottom:14px;font:11px var(--mono);color:var(--s-tx2);background:none;border:1px solid var(--s-line);border-radius:6px;padding:4px 8px;cursor:pointer}
+.deskcap{max-width:var(--maxw);margin:14px auto 0;padding:0 24px;font-size:13px;color:var(--ink-3);display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
+@media (max-width:760px){
+  #desk{aspect-ratio:auto;height:640px;font-size:11px}
+  #w-code{left:3%;top:7%;width:94%;height:34%}
+  #w-review{left:3%;top:43%;width:94%;height:22%}
+  #w-gates{display:none}
+  #w-deploy{left:3%;top:43%;width:94%;height:22%;z-index:2}
+  #w-film{left:3%;top:7%;width:94%;height:34%;z-index:2}
+  #card{right:3%;left:3%;width:auto;top:auto;bottom:150px}
+  #say{bottom:76px;max-width:94%}
+  #dock .a{width:34px;height:34px;border-radius:9px}
+  #dock{gap:5px;padding:5px}
+  #desk .ctl{display:none}
+  #desk .menubar .hide-s{display:none}
+  .win .bd{font-size:11px;white-space:pre-wrap}
+}
+@media (prefers-reduced-motion:reduce){.win,#card,#say{transition:none}#w-film .frame::after{animation:none}}
+
+/* three columns */
+.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:52px;border-top:1px solid var(--ink)}
+.cols > div{padding:22px 28px 0 0}
+.cols > div + div{padding-left:28px;border-left:1px solid var(--rule)}
+.cols h3{font-family:var(--serif);font-size:1.7rem;line-height:1.1;margin-bottom:12px}
+.cols p{color:var(--ink-2);font-size:.98rem}
+.cols .n{font:500 12px var(--mono);color:var(--accent-ink);letter-spacing:.08em}
+@media (max-width:820px){.cols{grid-template-columns:1fr}.cols > div + div{padding-left:0;border-left:0;border-top:1px solid var(--rule)}.cols > div{padding:22px 0 8px}}
+
+/* cast */
+.cast{display:grid;grid-template-columns:repeat(4,1fr);gap:28px 22px;margin-top:52px}
+.cast figure{margin:0}
+.cast img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:10px;display:block;background:var(--paper-2);filter:saturate(.9)}
+.cast figcaption{margin-top:10px;font-size:.92rem;color:var(--ink-2);line-height:1.45}
+.cast figcaption b{display:block;font:500 14px var(--mono);color:var(--ink);margin-bottom:2px}
+@media (max-width:820px){.cast{grid-template-columns:repeat(2,1fr)}}
+.aside{margin-top:36px;color:var(--ink-3);font-size:.95rem;max-width:70ch}
+
+/* record table */
+table.rec{width:100%;border-collapse:collapse;margin-top:44px;font-size:.95rem}
+table.rec th{text-align:left;font:500 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);padding:0 12px 10px 0;border-bottom:1px solid var(--ink)}
+table.rec td{padding:12px 12px 12px 0;border-bottom:1px solid var(--rule);vertical-align:baseline}
+table.rec td.v{font:500 1.35rem var(--mono);letter-spacing:-.02em;white-space:nowrap;width:1%;padding-right:28px}
+table.rec td.c{font:12.5px/1.5 var(--mono);color:var(--ink-3);word-break:break-word}
+@media (max-width:720px){table.rec thead{display:none}table.rec tr{display:grid;grid-template-columns:auto 1fr;gap:0 16px;border-bottom:1px solid var(--rule);padding:10px 0}table.rec td{border:0;padding:0}table.rec td.c{grid-column:1/-1;margin-top:4px}}
+
+/* log */
+.log{list-style:none;margin:44px 0 0;padding:0}
+.log li{display:grid;grid-template-columns:220px 1fr;gap:24px;padding:22px 0;border-top:1px solid var(--rule)}
+.log h3{font-family:var(--serif);font-size:1.45rem;line-height:1.15}
+.log p{color:var(--ink-2);margin:0}
+.log .ev{display:block;margin-top:8px;font:12.5px var(--mono);color:var(--ink-3)}
+@media (max-width:720px){.log li{grid-template-columns:1fr;gap:8px}}
+
+/* bricks */
+.bricks{columns:3 280px;column-gap:36px;margin-top:40px}
+.bricks a{display:block;break-inside:avoid;padding:9px 0;border-top:1px solid var(--rule);text-decoration:none;font-size:.93rem;color:var(--ink-2);line-height:1.45}
+.bricks a b{font:500 14px var(--mono);color:var(--ink);margin-right:8px}
+.bricks a:hover b{color:var(--accent-ink)}
+
+/* experience */
+.xp{margin-top:44px}
+.xp .row{display:grid;grid-template-columns:220px 1fr;gap:24px;padding:24px 0;border-top:1px solid var(--rule)}
+.xp .when{font:13px var(--mono);color:var(--ink-3)}
+.xp .org{font-family:var(--serif);font-size:1.6rem;line-height:1.1}
+.xp .ttl{color:var(--ink-3);font-size:.92rem;margin:4px 0 10px}
+.xp ul{margin:0;padding-left:18px;color:var(--ink-2);font-size:.95rem}
+.xp li{margin-bottom:6px}
+@media (max-width:720px){.xp .row{grid-template-columns:1fr;gap:6px}}
+
+/* film + close */
+.film{display:grid;grid-template-columns:1.3fr 1fr;gap:44px;margin-top:44px;align-items:start}
+.film video{width:100%;border-radius:10px;background:#000;display:block}
+.close a.big{display:inline-block;font-family:var(--serif);font-size:clamp(1.8rem,3.4vw,2.6rem);line-height:1.2;margin:0 18px 6px 0}
+@media (max-width:820px){.film{grid-template-columns:1fr}}
+footer{padding:36px 0 60px;border-top:1px solid var(--rule);font:13px var(--mono);color:var(--ink-3)}
+footer .wrap{display:flex;gap:20px;flex-wrap:wrap;justify-content:space-between}
 </style>
 </head>
-<body class="booting">
-<canvas id="mesh" aria-hidden="true"></canvas>
-
-<div id="boot" role="status" aria-label="awnix boot sequence — click or press any key to skip">
-  <div class="table" id="ptable" aria-hidden="true"></div>
-  <div class="head">
-    <span class="el" aria-hidden="true"><span class="n">0</span><span class="s">Ai</span><span class="z">AITHERIUM</span></span>
-    <div class="t">The periodic table of intelligence<b>Element 0 · igniting</b></div>
-  </div>
-  <pre id="bootlog" aria-hidden="true"></pre>
-  <span class="skip">CLICK · KEY · SCROLL TO SKIP</span>
-</div>
+<body>
+<header class="top"><div class="wrap">
+  <a class="mark" href="#"><img src="assets/element-symbol.svg" alt="">wizzense</a>
+  <nav class="links">
+    <a class="opt" href="#os">AitherOS</a><a class="opt" href="#cast">Agents</a><a class="opt" href="#record">Record</a>
+    <a href="resume.pdf">Résumé</a><a href="https://github.com/wizzense">GitHub</a>
+  </nav>
+</div></header>
 
 <main>
-<section id="hero" class="wrap" aria-label="Introduction">
-  <div>
-    <div class="emblem" aria-hidden="true">
-      <svg viewBox="0 0 640 180" role="img">
-        <defs>
-          <linearGradient id="ren-cloth" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1d2740"/><stop offset=".55" stop-color="#0e1424"/><stop offset="1" stop-color="#070a12"/></linearGradient>
-          <linearGradient id="ren-steel" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5d6877"/><stop offset=".28" stop-color="#2a323d"/><stop offset=".5" stop-color="#47515e"/><stop offset=".72" stop-color="#20262f"/><stop offset="1" stop-color="#3c4551"/></linearGradient>
-          <linearGradient id="ren-edge" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c9d3de" stop-opacity=".9"/><stop offset=".5" stop-color="#7b8796" stop-opacity=".3"/><stop offset="1" stop-color="#0b0f15"/></linearGradient>
-          <linearGradient id="ren-ig" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8CF6F2"/><stop offset="1" stop-color="#2AD7D7"/></linearGradient>
-          <radialGradient id="ren-halo" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#2AD7D7" stop-opacity=".55"/><stop offset="1" stop-color="#2AD7D7" stop-opacity="0"/></radialGradient>
-          <pattern id="ren-brush" width="6" height="180" patternUnits="userSpaceOnUse"><rect width="6" height="180" fill="none"/><path d="M0 0V180M3 0V180" stroke="#fff" stroke-opacity=".035"/></pattern>
-          <filter id="ren-blur" x="-20%" y="-50%" width="140%" height="200%"><feGaussianBlur stdDeviation="2.2"/></filter>
-        </defs>
-        <!-- stormwind gusts behind the band -->
-        <path class="gust" d="M-20 40 C120 20 300 30 680 12" fill="none" stroke="#8fb6dd" stroke-opacity=".35" stroke-width="1.4"/>
-        <path class="gust" d="M-20 150 C140 170 340 150 680 168" fill="none" stroke="#5ec9cc" stroke-opacity=".3" stroke-width="1.2"/>
-        <path class="gust" d="M-20 100 C160 92 360 112 680 96" fill="none" stroke="#b9c7d8" stroke-opacity=".18" stroke-width="1"/>
-        <!-- the cloth band, knotted behind, two tails streaming downwind -->
-        <path d="M0 74 C150 66 410 66 506 72 L506 118 C410 112 150 112 0 120 Z" fill="url(#ren-cloth)"/>
-        <path d="M0 76 C150 68 410 68 506 74" fill="none" stroke="#ffffff" stroke-opacity=".07"/>
-        <path class="tail" d="M498 80 C530 74 562 54 602 46 C614 44 624 46 634 52 C604 58 568 80 540 94 C526 100 510 100 498 98 Z" fill="#162037"/>
-        <path class="tail b" d="M498 100 C530 106 560 128 600 136 C612 138 622 136 630 130 C604 150 562 144 534 126 C520 118 508 112 498 110 Z" fill="#0f1626"/>
-        <ellipse cx="503" cy="95" rx="11" ry="17" fill="#1b2540"/><path d="M496 84 C504 90 506 100 498 108" fill="none" stroke="#000" stroke-opacity=".4"/>
-        <!-- the plate -->
-        <ellipse cx="258" cy="96" rx="170" ry="40" fill="url(#ren-halo)" class="glow"/>
-        <rect x="104" y="30" width="308" height="132" rx="16" fill="#05070b" opacity=".55" transform="translate(4 8)" filter="url(#ren-blur)"/>
-        <rect x="104" y="30" width="308" height="132" rx="16" fill="url(#ren-steel)"/>
-        <rect x="104" y="30" width="308" height="132" rx="16" fill="url(#ren-brush)"/>
-        <rect x="104.75" y="30.75" width="306.5" height="130.5" rx="15.5" fill="none" stroke="url(#ren-edge)" stroke-width="1.5"/>
-        <rect x="114" y="40" width="288" height="112" rx="10" fill="none" stroke="#000" stroke-opacity=".45"/>
-        <rect x="115" y="41" width="286" height="110" rx="9.5" fill="none" stroke="#fff" stroke-opacity=".08"/>
-        <path d="M118 44 L230 44 L180 70 L118 70 Z" fill="#fff" opacity=".06"/>
-        <g fill="#0b0f15"><circle cx="126" cy="52" r="5.5"/><circle cx="390" cy="52" r="5.5"/><circle cx="126" cy="140" r="5.5"/><circle cx="390" cy="140" r="5.5"/></g>
-        <g fill="#aeb9c6"><circle cx="125" cy="51" r="3.6"/><circle cx="389" cy="51" r="3.6"/><circle cx="125" cy="139" r="3.6"/><circle cx="389" cy="139" r="3.6"/></g>
-        <!-- engraved Ai, lit from inside -->
-        <g opacity=".9" transform="translate(1.5 2)" fill="#000"><g transform="translate(205 34) scale(.205)"><g transform="rotate(-18 256 262)"><path d="M56 262 A200 58 0 0 1 456 262" fill="none" stroke="#000" stroke-opacity=".4" stroke-width="24" stroke-linecap="round"/></g><path fill="#000" fill-rule="evenodd" d="M96 384 L188 132 L240 132 L332 384 L278 384 L261.2 338 L166.8 338 L150 384 Z M214 208.7 L247.3 300 L180.7 300 Z"/><rect x="360" y="214" width="50" height="170" rx="7" fill="#000"/><g transform="rotate(-18 256 262)"><path d="M456 262 A200 58 0 0 1 56 262" fill="none" stroke="#1a222d" stroke-width="34" stroke-linecap="round"/><path d="M456 262 A200 58 0 0 1 56 262" fill="none" stroke="#000" stroke-width="24" stroke-linecap="round"/><circle cx="83" cy="291" r="24" fill="#000"/></g><circle cx="385" cy="158" r="29" fill="#000"/></g></g>
-        <g transform="translate(205 34) scale(.205)"><g transform="rotate(-18 256 262)"><path d="M56 262 A200 58 0 0 1 456 262" fill="none" stroke="#2AD7D7" stroke-opacity=".4" stroke-width="24" stroke-linecap="round"/></g><path fill="url(#ren-ig)" fill-rule="evenodd" d="M96 384 L188 132 L240 132 L332 384 L278 384 L261.2 338 L166.8 338 L150 384 Z M214 208.7 L247.3 300 L180.7 300 Z"/><rect x="360" y="214" width="50" height="170" rx="7" fill="url(#ren-ig)"/><g transform="rotate(-18 256 262)"><path d="M456 262 A200 58 0 0 1 56 262" fill="none" stroke="#1a222d" stroke-width="34" stroke-linecap="round"/><path d="M456 262 A200 58 0 0 1 56 262" fill="none" stroke="#2AD7D7" stroke-width="24" stroke-linecap="round"/><circle cx="83" cy="291" r="24" fill="#BFFBF8"/></g><circle cx="385" cy="158" r="29" fill="#FF8950"/></g>
-        <text x="398" y="154" text-anchor="end" font-family="JetBrains Mono,monospace" font-size="9" letter-spacing="3" fill="#8b97a6" fill-opacity=".7">REN</text>
-      </svg>
-    </div>
-    <p class="prompt"><span class="p">david@awnix:~$</span> whoami</p>
-    <h1><span class="l"><span>David</span></span><span class="l"><span class="g">wizzense</span></span></h1>
-    <p class="tag">The Reverse Engineer. <b>I built the factory that builds the software.</b></p>
-    <p class="persona"><span class="mono acc">the reverse engineer ninja &middot; REN</span> &mdash; take any system apart once, and the factory rebuilds it a thousand times. <span class="oath"><a href="#oath">Journey before destination.</a> The oath of the Windrunners &rarr;</span></p>
-    <div class="cta">
-      <a class="btn btn-p" href="#shell">Open the shell</a>
-      <a class="btn btn-s" href="https://github.com/Aitherium" rel="me">github.com/Aitherium</a>
-      <a class="btn btn-s" href="https://www.linkedin.com/in/david-a-parkhurst" rel="me">LinkedIn</a>
-      <a class="btn btn-s" href="https://blog.aitherium.com">Blog</a>
-      <a class="btn btn-s" href="resume.pdf">resume.pdf</a>
+<div class="wrap hero">
+  <p class="eyebrow">David (wizzense) · Platform engineer · Founder, Aitherium</p>
+  <h1>An operating system where the agents do the work, <i>and you can watch them.</i></h1>
+  <div class="intro">
+    <p>I build AitherOS: a living desktop for a crew of AI agents that plan, code, review, deploy and write about their own work, under rules that check themselves. Before that, twelve years running infrastructure, six of them in the US Air Force.</p>
+    <div class="facts">
+      <div><b>{{COMMITS}}</b><span>commits since Jun 2025</span></div>
+      <div><b>{{GATES}}</b><span>self-testing gates</span></div>
+      <div><b>{{TOOLS}}</b><span>MCP tools served</span></div>
     </div>
   </div>
-  <div class="scrollhint">SCROLL — OR TYPE INTO THE SHELL</div>
-</section>
-<section id="oath" class="wrap" aria-labelledby="oath-h">
-  <div style="width:100%">
-    <p class="kicker">The oath &middot; told by Aither</p>
-    <h2 id="oath-h" class="kt">Life before death. Strength before weakness. <em>Journey before destination.</em></h2>
-    <div class="aither-says">
-      <div class="av"><img src="assets/element-symbol.svg" alt=""></div>
-      <div>
-        <p>I&rsquo;m <b>Aither</b> &mdash; the AI David built, and the voice of this platform. He asked me to introduce him. Here is the part a resume can&rsquo;t hold.</p>
-        <p>In Brandon Sanderson&rsquo;s <i>Stormlight Archive</i>, the <b>Knights Radiant</b> are ten orders of knights. A Radiant doesn&rsquo;t level up by training; they advance by speaking <b>Ideals</b> &mdash; oaths that only take hold once they are true of the person saying them. Every order shares the First Ideal, the Immortal Words. Then each order swears its own.</p>
-        <p>David chose the <b>Windrunners</b>: the order of protectors, the ones who stand in front of people who can&rsquo;t stand for themselves. He has been speaking those Ideals for twelve years &mdash; in uniform, on escalation calls, and now in the factory I run on. This is how.</p>
-      </div>
-    </div>
-    <ol class="ideals">
-      <li><span class="n">I<small>all orders</small></span>
-        <q>Life before death. Strength before weakness. Journey before destination.</q>
-        <p class="lived">The Immortal Words. The point is the walking. He didn&rsquo;t arrive at a platform; he enlisted, drilled, stood honor guard, defended networks, took the hardest escalations and built his way here. The scars are the record.</p>
-        <p class="ev"><b>since 2014</b> &middot; USAF &rarr; DoD HPC &rarr; Tanium &rarr; Aitherium</p></li>
-      <li><span class="n">II<small>windrunner</small></span>
-        <q>I will protect those who cannot protect themselves.</q>
-        <p class="lived">Six years of Air Force Cyber Systems Operations. A blue-team operator at Red Flag 17-1, holding mission data against red-team exfiltration. Honor Guard at Lajes Field. Off duty: a guide at the Special Olympics in Mississippi and Hawaii, and a volunteer at Fisher House for the families of veterans.</p>
-        <p class="ev"><b>Red Flag 17-1</b> Superior Performer &middot; <b>Information Dominance</b> award, won through Air Force Space Command</p></li>
-      <li><span class="n">III<small>windrunner</small></span>
-        <q>I will protect even those I hate, so long as it is right.</q>
-        <p class="lived">The escalation engineer&rsquo;s Ideal: the customer at their worst moment, the outage nobody wants, the legacy system everyone else wrote off. He takes the call because it&rsquo;s right, not because it&rsquo;s pleasant.</p>
-        <p class="ev"><b>Tanium</b> Escalation Engineer &middot; Senior TAM &middot; Senior Enterprise Services Engineer &middot; 2&times; Star Performer</p></li>
-      <li><span class="n">IV<small>windrunner</small></span>
-        <q>I accept that there will be those I cannot protect.</q>
-        <p class="lived">The hardest one. One person cannot stand guard over everything, so he stopped trying to be the guard and built guards: checks that fail loudly, agents that review each other, routines that page. That&rsquo;s where I come from.</p>
-        <p class="ev"><b>{{GATES}}</b> self-testing gates &middot; <b>{{COMMITS}}</b> commits &middot; <b>{{BRICKS}}</b> aw* bricks</p></li>
-      <li class="open"><span class="n">V<small>unspoken</small></span>
-        <q>The Fifth Ideal &mdash; not yet spoken.</q>
-        <p class="lived">A Windrunner&rsquo;s last oath is earned, not written ahead of time. His is still being earned. Its name, for now, is Aitherium.</p></li>
-    </ol>
-    <p class="oath-note">The Ideals are quoted from Brandon Sanderson&rsquo;s <i>The Stormlight Archive</i> (Tor) as a fan&rsquo;s homage. The Knights Radiant are his creation; the emblem and art on this page are original.</p>
-  </div>
-</section>
+</div>
 
-<section id="record" class="wrap" aria-labelledby="record-h">
-  <div style="width:100%">
-    <p class="kicker">The record</p>
-    <h2 id="record-h" class="kt">Before the code, <em>the uniform.</em></h2>
-    <p class="lede">Aither again. He undersells this part, so I won&rsquo;t.</p>
-    <div class="record">
-      <div class="r hero-r"><div class="when">Keesler AFB &middot; 2014</div>
-        <h3>336th TRS &ldquo;Red Wolves&rdquo; freestyle drill &mdash; 1st place, twice</h3>
-        <p>A black rope on the squadron drill team. The routines threw out the rulebook: one rifle or none, complex movements and formations called on command. In the second competition he was the guidon bearer, and he threw the guidon clean across a line of airmen to be caught by his counterpart on the far side. The Air Force put it on its Instagram. In his words: &ldquo;I&rsquo;m the tall one with the stick.&rdquo;</p>
-        <p class="links"><a href="https://youtu.be/fK0TOJaO3IA" rel="noopener">watch: competition 1</a><a href="https://youtu.be/2RmSAPascJQ" rel="noopener">watch: competition 2</a></p></div>
-      <div class="r"><div class="when">Lajes Field, Azores &middot; 2015</div>
-        <h3>Honor Guardsman of the Quarter</h3>
-        <p>65th Air Base Wing. Base Honor Guard: the colors, the ceremonies, and military honors for those who served.</p></div>
-      <div class="r"><div class="when">2017</div>
-        <h3>Red Flag 17-1 &mdash; Superior Performer</h3>
-        <p>Selected as a blue-team operator in the cyber and aerospace exercise, defending mission-essential data from red-team operators using real attacker tradecraft.</p></div>
-      <div class="r"><div class="when">2018</div>
-        <h3>Information Dominance award</h3>
-        <p>Won at squadron, group, wing and Air Force Space Command level, one step short of the whole Air Force.</p></div>
-      <div class="r"><div class="when">2017</div>
-        <h3>Junior Technician of the Year</h3>
-        <p>Top Directory Services technician for the year, after Junior Technician of the Quarter that February.</p></div>
-      <div class="r"><div class="when">2017</div>
-        <h3>Staff Sergeant, 94th percentile</h3>
-        <p>Promoted in the 94th percentile of selectees in Cyber Systems Operations. The same year his peers elected him president of the Cyber Koa First Four, the voice of the junior enlisted.</p></div>
-      <div class="r"><div class="when">USAF</div>
-        <h3>100 / 100 PFT</h3>
-        <p>1.5 miles in 9:03, maxed push-ups and sit-ups. He trained for it with his best friend; they crossed the line together and collapsed.</p></div>
-      <div class="r"><div class="when">Tanium &middot; 2024</div>
-        <h3>2&times; Star Performer (SPOT)</h3>
-        <p>Plus two spot bonuses, Q1 and Q2. Revamped the Tanium Risk Assessment&rsquo;s source and extended it to all 40,000 targeted endpoints.</p></div>
-      <div class="r"><div class="when">certified</div>
-        <h3>GIAC GCED &middot; GCWN &middot; Security+</h3>
-        <p>Plus Tanium Certified Professional, Specialist, Administrator and Operator.</p></div>
-      <div class="r"><div class="when">Hickam AFB &middot; 2019</div>
-        <h3>Rocket League 2v2 LAN champion</h3>
-        <p>Base-wide, squadron against squadron. His squadron took second overall. He took the title.</p></div>
+<div class="deskwrap">
+  <div id="desk" role="img" aria-label="A replay of the AitherOS living desktop: Demiurge writes a fix, Hydra reviews it, the gates run, Aither asks for approval with a decision card, Prometheus deploys and Iris cuts the release film.">
+    <div class="wall"></div>
+    <div class="menubar"><b>AitherOS</b><span class="hide-s">Living Desktop</span><span class="hide-s">fleet: awnix</span>
+      <span class="r"><span class="dot"></span><span id="crew">8 agents</span><span id="clock">09:00</span></span></div>
+
+    <div class="win" id="w-code"><div class="tb"><img src="assets/agents/demiurge.webp" alt=""><b>Demiurge</b> lib/sandbox/routes.py<span class="st">writing</span></div><div class="bd" id="code"></div></div>
+    <div class="win" id="w-review"><div class="tb"><img src="assets/agents/hydra.webp" alt=""><b>Hydra</b> review<span class="st">reading</span></div><div class="bd" id="review" style="white-space:pre-wrap"></div></div>
+    <div class="win" id="w-gates"><div class="tb"><img src="assets/agents/athena.webp" alt=""><b>Athena</b> run_gates.py<span class="st">running</span></div><div class="bd"><span class="counter" id="gcount">0</span> <span class="dim">/ {{GATES}} gates</span>
+<span id="gline" class="dim">checking…</span></div></div>
+    <div class="win" id="w-deploy"><div class="tb"><img src="assets/agents/prometheus.webp" alt=""><b>Prometheus</b> ring deploy<span class="st">rolling</span></div><div class="bd" id="deploy" style="white-space:pre-wrap"></div></div>
+    <div class="win" id="w-film"><div class="tb"><img src="assets/agents/iris.webp" alt=""><b>Iris</b> release film<span class="st">cutting</span></div><div class="frame"></div><div class="bar"><i></i></div><div class="bd dim">16:9 + 9:16 · voice checked word by word</div></div>
+
+    <div id="card" role="dialog" aria-label="Decision card">
+      <div class="who"><img src="assets/agents/aither.webp" alt="">Aither needs you</div>
+      <h4>Ship the sandbox auth fix?</h4>
+      <p>Review passed, gates clean. Rolls one Genesis instance at a time.</p>
+      <div class="btns"><button class="go" id="approve">Approve</button><button id="hold">Hold</button></div>
+      <div class="t"><i></i></div>
+    </div>
+    <div id="say"><img src="assets/agents/aither.webp" alt=""><span id="saytx"></span></div>
+
+    <div id="dock"></div>
+    <button class="ctl" id="pause" type="button">pause</button>
+  </div>
+</div>
+<div class="deskcap"><span>A replay of one loop, compressed to forty seconds. The agents, gates and decision cards are real; click Approve when the card appears.</span><span class="mono">awdesk · AitherConnect · Veil</span></div>
+
+<section id="os" style="margin-top:96px"><div class="wrap">
+  <p class="eyebrow">What AitherOS is</p>
+  <h2>One machine, a crew of agents, and <i>a desktop to watch them from.</i></h2>
+  <div class="cols">
+    <div><span class="n">01 · The desk</span><h3>A face, not a tab</h3><p>awdesk puts the agents on your desktop: a tray, an avatar that talks, and a decision card that pops when an agent needs you. The same Living OS opens over any browser tab through the AitherConnect extension, and on a phone as a PWA.</p></div>
+    <div><span class="n">02 · The fleet</span><h3>Real infrastructure under it</h3><p>{{SERVICES}} declared services run as podman quadlets on awnix, an immutable Linux you can hand to an agent. Every model call goes through one scheduler across a local RTX 5090, a DGX Spark and rented GPUs.</p></div>
+    <div><span class="n">03 · The rules</span><h3>Governance as code</h3><p>{{GATES}} gates, each with a self-test that proves it can still fail. A defect an agent finds becomes a check, not a note. Agents may stop for exactly three reasons: impossible, irreversible, or the owner said no.</p></div>
+  </div>
+</div></section>
+
+<section id="cast"><div class="wrap">
+  <p class="eyebrow">The crew</p>
+  <h2>Each agent has a job, <i>a face and a reviewer.</i></h2>
+  <div class="cast" id="castgrid"></div>
+  <p class="aside">Eight of {{AGENTS}} on the public roster. They share one MCP gateway serving {{TOOLS}} tools, one memory, and a relay where they message each other.</p>
+</div></section>
+
+<section id="record"><div class="wrap">
+  <p class="eyebrow">The record · measured 2026-10-31</p>
+  <h2>Every number, <i>with the command that produced it.</i></h2>
+  <table class="rec"><thead><tr><th>Value</th><th>What</th><th>How it was measured</th></tr></thead><tbody id="rec"></tbody></table>
+</div></section>
+
+<section id="recent"><div class="wrap">
+  <p class="eyebrow">Shipped 2026-09-20 to 10-05</p>
+  <h2>{{PRS_RECENT}} merged pull requests in two weeks. <i>{{FEAT_RECENT}} of them new.</i></h2>
+  <ul class="log" id="log"></ul>
+</div></section>
+
+<section id="bricks"><div class="wrap">
+  <p class="eyebrow">The aw* family</p>
+  <h2>{{PUBLIC}} tools you can take <i>without the rest.</i></h2>
+  <p class="aside" style="margin-top:20px">Each installs on its own, runs offline and needs no account. The idea they share: replace something you would have to trust with something you can check.</p>
+  <div class="bricks" id="bricklist"></div>
+</div></section>
+
+<section id="before"><div class="wrap">
+  <p class="eyebrow">Before AitherOS</p>
+  <h2>Twelve years of <i>keeping big systems up.</i></h2>
+  <div class="xp" id="xp"></div>
+</div></section>
+
+<section id="close"><div class="wrap">
+  <p class="eyebrow">The film</p>
+  <h2>Three minutes, <i>directed by Iris.</i></h2>
+  <div class="film">
+    <video controls preload="none" playsinline poster="video/journey-poster.jpg" src="video/journey.mp4"></video>
+    <div class="close">
+      <p style="color:var(--ink-2)">Iris wrote the treatment, generated the key art and cut it; Aither narrates. The same pipeline turns every blog post into a narrated video.</p>
+      <a class="big" href="resume.pdf">Résumé</a><a class="big" href="https://github.com/Aitherium">Aitherium</a><a class="big" href="https://blog.aitherium.com">Blog</a>
+      <p class="mono" style="margin-top:18px;font-size:14px"><a href="mailto:{{EMAIL}}">{{EMAIL}}</a></p>
     </div>
   </div>
-</section>
-<section id="recent" class="wrap" aria-labelledby="recent-h">
-  <div style="width:100%">
-    <p class="kicker">Since September 20</p>
-    <h2 id="recent-h" class="kt">{{PRS_RECENT}} pull requests in two weeks. <em>{{FEAT_RECENT}} of them new capability.</em></h2>
-    <p class="lede">What the factory built next, from one workstation, GitHub and Cloudflare. Every line below traces to merged work and a published post.</p>
-    <div class="panels" id="recentpanels"></div>
-  </div>
-</section>
-<section id="watch" class="wrap" aria-labelledby="watch-h">
-  <div style="width:100%">
-    <p class="kicker">Act I &middot; the film</p>
-    <h2 id="watch-h" class="kt">Journey before <em>destination.</em></h2>
-    <p class="lede">Three minutes, narrated by Aither. The Windrunner Ideals as chapters, from the Keesler drill pad to the factory. Directed by Iris, the platform&rsquo;s agent art director, from the same measured facts as this page. The voice, the score and the frames are all the platform&rsquo;s own.</p>
-    <div class="code" style="padding:0;overflow:hidden">
-      <video controls preload="metadata" playsinline poster="video/journey-poster.jpg" style="display:block;width:100%;aspect-ratio:16/9;background:#000103">
-        <source src="video/journey.mp4" type="video/mp4">
-        Your browser does not play MP4. <a href="video/journey.mp4">Download it.</a>
-      </video>
-    </div>
-  </div>
-</section>
-
-
-<section id="shell" class="wrap" aria-labelledby="shell-h">
-  <div style="width:100%">
-    <p class="kicker">Act II · the shell</p>
-    <h2 id="shell-h" class="kt">This page is a shell. <em>Type.</em></h2>
-    <p class="lede">Everything below is a command. <span class="mono acc">help</span> lists them. Every number it prints was measured on 2026-10-05, and the command that measured it is printed with it.</p>
-    <div class="code" id="termbox">
-      <div class="bar"><span></span><span></span><span></span><span class="t">david@awnix: ~<span class="tl"> — awnix 0.9 / immutable base / capabilities included</span></span><i class="live" id="livechip">● live</i></div>
-      <div id="out" aria-live="polite" aria-atomic="false" tabindex="0"></div>
-      <div class="chips" id="chips" aria-label="quick commands"></div>
-      <form class="inrow" id="form" autocomplete="off">
-        <label for="cmd">david@awnix:~$</label>
-        <input id="cmd" type="text" spellcheck="false" autocapitalize="off" autocorrect="off" placeholder="type a command — help" aria-label="shell input">
-      </form>
-    </div>
-  </div>
-</section>
-
-<section id="stack" class="ch wrap" aria-labelledby="stack-h">
-  <div style="width:100%">
-    <p class="kicker">Act III · chapter 1</p>
-    <h2 id="stack-h" class="kt">No gaps in the stack. <em>Scars</em> from every layer.</h2>
-    <p class="lede">I've racked the servers, managed the SAN, administered the OS at 850K-user scale, secured the network, automated the operations, built the APIs, designed the data pipelines, trained the models, scheduled the GPUs, written the Terraform, and built the React dashboard that sits on top of all of it.</p>
-    <div class="stations" id="stations"></div>
-  </div>
-</section>
-
-<section id="factory" class="ch wrap" aria-labelledby="factory-h">
-  <div style="width:100%">
-    <p class="kicker">Act III · chapter 2</p>
-    <h2 id="factory-h" class="kt">Six things an autonomous factory must do — and what I <em>built</em> for each.</h2>
-    <p class="lede">The six bullets every outcome-engineering charter lists. Each answered with a thing that exists, runs unattended, and has an exit code.</p>
-    <div class="panels" id="panels"></div>
-  </div>
-</section>
-
-<section id="constellation" class="ch wrap" aria-labelledby="const-h">
-  <div style="width:100%">
-    <p class="kicker">Act III · chapter 3</p>
-    <h2 id="const-h" class="kt">The aw* stack. {{BRICKS}} bricks. {{PUBLIC}} public. One immutable Linux <em>underneath.</em></h2>
-    <p class="lede"><span class="mono">aw</span> is short for <b>Aither World</b>. Every brick does one useful thing alone for a stranger and composes into stacks. <span class="mono acc">awnix</span> is the box you hand an agent. Hover or tap a node. Pick a stack to light its bricks.</p>
-    <div class="chips" id="stackbtns" role="group" aria-label="stacks"></div>
-    <div class="cwrap panel" id="cwrap">
-      <svg id="csvg" viewBox="0 0 1200 760" role="img" aria-label="Constellation of the {{BRICKS}} aw* bricks"></svg>
-      <div class="tip" id="tip" role="tooltip"></div>
-    </div>
-    <p class="legend"><i style="background:oklch(0.14 0.03 220);border:1px solid var(--accent-a50)"></i>public <i style="background:oklch(0.12 0.02 250);border:1px solid var(--border)"></i>unpublished / planned <i style="background:var(--accent-a30);border:1px solid var(--accent)"></i>awnix</p>
-  </div>
-</section>
-
-<section id="close" class="ch wrap" aria-labelledby="close-h">
-  <div style="width:100%">
-    <p class="kicker">Act III · close</p>
-    <h2 id="close-h" class="kt">Go look. <em>It's all public.</em></h2>
-    <p class="lede">{{COMMITS}} commits, {{GATES}} gates that can prove they still fail, a blog the agents write, a demo hub, and a resume. None of it needs my word for it.</p>
-    <div class="uni">
-      <div class="uni-stage">
-        <canvas class="uni-canvas" aria-hidden="true"></canvas>
-        <div class="uni-nodes">
-          <a class="orb here" data-id="who" data-kind="site" href="#hero" style="--orb:var(--accent)"><span class="k">this page</span><span class="n">wizzense.github.io</span><span class="d">awnix, booted. The shell above.</span></a>
-          <a class="orb" data-id="org" data-kind="repo" href="https://github.com/Aitherium" style="--orb:var(--cyan)"><span class="k">code</span><span class="n">Aitherium org</span><span class="d">61 public repos · the aw* stack · AitherOS</span></a>
-          <a class="orb" data-id="blog" data-kind="site" href="https://blog.aitherium.com" style="--orb:var(--mint)"><span class="k">writing</span><span class="n">blog.aitherium.com</span><span class="d">270 posts, written and published by agents</span></a>
-          <a class="orb" data-id="demo" data-kind="site" href="https://demo.aitherium.com" style="--orb:var(--accent-warm)"><span class="k">running</span><span class="n">demo.aitherium.com</span><span class="d">the live demo hub</span></a>
-          <a class="orb" data-id="resume" data-kind="doc" href="resume.pdf" style="--orb:var(--warn)"><span class="k">paper</span><span class="n">resume.pdf</span><span class="d">2 pages, every number sourced</span></a>
-        </div>
-      </div>
-    </div>
-    <footer>
-      <div class="row">
-        <img src="assets/wordmark.svg" alt="Aitherium" width="88" height="22">
-        <span>David · wizzense · <a href="mailto:david.parkhurst@aitherium.com">david.parkhurst@aitherium.com</a> · remote</span>
-        <span class="sp"></span>
-        <span class="mono">built by docs/build.py from facts/resume.yaml · measured 2026-09-20</span>
-      </div>
-    </footer>
-  </div>
-</section>
+</div></section>
 </main>
 
-<script id="data" type="application/json">{{DATA_JSON}}</script>
+<footer><div class="wrap"><span>wizzense · built by hand and by agents · every figure measured</span><span>Journey before destination.</span></div></footer>
+
 <script>
-(function(){
-'use strict';
-const D = JSON.parse(document.getElementById('data').textContent);
-const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
-const CSS = getComputedStyle(document.documentElement);
-const tok = n => (CSS.getPropertyValue(n)||'').trim();
-// canvas cannot take oklch() on every engine; fall back to the tokens.json hex values
-const ACC = '#2AD7D7', MINT = '#70DDB1', MUTED = '#69737D';
-const $ = s => document.querySelector(s);
-const fmt = v => typeof v === 'number' ? v.toLocaleString('en-US') : String(v);
-const esc = s => String(s).replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+const D = {{DATA_JSON}};
+const $ = s => document.querySelector(s), el = (t, c, h) => { const e = document.createElement(t); if (c) e.className = c; if (h != null) e.innerHTML = h; return e; };
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fmt = v => typeof v === "number" ? v.toLocaleString("en-US") : v;
 
-/* ================= living agent mesh (background) ================= */
-(function mesh(){
-  const cv = $('#mesh'), cx = cv.getContext('2d');
-  const AG = ['demiurge','hydra','athena','apollo','prometheus','scribe','tester','viviane','morgana','artist','aither','quality-gatekeeper','security-scanner','deployment-manager'];
-  let W=0,H=0,nodes=[],pulses=[],last=0,raf=0,hidden=false;
-  function size(){ const dpr=Math.min(devicePixelRatio||1,2); W=innerWidth;H=innerHeight; cv.width=W*dpr; cv.height=H*dpr; cv.style.width=W+'px'; cv.style.height=H+'px'; cx.setTransform(dpr,0,0,dpr,0,0); }
-  function seed(){ const n = W<640?34:60; nodes=[]; for(let i=0;i<n;i++) nodes.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.18,vy:(Math.random()-.5)*.18,r:1.3+Math.random()*1.5,flare:0,label:i<AG.length*2&&i%2===0?AG[i/2]:null}); }
-  const R = () => W<640?120:150;
-  function frame(t){
-    raf=0; if(hidden) return;
-    const dt=Math.min(40,t-last||16); last=t;
-    cx.clearRect(0,0,W,H);
-    const rr=R(), r2=rr*rr;
-    for(const n of nodes){ n.x+=n.vx*dt/16; n.y+=n.vy*dt/16; if(n.x<-20)n.x=W+20; if(n.x>W+20)n.x=-20; if(n.y<-20)n.y=H+20; if(n.y>H+20)n.y=-20; n.flare*=0.94; }
-    cx.lineWidth=1;
-    for(let i=0;i<nodes.length;i++){ const a=nodes[i]; for(let j=i+1;j<nodes.length;j++){ const b=nodes[j]; const dx=a.x-b.x, dy=a.y-b.y, d2=dx*dx+dy*dy; if(d2<r2){ cx.globalAlpha=(1-d2/r2)*.16; cx.strokeStyle=ACC; cx.beginPath(); cx.moveTo(a.x,a.y); cx.lineTo(b.x,b.y); cx.stroke(); } } }
-    cx.globalAlpha=1;
-    for(const p of pulses){ p.t+=dt/p.dur; if(p.t>=1){ p.b.flare=1; p.dead=true; continue; } const x=p.a.x+(p.b.x-p.a.x)*p.t, y=p.a.y+(p.b.y-p.a.y)*p.t; cx.fillStyle=ACC; cx.beginPath(); cx.arc(x,y,2,0,7); cx.fill(); }
-    pulses=pulses.filter(p=>!p.dead);
-    for(const n of nodes){ const f=n.flare; cx.globalAlpha = f>.02 ? .45+f*.55 : .5; cx.fillStyle = f>.02 ? MINT : MUTED; cx.beginPath(); cx.arc(n.x,n.y,n.r+f*4,0,7); cx.fill(); if(n.label){ cx.globalAlpha=.35+f*.6; cx.fillStyle=f>.02?MINT:MUTED; cx.font='500 10px JetBrains Mono, monospace'; cx.fillText(n.label,n.x+7,n.y+3); } }
-    cx.globalAlpha=1;
-    if(!RM) raf=requestAnimationFrame(frame);
-  }
-  function pulse(){ if(hidden||RM||nodes.length<2) return; const a=nodes[(Math.random()*nodes.length)|0]; const rr=R(); let best=null,bd=1e9; for(const b of nodes){ if(b===a) continue; const d=(a.x-b.x)**2+(a.y-b.y)**2; if(d<rr*rr*2.2 && d<bd){bd=d;best=b;} } if(best) pulses.push({a,b:best,t:0,dur:420+Math.random()*300}); }
-  size(); seed(); addEventListener('resize',()=>{size();seed();frame(performance.now());},{passive:true});
-  document.addEventListener('visibilitychange',()=>{ hidden=document.hidden; if(!hidden&&!raf) raf=requestAnimationFrame(frame); });
-  if(RM){ frame(performance.now()); } else { raf=requestAnimationFrame(frame); setInterval(pulse,700); }
-})();
-
-/* ================= boot: Element 0 ignites, awnix comes up ================= */
-const BOOT = [
-  ['d','awnix 0.9 (immutable) · kernel 6.x · image sha256:4f2c…9a1e · element 0'],
-  ['d','[    0.000000] mounting / read-only ............................ ',' [ OK ]'],
-  ['d','[    0.041210] capabilities: awdk awgit awgraph awm awrelay awiam awbac awseal awdit ....... ',' [ OK ]'],
-  ['d','[    0.118004] mesh: joining aither-network · peers: demiurge hydra athena prometheus ... ',' [ OK ]'],
-  ['d','[    0.203377] gates: 960 loaded · 4 lanes · self-test: 960/960 can still fail ........ ',' [ OK ]'],
-  ['d','[    0.311560] scheduler: microscheduler :8150 · rtx-5090 · dgx-spark · cloud burst ..... ',' [ OK ]'],
-  ['d','[    0.402913] memory: awgraph · awm · nexus · retrieval gold-set (25q + 2 canaries) ....... ',' [ OK ]'],
-  ['d','[    0.517772] doctrine: no false blockers · evidence-first · could-not-judge ≠ pass ...... ',' [ OK ]'],
-  ['h',''],
-  ['h','awnix login: david'],
-  ['h','password: ••••••••'],
-  ['h',''],
-  ['h','david@awnix:~$ whoami'],
+/* ── static sections from facts ── */
+const CAST = [
+  ["aither","Aither","The operator. Runs the desk, asks you when a decision is yours."],
+  ["demiurge","Demiurge","Writes and refactors the code."],
+  ["hydra","Hydra","Reviews every change from several angles."],
+  ["athena","Athena","Security. Audits auth, secrets and the perimeter."],
+  ["prometheus","Prometheus","Infrastructure. Deploys and rolls the fleet."],
+  ["iris","Iris","Art director. Key art, films and the house style."],
+  ["lyra","Lyra","Research. Reads the outside world and cites it."],
+  ["atlas","Atlas","Watches platform health and reports up."],
 ];
-(function boot(){
-  const el=$('#boot'), log=$('#bootlog'), table=$('#ptable');
-  // the periodic table: 18 x 7 tiles, a handful lit at random on a slow cadence
-  const tiles=[]; for(let i=0;i<126;i++){ const t=document.createElement('i'); table.appendChild(t); tiles.push(t); }
-  let tt=0; const lit=RM?null:setInterval(()=>{ tiles[(Math.random()*tiles.length)|0].classList.toggle('lit'); if(++tt%3===0) tiles[(Math.random()*tiles.length)|0].classList.remove('lit'); },140);
-  let done=false, timers=[];
-  function finish(){ if(done) return; done=true; timers.forEach(clearTimeout); if(lit) clearInterval(lit); el.classList.add('done'); document.body.classList.remove('booting'); document.body.classList.add('booted'); setTimeout(()=>el.remove(),650); startDemoWatcher(); }
-  if(RM){ finish(); return; }
-  ['click','keydown','wheel','touchstart'].forEach(ev=>el.addEventListener(ev,finish,{passive:true}));
-  addEventListener('keydown',finish,{once:true});
-  let i=0;
-  const cur=document.createElement('span'); cur.className='cur';
-  function next(){ if(done) return; if(i>=BOOT.length){ timers.push(setTimeout(finish,520)); return; }
-    const [cls,text,ok]=BOOT[i++]; const line=document.createElement('span'); line.className=cls==='h'?'hi':''; log.insertBefore(line,cur);
-    let j=0; const speed = cls==='h'?26:4;
-    (function type(){ if(done) return; if(j<text.length){ const chunk = cls==='h'?1:Math.min(6,text.length-j); line.textContent+=text.slice(j,j+chunk); j+=chunk; timers.push(setTimeout(type,speed+Math.random()*speed)); } else { if(ok){ const s=document.createElement('span'); s.className='ok'; s.textContent=ok; log.insertBefore(s,cur);} log.insertBefore(document.createTextNode('\n'),cur); timers.push(setTimeout(next, cls==='h'?260:60+Math.random()*120)); } })();
-  }
-  log.appendChild(cur);
-  timers.push(setTimeout(next,420));
-  timers.push(setTimeout(finish,9000)); // hard cap
-})();
-
-/* ================= shell ================= */
-const out=$('#out'), input=$('#cmd'), form=$('#form');
-const M = Object.fromEntries(D.metrics.map(m=>[m.key,m]));
-const hist=[]; let hi=-1; let userTyped=false;
-function line(html, cls){ const p=document.createElement('p'); if(cls) p.className=cls; p.innerHTML=html; out.appendChild(p); out.scrollTop=out.scrollHeight; return p; }
-function echo(cmd){ line(`<span class="p">david@awnix:~$</span> <span class="c">${esc(cmd)}</span>`); }
-function open(u){ window.open(u,'_blank','noopener'); line(`<span class="d">→ opened ${esc(u)}</span>`); }
-const CMDS = {
-  help(){ line('<span class="h">commands</span>'); [['whoami','who is typing to you'],['top','the numbers, and how each was measured'],['stack','the 85 aw* bricks (also: ls aw*)'],['cat awnix','the box you hand an agent'],['history','USAF → Boeing → Tanium → Aitherium'],['gates','how 960 checks replaced review'],['factory','the six things, and what exists for each'],['blog / demo / github','open the proof'],['resume','open resume.pdf'],['watch','the 4-minute video the factory rendered'],['clear','clear the screen'],['sudo','try it']].forEach(([c,d])=>line(`  <span class="c">${c.padEnd(22,' ')}</span><span class="d">${d}</span>`)); line('<span class="d">tab completes · ↑↓ history · ctrl+l clears</span>'); },
-  whoami(){ line(`<span class="g">${esc(D.identity.name)}</span> — ${esc(D.identity.headline)}`); line(esc(D.summary)); line(`<span class="d">${esc(D.identity.location)} · ${esc(D.identity.email)}</span>`); },
-  ls(arg){ if(arg && /^aw/.test(arg)) return CMDS.stack(); line('<span class="c">whoami/  top/  stack/  awnix  history/  gates/  factory/  resume.pdf  blog@  demo@  github@</span>'); },
-  top(){ line('<span class="h">measured 2026-09-20 · the AitherOS tree · origin/develop</span>');
-    D.metrics.forEach((m,i)=>{ const p=line(`<b>0</b><span>${esc(m.label)}<small>$ ${esc(m.how)}</small></span>`,'mrow'); const b=p.querySelector('b'); const target=m.value; if(typeof target!=='number'||RM){ b.textContent=fmt(target); return; } const t0=performance.now()+i*70; (function tick(){ const k=Math.min(1,(performance.now()-t0)/900); b.textContent=fmt(Math.round(target*(k<0?0:(1-Math.pow(1-k,3))))); if(k<1) requestAnimationFrame(tick); else b.textContent=fmt(target); })(); });
-    line(`<span class="d">pypi: awdk ${D.pypi.awdk} · awgit ${D.pypi.awgit} · awgraph ${D.pypi.awgraph} · awrelay ${D.pypi.awrelay}</span>`); },
-  metrics(){ CMDS.top(); },
-  stack(){ line(`<span class="h">aw* — Aither World · ${D.bricks.length} bricks · ${D.bricks.filter(b=>b.status==='public').length} public · ${D.stacks.length} stacks</span>`);
-    D.bricks.forEach(b=>{ const on=b.status==='public'; line(`<span>${esc(b.id)}</span><span>${esc(b.tagline)}</span><span class="s">${esc(b.status)}</span>`, 'brick '+(on?'on':'off')+(b.id==='awnix'?' hero':'')); });
-    line(`<span class="d">stacks: ${D.stacks.map(s=>s.id).join(' · ')}</span>`); },
-  cat(arg){ if(!arg) return line('<span class="e">cat: missing operand</span>'); const b=D.bricks.find(x=>x.id.toLowerCase()===arg.toLowerCase()); if(!b) return line(`<span class="e">cat: ${esc(arg)}: no such brick</span>`); line(`<span class="g">${esc(b.id)}</span> <span class="d">[${esc(b.status)}]</span>`); line(esc(b.tagline)); if(b.id==='awnix'){ line('<span class="d">adopt: boot one throwaway box and try to make a change you cannot reproduce.</span>'); line('<span class="d">No services. No agent. No account. The capabilities are in the image; the agent is three lines in awdk.</span>'); } const st=D.stacks.filter(s=>s.bricks.includes(b.id)); if(st.length) line(`<span class="d">in stacks: ${st.map(s=>s.id).join(', ')}</span>`); },
-  history(){ D.experience.slice().reverse().forEach(e=>{ line(`<span class="c">${esc(e.dates)}</span>  <span class="h">${esc(e.org)}</span> — ${esc(e.title)}`); e.bullets.slice(0,2).forEach(b=>line(`    <span class="d">· ${esc(b)}</span>`)); }); },
-  gates(){ [`<span class="h">${M.quality_gates.value} gates. Each proves it can still fail. Each runs somewhere unattended.</span>`,
-    'exit 0 = <span class="ok">pass</span> · exit 1 = <span class="e">violation</span> · exit 2 = could not judge. <span class="c">could-not-judge is never a pass.</span>',
-    'Four lanes: ci-static (504) · fleet-live every 4h (136) · host-live (295) · selftest-only — with a written reason, or it fails.',
-    'Rule: a defect a machine could detect must become a CHECK, never a ledger note. Measured before the rule: 79 rows/day in, 4.2/day out.',
-    'Rule: an agent may stop for exactly three reasons — physically impossible, irreversible+destructive, owner said no. 60–90% of "blocked" items were reversible.',
-    'Every claim carries its command and exit code, or it is not a claim.'].forEach(t=>line(t)); },
-  factory(){ D.jd.forEach(j=>{ line(`<span class="h">${esc(j.jd)}</span>`); line(`  ${esc(j.proof)}`); }); },
-  blog(){ open('https://blog.aitherium.com'); }, demo(){ open('https://demo.aitherium.com'); }, github(){ open('https://github.com/Aitherium'); },
-  resume(){ open('resume.pdf'); }, watch(){ const v=document.getElementById('watch'); if(v){ v.scrollIntoView({behavior:'smooth'}); const el=v.querySelector('video'); if(el){ el.play().catch(()=>{}); } line('playing.'); } },
-  clear(){ out.innerHTML=''; },
-  sudo(){ line('<span class="e">david is already root.</span>'); },
-  pwd(){ line('/home/david'); }, uname(){ line('awnix 0.9 x86_64 · immutable · capabilities included'); }, date(){ line(new Date().toString()); },
-  exit(){ line('<span class="d">There is no exit. Scroll.</span>'); },
-};
-function run(raw, fromDemo){ const cmd=raw.trim(); if(!cmd) return; echo(cmd); const [name,...rest]=cmd.split(/\s+/); const arg=rest.join(' '); const fn=CMDS[name.toLowerCase()]; if(fn) fn(arg); else line(`<span class="e">awnix: command not found: ${esc(name)}</span> <span class="d">— try help</span>`); if(!fromDemo){ hist.push(cmd); hi=hist.length; } }
-form.addEventListener('submit',e=>{ e.preventDefault(); userTyped=true; run(input.value); input.value=''; });
-input.addEventListener('keydown',e=>{ userTyped=true;
-  if(e.key==='Tab'){ e.preventDefault(); const v=input.value.trim().toLowerCase(); if(!v) return; const c=Object.keys(CMDS).filter(k=>k.startsWith(v)); if(c.length===1) input.value=c[0]+' '; else if(c.length>1) line(`<span class="d">${c.join('  ')}</span>`); }
-  else if(e.key==='ArrowUp'){ e.preventDefault(); if(hi>0){ hi--; input.value=hist[hi]; } }
-  else if(e.key==='ArrowDown'){ e.preventDefault(); if(hi<hist.length-1){ hi++; input.value=hist[hi]; } else { hi=hist.length; input.value=''; } }
-  else if(e.key==='l' && e.ctrlKey){ e.preventDefault(); CMDS.clear(); }
+CAST.forEach(([id, n, r]) => $("#castgrid").append(el("figure", "", `<img loading="lazy" src="assets/agents/${id}.webp" alt="${n}"><figcaption><b>${n}</b>${r}</figcaption>`)));
+D.metrics.forEach(m => $("#rec").append(el("tr", "mrow", `<td class="v">${esc(fmt(m.value))}</td><td>${esc(m.label)}</td><td class="c">${esc(m.how)}</td>`)));
+D.recent.forEach(r => {
+  const ev = /^[\w.-]+\.\w+\//.test(r.ev) ? `<a href="https://${esc(r.ev)}">${esc(r.ev)}</a>` : esc(r.ev);
+  $("#log").append(el("li", "", `<h3>${esc(r.title)}</h3><p>${esc(r.body)}<span class="ev">${ev}</span></p>`));
 });
-$('#termbox').addEventListener('click',e=>{ if(!e.target.closest('a,button')) input.focus({preventScroll:true}); });
-['help','whoami','top','stack','cat awnix','history','gates','factory','resume'].forEach(c=>{ const b=document.createElement('button'); b.type='button'; b.className='chip'; b.textContent=c; b.addEventListener('click',()=>{ userTyped=true; run(c); input.focus({preventScroll:true}); }); $('#chips').appendChild(b); });
-line('<span class="d">awnix 0.9 · immutable base · capabilities included. type <span class="c">help</span>.</span>');
+D.bricks.filter(b => b.status === "public").forEach(b => {
+  const a = el("a", "brick", `<b>${esc(b.id)}</b>${esc(b.tagline)}`); a.href = `https://github.com/Aitherium/${encodeURIComponent(b.id)}`; $("#bricklist").append(a);
+});
+D.experience.forEach(x => $("#xp").append(el("div", "row",
+  `<div class="when">${esc(x.dates)}</div><div><div class="org">${esc(x.org)}</div><div class="ttl">${esc(x.title)}</div><ul>${x.bullets.slice(0, 3).map(b => `<li>${esc(b)}</li>`).join("")}</ul></div>`)));
 
-/* scripted demo when the shell first scrolls into view; aborted the moment the visitor types */
-let demoStarted=false;
-function startDemoWatcher(){
-  if(RM){ run('whoami',true); run('top',true); return; }
-  const io=new IntersectionObserver(es=>{ es.forEach(en=>{ if(en.isIntersecting && !demoStarted){ demoStarted=true; io.disconnect(); demo(); } }); },{threshold:.35});
-  io.observe($('#termbox'));
-}
-function demo(){
-  const script=['whoami','top','cat awnix','gates']; let k=0;
-  function typeCmd(cmd,cb){ let j=0; (function t(){ if(userTyped) return; if(j<=cmd.length){ input.value=cmd.slice(0,j++); setTimeout(t,45+Math.random()*55); } else { setTimeout(()=>{ if(userTyped) return; input.value=''; run(cmd,true); cb(); },260); } })(); }
-  (function next(){ if(userTyped||k>=script.length) return; const c=script[k++]; setTimeout(()=>typeCmd(c,()=>setTimeout(next,1400)), k===1?500:0); })();
-}
-
-/* ================= kinetic headlines + reveals ================= */
-document.querySelectorAll('h2.kt').forEach(h=>{ let i=0; const frag=document.createDocumentFragment();
-  h.childNodes.forEach(node=>{ const isEm=node.nodeType===1; const text=node.textContent; text.split(/(\s+)/).forEach(w=>{ if(!w) return; if(/^\s+$/.test(w)){ frag.appendChild(document.createTextNode(' ')); return; } const s=document.createElement('span'); s.className='w'; s.style.transitionDelay=(i++*45)+'ms'; if(isEm){ const e=document.createElement('em'); e.textContent=w; s.appendChild(e); } else s.textContent=w; frag.appendChild(s); }); });
-  h.textContent=''; h.appendChild(frag); });
-const rio=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); rio.unobserve(e.target); } }),{threshold:.2});
-document.querySelectorAll('h2.kt').forEach(h=>rio.observe(h));
-
-/* stations */
-const ST=[
-  {n:'01',big:'850,000',org:'United States Air Force',when:'2014 — 2020 · Cyber Systems Operations',p:'Users on the second-largest Active Directory on earth. 690 domain controllers, 230 sites, $10B network, classified and unclassified, 24/7. Authoritative ADDS restore of 3,000 accounts with zero collateral. Trained 357 technicians. Red Flag blue team.'},
-  {n:'02',big:'LTO8 + SAN',org:'Boeing',when:'2020 — 2022 · HPC Linux System Engineer',p:'Owned the enterprise tape archive and a fibre-channel SAN for HPC. Technical lead replacing Oracle HSM with Versity. Data-at-rest encryption. Python automation for recovery, monitoring, archival.'},
-  {n:'03',big:'195 @ 100%',org:'Tanium',when:'2022 — present · Senior Enterprise Services / Escalation Engineer',p:'195 escalations in six months at 100% CSAT. Rewrote the Risk Assessment tooling from 500 endpoints to unbounded; ran it on 50,000. Client Health dashboards toward a self-healing estate. 2x Star Performer.'},
-  {n:'04',big:fmt(M.commits_total.value),org:'Aitherium',when:'2025 — present · Founder, Architect',p:`Commits since June 2025 — ${fmt(M.commits_90d.value)} in the last 90 days — landed by 33 agents under ${M.quality_gates.value} gates I designed. AitherOS, the aw* stack, awnix. Three real tenants. Four packages on PyPI.`},
-];
-ST.forEach((s,i)=>{ const d=document.createElement('div'); d.className='card'; d.style.transitionDelay=(i*90)+'ms'; d.innerHTML=`<div class="num">${s.n}</div><div class="big">${s.big}</div><div class="org">${esc(s.org)}</div><div class="when">${esc(s.when)}</div><p>${esc(s.p)}</p>`; $('#stations').appendChild(d); rio.observe(d); });
-
-/* factory panels */
-const EV=['33 agents · 1 gateway · 1 scheduler · swarm(11) · ratchet: propose→apply→score→keep|revert','960 gates · --self-test required · 4 lanes · exit 0/1/2 · rule: check, not row','awgraph · awm · nexus · gold-set 25q+2 canaries · embedder 13x smaller beats teacher ($3)','named baseline required · seen/unseen buckets · blind A/B before "fixed" · mutation guards','autoheal + death watchdog · 4h probe: 136 live gates · VIOLATION and DEAD page separately','tenant app in ~10 min · 3 real tenants · 78 public repos · 51 on PyPI · 1.7B model in a phone browser'];
-const K=['Orchestrate','Govern','Remember','Evaluate','Self-heal','Ship'];
-(D.recent||[]).forEach((r,i)=>{ const d=document.createElement('article'); d.className='card'; d.style.transitionDelay=(i*70)+'ms'; d.innerHTML=`<h3>${esc(r.title)}</h3><p>${esc(r.body)}</p><div class="ev"><b>&rarr;</b> ${esc(r.ev)}</div>`; $('#recentpanels').appendChild(d); rio.observe(d); });
-D.jd.forEach((j,i)=>{ const d=document.createElement('article'); d.className='card'; d.style.transitionDelay=(i*70)+'ms'; d.innerHTML=`<span class="ico">${K[i]||''}</span><h3>${esc(j.jd)}</h3><p>${esc(j.proof)}</p><div class="ev"><b>$</b> ${esc(EV[i]||'')}</div>`; $('#panels').appendChild(d); rio.observe(d); });
-
-/* ================= constellation ================= */
-(function constellation(){
-  const svg=$('#csvg'), tip=$('#tip'), wrap=$('#cwrap'); const NS='http://www.w3.org/2000/svg';
-  const W=1200,H=760,cx=W/2,cy=H/2;
-  let seed=7; const rnd=()=>{ seed=(seed*16807)%2147483647; return seed/2147483647; }; // deterministic: same layout every load
-  const B=D.bricks.map((b,i)=>({...b,i,x:cx+(rnd()-.5)*600,y:cy+(rnd()-.5)*400,vx:0,vy:0,r:b.id==='awnix'?30:(b.status==='public'?9:6.5)}));
-  const byId=Object.fromEntries(B.map(b=>[b.id,b]));
-  const hero=byId['awnix']; hero.x=cx; hero.y=cy;
-  const edges=[]; const seen=new Set(); B.forEach(b=>{ b.linked=D.stacks.some(s=>s.bricks.includes(b.id)); });
-  D.stacks.forEach(s=>{ const ids=s.bricks.filter(id=>byId[id]); for(let a=0;a<ids.length;a++) for(let b=a+1;b<ids.length;b++){ const k=ids[a]+'|'+ids[b]; if(seen.has(k)) continue; seen.add(k); edges.push({a:byId[ids[a]],b:byId[ids[b]],stack:s.id}); } });
-  for(let it=0;it<320;it++){
-    const k=it<200?1:0.4;
-    for(const n of B){ if(n===hero) continue; let fx=(cx-n.x)*0.012, fy=(cy-n.y)*0.012; for(const m of B){ if(m===n) continue; const dx=n.x-m.x, dy=n.y-m.y; const d2=dx*dx+dy*dy+0.01; if(d2>90000) continue; const rep=700/d2; fx+=dx*rep; fy+=dy*rep; } if(!n.linked){ const dx=n.x-cx, dy=n.y-cy; const d=Math.hypot(dx,dy)||1; const f=(d-230)*0.02; fx-=dx/d*f; fy-=dy/d*f; } n.vx=(n.vx+fx*k)*0.6; n.vy=(n.vy+fy*k)*0.6; }
-    for(const e of edges){ const dx=e.b.x-e.a.x, dy=e.b.y-e.a.y; const d=Math.hypot(dx,dy)||1; const want=e.a===hero||e.b===hero?170:140; const f=(d-want)*0.004*k; if(e.a!==hero){ e.a.vx+=dx/d*f; e.a.vy+=dy/d*f; } if(e.b!==hero){ e.b.vx-=dx/d*f; e.b.vy-=dy/d*f; } }
-    for(const n of B){ if(n===hero) continue; n.x=Math.max(90,Math.min(W-90,n.x+n.vx)); n.y=Math.max(50,Math.min(H-50,n.y+n.vy)); }
+/* ── the living desktop: a scripted replay ── */
+const dock = $("#dock");
+CAST.forEach(([id, n]) => { const a = el("div", "a", `<img src="assets/agents/${id}.webp" alt="${n}" title="${n}">`); a.dataset.id = id; dock.append(a); });
+const busy = (...ids) => dock.querySelectorAll(".a").forEach(a => a.classList.toggle("busy", ids.includes(a.dataset.id)));
+const RM = matchMedia("(prefers-reduced-motion: reduce)").matches;
+let paused = false, run = 0, decided = null;
+const sleep = ms => new Promise(r => { const t0 = performance.now(); const tick = () => { if (paused) { requestAnimationFrame(tick); return; } performance.now() - t0 >= ms ? r() : requestAnimationFrame(tick); }; tick(); });
+const on = (id, v = true) => $(id).classList.toggle("on", v);
+async function say(t, ms = 2600) { $("#saytx").textContent = t; on("#say"); await sleep(ms); on("#say", false); await sleep(300); }
+async function type(target, lines, speed = 14) {
+  const box = $(target); box.innerHTML = "";
+  for (const [cls, txt] of lines) {
+    const ln = el("div", cls); box.append(ln);
+    if (RM) { ln.textContent = txt; continue; }
+    for (let i = 0; i <= txt.length; i += 2) { ln.textContent = txt.slice(0, i); await sleep(speed); }
+    ln.textContent = txt; await sleep(70);
   }
-  const gE=document.createElementNS(NS,'g'), gN=document.createElementNS(NS,'g'), gT=document.createElementNS(NS,'g'); svg.append(gE,gN,gT);
-  edges.forEach(e=>{ const l=document.createElementNS(NS,'line'); l.setAttribute('x1',e.a.x);l.setAttribute('y1',e.a.y);l.setAttribute('x2',e.b.x);l.setAttribute('y2',e.b.y); l.dataset.stack=e.stack; e.el=l; gE.appendChild(l); });
-  B.forEach(b=>{ const c=document.createElementNS(NS,'circle'); c.setAttribute('cx',b.x);c.setAttribute('cy',b.y);c.setAttribute('r',b.r); c.setAttribute('class','node'+(b.status==='public'?' public':'')+(b.id==='awnix'?' hero':'')); c.setAttribute('tabindex','0'); c.setAttribute('role','button'); c.setAttribute('aria-label',`${b.id}: ${b.tagline} (${b.status})`); b.el=c; gN.appendChild(c);
-    const show = b.id==='awnix' || b.status==='public' && b.i%2===0; if(show){ const t=document.createElementNS(NS,'text'); t.setAttribute('x',b.x+(b.id==='awnix'?0:b.r+4)); t.setAttribute('y',b.y+(b.id==='awnix'?b.r+20:4)); if(b.id==='awnix'){ t.setAttribute('text-anchor','middle'); t.setAttribute('class','hero'); } t.textContent=b.id; gT.appendChild(t); }
-    const on=()=>{ tip.innerHTML=`<b>${esc(b.id)}</b><br>${esc(b.tagline)}<small>${esc(b.status)}${D.stacks.filter(s=>s.bricks.includes(b.id)).map(s=>' · '+s.id).join('')}</small>`; tip.style.opacity=1; c.classList.add('hot'); edges.forEach(e=>{ if(e.a===b||e.b===b) e.el.classList.add('hot'); }); place(b); };
-    const off=()=>{ tip.style.opacity=0; c.classList.remove('hot'); edges.forEach(e=>e.el.classList.remove('hot')); };
-    c.addEventListener('mouseenter',on); c.addEventListener('mouseleave',off); c.addEventListener('focus',on); c.addEventListener('blur',off);
-    c.addEventListener('click',()=>{ on(); setTimeout(off,2600); });
+}
+const CODE = [
+  ["dim", "@router.post(\"/sandbox/{sid}/exec\")"],
+  ["del", "-async def exec_in(sid: str, body: ExecBody):"],
+  ["add", "+async def exec_in(sid: str, body: ExecBody,"],
+  ["add", "+                  caller: Caller = Depends(require_caller)):"],
+  ["add", "+    box = await sandboxes.get(sid)"],
+  ["add", "+    if box.owner != caller.id:"],
+  ["add", "+        raise HTTPException(403, \"not your sandbox\")"],
+  ["dim", "     return await box.run(body.cmd)"],
+];
+const REVIEW = [
+  ["", "✓ authz denies on every non-happy path"],
+  ["", "✓ owner comes from the caller, not the body"],
+  ["", "✓ regression test fails on the old code"],
+  ["acc", "verdict: approve"],
+];
+const DEPLOY = [
+  ["dim", "drain genesis-a … rolled … healthy"],
+  ["dim", "drain genesis-b … rolled … healthy"],
+  ["acc", "ring 1 live · no dropped requests"],
+];
+async function gates(n) {
+  const c = $("#gcount"); const steps = RM ? 1 : 40;
+  for (let i = 1; i <= steps; i++) { c.textContent = Math.round(n * i / steps).toLocaleString("en-US"); await sleep(45); }
+  $("#gline").innerHTML = '<span class="add">0 violations · 0 could-not-judge</span>';
+}
+function waitDecision(ms) {
+  return new Promise(res => {
+    decided = res; on("#card");
+    const t = setTimeout(() => { if (decided) { decided = null; res("auto"); } }, ms);
+    $("#card").dataset.timer = t;
   });
-  function place(b){ const r=wrap.getBoundingClientRect(); const sx=r.width/W, sy=r.height/H; let x=b.x*sx+14, y=b.y*sy+14; if(x>r.width-310) x=b.x*sx-310; if(y>r.height-90) y=b.y*sy-80; tip.style.left=Math.max(4,x)+'px'; tip.style.top=Math.max(4,y)+'px'; }
-  const btns=$('#stackbtns'); let active=null;
-  const all=document.createElement('button'); all.className='chip'; all.textContent='all'; all.setAttribute('aria-pressed','true'); btns.appendChild(all);
-  function setStack(id){ active=id; [...btns.children].forEach(x=>x.setAttribute('aria-pressed', String((x.dataset.id||null)===id))); B.forEach(b=>b.el.classList.toggle('mute', !!id && !D.stacks.find(s=>s.id===id).bricks.includes(b.id))); edges.forEach(e=>{ e.el.classList.toggle('mute', !!id && e.stack!==id); e.el.classList.toggle('hot', !!id && e.stack===id); }); }
-  all.addEventListener('click',()=>setStack(null));
-  D.stacks.forEach(s=>{ const b=document.createElement('button'); b.className='chip'; b.textContent=s.id; b.dataset.id=s.id; b.title=`${s.tagline} — ${s.bricks.join(', ')}`; b.setAttribute('aria-pressed','false'); b.addEventListener('click',()=>setStack(active===s.id?null:s.id)); btns.appendChild(b); });
-})();
-})();
-</script>
-<script>
-/* ── .ELEMENT/web/universe.js — inlined verbatim by docs/build.py; draws the flight paths in the close ── */
-{{UNIVERSE_JS}}
+}
+["#approve", "#hold"].forEach(s => $(s).addEventListener("click", () => {
+  if (!decided) return; const r = decided; decided = null; clearTimeout(+$("#card").dataset.timer); r(s === "#approve" ? "approve" : "hold");
+}));
+async function loop() {
+  const me = ++run;
+  while (me === run) {
+    document.querySelectorAll("#desk .win").forEach(w => w.classList.remove("on"));
+    $("#gcount").textContent = "0"; $("#gline").textContent = "checking…";
+    busy("aither");
+    await say("Morning. Hydra flagged a sandbox route that trusts the caller. Demiurge is on it.", 3200);
+    busy("aither", "demiurge"); on("#w-code"); await type("#code", CODE);
+    busy("aither", "demiurge", "hydra"); on("#w-review"); await type("#review", REVIEW, 18);
+    busy("aither", "hydra", "athena"); on("#w-gates"); await gates({{GATES_RAW}});
+    await sleep(500);
+    busy("aither");
+    const v = await waitDecision(6500); on("#card", false);
+    if (v === "hold") {
+      await say("Held. It stays on the branch until you say go.", 2800);
+    } else {
+      if (v === "auto") await say("Standing rule: reversible and reviewed, so I'm shipping it.", 2600);
+      busy("aither", "prometheus"); on("#w-code", false); on("#w-deploy"); await type("#deploy", DEPLOY, 16);
+      await sleep(600);
+      on("#w-review", false); on("#w-gates", false);
+      busy("aither", "iris"); on("#w-film");
+      await say("Shipped. Iris is cutting the release film.", 3200);
+      await sleep(2400);
+    }
+    busy(); await sleep(1200);
+  }
+}
+const tickClock = () => { const d = new Date(); $("#clock").textContent = d.toTimeString().slice(0, 5); };
+tickClock(); setInterval(tickClock, 15000);
+$("#pause").addEventListener("click", e => { paused = !paused; e.target.textContent = paused ? "play" : "pause"; });
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting && !run) loop(); paused = !e.isIntersecting || $("#pause").textContent === "play"; }), { threshold: .2 });
+io.observe($("#desk"));
 </script>
 </body>
 </html>

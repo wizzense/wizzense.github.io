@@ -1,5 +1,5 @@
 # Source of truth for the site, resume.pdf and the film. Every number here was measured
-# 2026-10-05 on the AitherOS tree (C:\AitherOS-Fresh, ref origin/develop)
+# 2026-10-31 (MCP tools served included) on the AitherOS tree (C:\AitherOS-Fresh, ref origin/develop)
 # or the public registries. Command per figure is in facts/measured.md.
 
 identity:
@@ -32,9 +32,9 @@ public_identity:
 summary: >
   I run a software factory, not a backlog. Over 15 months I built AitherOS — an
   AI-native operating platform where 48 specialised agents plan, code, review,
-  audit, deploy and write about their own work — and used it to land 29,340
-  commits and 4,074 merged pull requests, 1,144 self-testing quality gates,
-  1,703 live MCP tools and 301 published posts, most of it authored and shipped by agents under programmatic governance
+  audit, deploy and write about their own work — and used it to land 32,798
+  commits and 5,769 merged pull requests, 1,231 self-testing quality gates,
+  1,840 live MCP tools and 337 published posts, most of it authored and shipped by agents under programmatic governance
   I designed. Before that: 12 years racking, securing and automating enterprise
   infrastructure, including the second-largest Active Directory on earth for
   the US Air Force. I have scars from every layer of the stack and a
@@ -42,27 +42,27 @@ summary: >
   Outcome Engineering charter — orchestration, governance, memory, evaluation,
   self-healing, ship — is the job I have been doing, in the open, every day.
 
-# Measured 2026-10-05. Keep these in step with facts/measured.md.
+# Measured 2026-10-31. Keep these in step with facts/measured.md.
 metrics:
-  commits_total: 29340
+  commits_total: 32798
   commits_since: "2025-06-08"
-  commits_90d: 20346
-  merged_prs_total: 4074
+  commits_90d: 18898
+  merged_prs_total: 5769
   merged_prs_since_2026_09_20: 2357
   feature_prs_since_2026_09_20: 746
-  tracked_files: 40985
-  compose_services: 381
+  tracked_files: 45816
+  compose_services: 395
   service_modules: 223
-  quality_gates: 1144
+  quality_gates: 1231
   mcp_tool_modules: 306
-  mcp_tools_served: 1703
-  blog_posts: 301
-  routines: 222
+  mcp_tools_served: 1840
+  blog_posts: 337
+  routines: 256
   agents: 48
-  aw_bricks_registered: 86
+  aw_bricks_registered: 91
   aw_bricks_public: 55
-  aw_stacks: 26
-  org_public_repos: 87
+  aw_stacks: 27
+  org_public_repos: 91
   pypi:
     awdk: 3.8.60
     awgit: 1.12.0
@@ -156,10 +156,10 @@ experience:
     dates: Jul 2025 - Present
     location: Remote
     bullets:
-      - "Architected AitherOS: 381 declared services across 12 layers, run as podman quadlets on Rocky/Debian, with Postgres replication, Redis Sentinel, Cloudflare tunnels, and GPU scheduling across local, DGX and rented (Lambda, Vast, Hetzner, AWS) capacity."
-      - "Built the aw* (Aither World) family: 86 registered bricks, 55 public, composed into 26 stacks. awnix is an immutable Linux you can hand to an agent; awdk builds agent fleets in three lines; awgit is op-log-aware git for many agents in one tree; awgraph, awm, awrelay, awiam, awbac, awseal, awdit cover code graph, memory, messaging, identity, RBAC, signing and audit. 51 on PyPI."
-      - "Governance as code: 1,144 self-testing gates, a per-gate lane manifest (CHK001-006) that asserts 100% coverage and refuses a gate that runs nowhere, and a debt-ledger protocol where a detectable defect must become a check. Measured the ledger at 79 rows/day in vs 4.2/day out before the rule; it stopped being a write-only archive after."
-      - "29,340 commits and 4,074 merged pull requests since June 2025 (20,346 commits in the last 90 days; 2,357 PRs, 746 of them features, between Sep 20 and Oct 5 alone), 40,985 tracked files, 301 blog posts, 222 scheduled routines - the majority authored by agents under those gates, with every claim required to carry its command and exit code."
+      - "Architected AitherOS: 395 declared services across 12 layers, run as podman quadlets on Rocky/Debian, with Postgres replication, Redis Sentinel, Cloudflare tunnels, and GPU scheduling across local, DGX and rented (Lambda, Vast, Hetzner, AWS) capacity."
+      - "Built the aw* (Aither World) family: 91 registered bricks, 55 public, composed into 27 stacks. awnix is an immutable Linux you can hand to an agent; awdk builds agent fleets in three lines; awgit is op-log-aware git for many agents in one tree; awgraph, awm, awrelay, awiam, awbac, awseal, awdit cover code graph, memory, messaging, identity, RBAC, signing and audit. 51 on PyPI."
+      - "Governance as code: 1,231 self-testing gates, a per-gate lane manifest (CHK001-006) that asserts 100% coverage and refuses a gate that runs nowhere, and a debt-ledger protocol where a detectable defect must become a check. Measured the ledger at 79 rows/day in vs 4.2/day out before the rule; it stopped being a write-only archive after."
+      - "32,798 commits and 5,769 merged pull requests since June 2025 (18,898 commits in the last 90 days; 2,357 PRs, 746 of them features, between Sep 20 and Oct 5 alone), 45,816 tracked files, 337 blog posts, 256 scheduled routines - the majority authored by agents under those gates, with every claim required to carry its command and exit code."
       - "Trained and shipped models: a code-search embedder 13x smaller than its teacher that beats it (recall measured on the platform's own corpus); Gemma-4 and orchestrator fine-tunes with a positive-baseline rule (a trainer must beat a named baseline or it is not a result); Bonsai 1.7B running in-browser on a phone."
       - "Security posture designed fail-closed: authz gates deny on every non-happy path, no caller-supplied tenant ids in a decision, dual-key rotation of the fleet credential across 43 verifier sites, secrets vault with audit round-trip asserted by a gate."
       - "Sold and operated real tenants: J Games & Repair, Digital Ground Game, Garg - each a generated repo, appliance image, brain pack and portal the customer owns."
@@ -191,7 +191,7 @@ experience:
       - "Red Flag 17-1 blue-team operator, Superior Performer; Junior Technician of the Year 2017; Information Dominance award 2018; promoted SSgt in the 94th percentile."
 
 skills:
-  Agentic systems: [multi-agent orchestration, "MCP (1,700+ tools served)", tool-calling harnesses, agent memory and knowledge graphs, evaluation harnesses, ratchet/keep-revert loops, prompt and context engineering, on-device inference (WebGPU/wasm)]
+  Agentic systems: [multi-agent orchestration, "MCP (1,800+ tools served)", tool-calling harnesses, agent memory and knowledge graphs, evaluation harnesses, ratchet/keep-revert loops, prompt and context engineering, on-device inference (WebGPU/wasm)]
   Models and training: [vLLM, llama.cpp, LoRA/fine-tuning, embedding distillation, KV-cache quantisation, GPU scheduling, DeepSeek/Qwen/Gemma/Bonsai]
   Languages: [Python, TypeScript/Node, PowerShell, Bash, SQL]
   Platform: [PostgreSQL (replication), Redis Sentinel, Podman/Docker, systemd quadlets, k3s, Next.js/React, FastAPI, Cloudflare (Workers, Tunnels, Pages), GitHub Actions self-hosted fleets, OpenTofu]
@@ -208,7 +208,7 @@ certs:
 links:
   - label: AitherOS / aw* org
     url: https://github.com/Aitherium
-  - label: Blog (301 posts, agent-written and gated)
+  - label: Blog (337 posts, agent-written and gated)
     url: https://blog.aitherium.com
   - label: 13x smaller embedder beats its teacher
     url: https://blog.aitherium.com/code-search-embedder-13x-smaller-beats-its-teacher

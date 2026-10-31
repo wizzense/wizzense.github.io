@@ -91,6 +91,11 @@
    "status": "public"
   },
   {
+   "id": "awsuite",
+   "tagline": "Your Google Workspace as agent tools, and no write happens without a yes.",
+   "status": "no-pages"
+  },
+  {
    "id": "awdit",
    "tagline": "An append-only audit trail whose gaps are DETECTABLE.",
    "status": "public"
@@ -111,6 +116,11 @@
    "status": "public"
   },
   {
+   "id": "awpermit",
+   "tagline": "Let an agent through your door with a scope, a spend cap, and someone accountable.",
+   "status": "no-pages"
+  },
+  {
    "id": "awnest",
    "tagline": "Prove there is a human before you let them into the nest.",
    "status": "public"
@@ -128,6 +138,11 @@
   {
    "id": "awscope",
    "tagline": "One scope graph for work and home, where crossing between them takes consent.",
+   "status": "planned"
+  },
+  {
+   "id": "awplay",
+   "tagline": "Stream a game from your own handheld or PC to your phone, over your own network.",
    "status": "planned"
   },
   {
@@ -164,6 +179,11 @@
    "id": "awmail",
    "tagline": "Give an agent an email address — send, and actually receive.",
    "status": "public"
+  },
+  {
+   "id": "awdiscord",
+   "tagline": "Put any agent on Discord as a real bot, with an operator in the loop.",
+   "status": "no-pages"
   },
   {
    "id": "mediaforge",
@@ -219,6 +239,11 @@
    "id": "awvision",
    "tagline": "See an image — describe it, ask it a question, compare two.",
    "status": "public"
+  },
+  {
+   "id": "awcams",
+   "tagline": "Private camera recording and one-line event summaries, on storage you own.",
+   "status": "unpublished"
   },
   {
    "id": "awscreen",
@@ -756,6 +781,17 @@
     "awvoice"
    ],
    "tagline": "The Aither way to run Claude Code"
+  },
+  {
+   "id": "workspace-bridge",
+   "bricks": [
+    "awsuite",
+    "awdk",
+    "awsh",
+    "awskills",
+    "awpack"
+   ],
+   "tagline": "The workspace bridge"
   }
  ]
 }

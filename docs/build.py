@@ -2,10 +2,8 @@
 
     python docs/build.py
 
-Design system: the .ELEMENT base stylesheet and universe strip renderer are inlined
-VERBATIM (facts/element/aitherium.css, facts/element/universe.js — vendored copies of
-.ELEMENT/web/*; refresh them from the design-system tree, never hand-edit). Numbers
-come from facts/resume.yaml + facts/bricks.json, the same files the resume and
+The page is self-contained (its own paper/ink tokens, the living-desktop replay and
+agent portraits under docs/assets/agents/). Numbers come from facts/resume.yaml + facts/bricks.json, the same files the resume and
 video read, so the four artifacts cannot disagree.
 """
 from __future__ import annotations
@@ -21,13 +19,12 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
 TEMPLATE = HERE / "template.html"
 OUT = HERE / "index.html"
-ELEMENT = ROOT / "facts" / "element"
 
 METRICS_TABLE = [  # key, label, how measured (from facts/measured.md)
     ("commits_total", "commits since 2025-06-08", "git rev-list --count HEAD"),
     ("commits_90d", "commits, last 90 days", "git rev-list --count --since='90 days ago' HEAD"),
     ("quality_gates", "self-testing quality gates", "git ls-files 'AitherOS/dev/tools/check_*.py' | wc -l"),
-    ("mcp_tools_served", "MCP tools served", "gateway tools/list (MCP initialize + tools/list, 2026-10-05)"),
+    ("mcp_tools_served", "MCP tools served", "gateway tools/list (MCP initialize + tools/list, 2026-10-31)"),
     ("merged_prs_total", "merged pull requests", r"git log origin/develop --format=%s | grep -oE '\(#[0-9]+\)$' | sort -u | wc -l"),
     ("compose_services", "services declared", "grep -cE '^  [a-z][a-z0-9-]+:$' docker-compose.aitheros.yml"),
     ("blog_posts", "posts written + published by agents", "ls AitherVeil/content/blog/*.md | wc -l"),
@@ -41,10 +38,6 @@ METRICS_TABLE = [  # key, label, how measured (from facts/measured.md)
 def main() -> int:
     facts = yaml.safe_load(io.open(ROOT / "facts" / "resume.yaml", encoding="utf-8"))
     eco = json.load(io.open(ROOT / "facts" / "bricks.json", encoding="utf-8"))
-    css = (ELEMENT / "aitherium.css").read_text(encoding="utf-8")
-    uni = (ELEMENT / "universe.js").read_text(encoding="utf-8")
-    if "@element-tokens" not in css or "@element-universe" not in uni:
-        raise SystemExit("facts/element/* is not the .ELEMENT web layer — refresh the vendored copies")
     m = facts["metrics"]
     payload = {
         "identity": facts["public_identity"],  # never facts["identity"] on the public site
@@ -64,11 +57,14 @@ def main() -> int:
     data_js = json.dumps(payload, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
     html = TEMPLATE.read_text(encoding="utf-8")
     for tok, val in {
-        "{{AITHERIUM_CSS}}": css,
-        "{{UNIVERSE_JS}}": uni.replace("</script", "<\\/script"),
         "{{DATA_JSON}}": data_js,
         "{{COMMITS}}": f"{m['commits_total']:,}",
-        "{{GATES}}": str(m["quality_gates"]),
+        "{{GATES_RAW}}": str(int(m["quality_gates"])),
+        "{{GATES}}": f"{m['quality_gates']:,}",
+        "{{TOOLS}}": f"{m['mcp_tools_served']:,}",
+        "{{SERVICES}}": str(m["compose_services"]),
+        "{{AGENTS}}": str(m["agents"]),
+        "{{EMAIL}}": facts["public_identity"]["email"],
         "{{BRICKS}}": str(m["aw_bricks_registered"]),
         "{{PUBLIC}}": str(m["aw_bricks_public"]),
         "{{PRS_RECENT}}": f"{m['merged_prs_since_2026_09_20']:,}",
